@@ -1,0 +1,46 @@
+// Override base SB Sidenav styles
+
+.sidenav {
+    font-size: 0.9rem;
+    .sidenav-menu {
+        .nav {
+            .sidenav-menu-heading {
+                font-size: 0.7rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+            .nav-link {
+                display: flex;
+                align-items: center;
+                line-height: normal;
+                .nav-link-icon {
+                    padding-right: 0.5rem;
+                    display: inline-flex;
+                    .feather,
+                    i-feather {
+                        width: 1rem;
+                        height: 1rem;
+                    }
+                }
+                &.active {
+                    font-weight: 700;
+                    .nav-icon {
+                        color: $primary;
+                    }
+                }
+            }
+            .sidenav-menu-nested {
+                margin-left: 2rem - $sidenav-nested-border-offest;
+                border-left-style: solid;
+                border-left-width: thin;
+                padding-left: $sidenav-nested-border-offest;
+            }
+        }
+    }
+    .sidenav-footer {
+        height: $footer-base-height;
+        display: flex;
+        align-items: center;
+    }
+}

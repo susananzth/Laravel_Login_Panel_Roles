@@ -1,0 +1,120 @@
+mixin navbar(options)
+
+    nav.navbar.navbar-marketing.navbar-expand-lg(class=options.navbarBg, class=options.navbarStyle, class=options.navbarPosition)
+        div(class=options.navbarContainer)
+            a.navbar-brand(href='index.html', class=options.navbarBrandColor)
+                | SB UI Kit Pro
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                i(data-feather='menu')
+            #navbarSupportedContent.collapse.navbar-collapse
+                ul.navbar-nav.ml-auto.mr-lg-5
+                    li.nav-item
+                        a.nav-link(href='index.html')
+                            | Home 
+                    li.nav-item.dropdown.dropdown-xl.no-caret
+                        a#navbarDropdownDemos.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Landings
+                            i.fas.fa-chevron-right.dropdown-arrow
+                        .dropdown-menu.dropdown-menu-right.animated--fade-in-up.mr-lg-n15(aria-labelledby='navbarDropdownDemos')
+                            .row.no-gutters
+                                .col-lg-5.p-lg-3.bg-img-cover.overlay.overlay-primary.overlay-70.d-none.d-lg-block(style='background-image: url("https://source.unsplash.com/mqO0Rf-PUMs/500x350")')
+                                    .d-flex.h-100.w-100.align-items-center.justify-content-center
+                                        .text-white.text-center.z-1
+                                            .mb-3 Multipurpose landing pages for a variety of projects.
+                                            a.btn.btn-white.btn-sm.text-primary.rounded-pill(href='index.html') View All
+                                .col-lg-7.p-lg-5
+                                    .row
+                                        .col-lg-6
+                                            h6.dropdown-header.text-primary Applications
+                                            a.dropdown-item(href='landing-app-mobile.html') Mobile App
+                                            a.dropdown-item(href='landing-app-desktop.html') Desktop App
+                                            .dropdown-divider.border-0
+                                            h6.dropdown-header.text-primary Business
+                                            a.dropdown-item(href='landing-multipurpose.html') Multipurpose
+                                            a.dropdown-item(href='landing-agency.html') Agency
+                                            a.dropdown-item(href='landing-press.html') Press
+                                            a.dropdown-item(href='landing-directory.html') Directory
+                                            a.dropdown-item(href='landing-rental.html') Rental
+                                            a.dropdown-item(href='landing-real-estate.html') Real Estate
+                                            a.dropdown-item(href='landing-classifieds.html') Classifieds
+                                            .dropdown-divider.border-0
+                                            h6.dropdown-header.text-primary Lead Generation
+                                            a.dropdown-item(href='landing-lead-capture.html') Lead Capture
+                                            .dropdown-divider.border-0.d-lg-none
+                                        .col-lg-6
+                                            h6.dropdown-header.text-primary Personal
+                                            a.dropdown-item(href='landing-resume.html') Resume
+                                            a.dropdown-item(href='landing-portfolio.html') Portfolio
+                                            .dropdown-divider.border-0
+                                            h6.dropdown-header.text-primary Header Styles
+                                            a.dropdown-item(href='header-basic.html') Basic
+                                            a.dropdown-item(href='header-basic-signup.html') Basic (Signup)
+                                            a.dropdown-item(href='header-graphic.html') Graphic
+                                            a.dropdown-item(href='header-graphic-signup.html') Graphic (Signup)
+                                            a.dropdown-item(href='header-inner-page.html') Inner Page
+                                            a.dropdown-item(href='header-nav-only.html') Nav Only
+                    li.nav-item.dropdown.dropdown-lg.no-caret
+                        a#navbarDropdownPages.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Pages
+                            i.fas.fa-chevron-right.dropdown-arrow
+                        .dropdown-menu.dropdown-menu-right.animated--fade-in-up(aria-labelledby='navbarDropdownPages')
+                            .row.no-gutters
+                                .col-lg-6.p-lg-5
+                                    h6.dropdown-header.text-primary Company
+                                    a.dropdown-item(href='page-basic.html') Basic Page
+                                    a.dropdown-item(href='page-company-about.html') About
+                                    a.dropdown-item(href='page-company-pricing.html') Pricing
+                                    a.dropdown-item(href='page-company-contact.html') Contact
+                                    a.dropdown-item(href='page-company-terms.html') Terms
+                                    .dropdown-divider.border-0
+                                    h6.dropdown-header.text-primary Support
+                                    a.dropdown-item(href='page-help-center.html') Help Center
+                                    a.dropdown-item(href='page-help-knowledgebase.html') Knowledgebase
+                                    a.dropdown-item(href='page-help-message-center.html') Message Center
+                                    a.dropdown-item(href='page-help-support-ticket.html') Support Ticket
+                                    .dropdown-divider.border-0.d-lg-none
+                                .col-lg-6.p-lg-5
+                                    h6.dropdown-header.text-primary Careers
+                                    a.dropdown-item(href='page-careers-overview.html') Careers List
+                                    a.dropdown-item(href='page-careers-listing.html') Position Details
+                                    .dropdown-divider.border-0
+                                    h6.dropdown-header.text-primary Blog
+                                    a.dropdown-item(href='page-blog-overview.html') Overview
+                                    a.dropdown-item(href='page-blog-post.html') Post
+                                    a.dropdown-item(href='page-blog-archive.html') Archive
+                                    .dropdown-divider.border-0
+                                    h6.dropdown-header.text-primary Portfolio
+                                    a.dropdown-item(href='page-portfolio-grid.html') Grid
+                                    a.dropdown-item(href='page-portfolio-large-grid.html') Large Grid
+                                    a.dropdown-item(href='page-portfolio-masonry.html') Masonry
+                                    a.dropdown-item(href='page-portfolio-case-study.html') Case Study
+                                    a.dropdown-item(href='page-portfolio-project.html') Project
+                    li.nav-item.dropdown.no-caret
+                        a#navbarDropdownDocs.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Documentation
+                            i.fas.fa-chevron-right.dropdown-arrow
+                        .dropdown-menu.dropdown-menu-right.animated--fade-in-up(aria-labelledby='navbarDropdownDocs')
+                            a.dropdown-item.py-3(href='https://docs.startbootstrap.com/sb-ui-kit-pro/quickstart', target='_blank')
+                                .icon-stack.bg-primary-soft.text-primary.mr-4
+                                    i.fas.fa-book-open
+                                div
+                                    .small.text-gray-500 Documentation
+                                    | Usage instructions and reference
+                            .dropdown-divider.m-0
+                            a.dropdown-item.py-3(href='https://docs.startbootstrap.com/sb-ui-kit-pro/components', target='_blank')
+                                .icon-stack.bg-primary-soft.text-primary.mr-4
+                                    i.fas.fa-code
+                                div
+                                    .small.text-gray-500 Components
+                                    | Code snippets and reference
+                            .dropdown-divider.m-0
+                            a.dropdown-item.py-3(href='https://docs.startbootstrap.com/sb-ui-kit-pro/changelog', target='_blank')
+                                .icon-stack.bg-primary-soft.text-primary.mr-4
+                                    i.fas.fa-file
+                                div
+                                    .small.text-gray-500 Changelog
+                                    | Updates and changes
+                                
+                a(href="https://shop.startbootstrap.com/sb-ui-kit-pro", class=options.navbarBtnColor).btn.rounded-pill.px-4.ml-lg-4
+                    | Buy Now
+                    i.fas.fa-arrow-right.ml-1

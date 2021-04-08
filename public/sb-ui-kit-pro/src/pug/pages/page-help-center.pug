@@ -1,0 +1,164 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Help Center'
+
+append css
+    link(rel='stylesheet', href='https://unpkg.com/aos@next/dist/aos.css')
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-transparent',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content.pt-10
+            .container.text-center
+                .row.justify-content-center
+                    .col-lg-8
+                        h1.page-header-title.mb-3 Help Center
+                        p.page-header-text We're here to help. Browse our knowledgebase or contact us directly.
+
+    //- * * * * * * * * * * *
+    //- * * Features Grid * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.features.text-center.mb-10
+                .col-lg-4.col-md-6.mb-5
+                    a.card.card-link.border-top.border-top-lg.border-primary.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-primary-soft.text-primary.mb-4
+                                i(data-feather='user')
+                            h6 Account
+                            p.card-text Issues related to logging in, out, or about multiple devices.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 21 Entries
+                .col-lg-4.col-md-6.mb-5
+                    a.card.card-link.border-top.border-top-lg.border-green.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-green-soft.text-green.mb-4
+                                i(data-feather='clock')
+                            h6 Integrations
+                            p.card-text Connecting with 3rd party apps to exchange data.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 9 Entries
+                .col-lg-4.col-md-6.mb-5
+                    a.card.card-link.border-top.border-top-lg.border-yellow.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-yellow-soft.text-yellow.mb-4
+                                i(data-feather='clock')
+                            h6 Billing
+                            p.card-text Issues with payments or invoicing.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 14 Entries
+                .col-lg-4.col-md-6.mb-5.mb-lg-0
+                    a.card.card-link.border-top.border-top-lg.border-purple.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-purple-soft.text-purple.mb-4
+                                i(data-feather='clock')
+                            h6 Organizations
+                            p.card-text Setting up and managing collections of users.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 17 Entries
+                .col-lg-4.col-md-6.mb-5.mb-lg-0
+                    a.card.card-link.border-top.border-top-lg.border-red.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-red-soft.text-red.mb-4
+                                i(data-feather='clock')
+                            h6 Performance
+                            p.card-text Improving your system's speed and reliability.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 7 Entries
+                .col-lg-4.col-md-6.mb-5.mb-lg-0
+                    a.card.card-link.border-top.border-top-lg.border-teal.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-teal-soft.text-teal.mb-4
+                                i(data-feather='clock')
+                            h6 Customizing
+                            p.card-text Building custom modules on top of our platform.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 14 Entries
+
+            .row.justify-content-center
+                .col-lg-8.text-center
+                    h2 Can't find the answer you need?
+                    p.lead.mb-5 Contact us and we'll get back to you as soon as possible with a solution to whatever issues you're having with SB UI Kit Pro.
+            .row.align-items-center.mb-10
+                .col-lg-4.text-center.mb-5.mb-lg-0
+                    .section-preheading Message Us
+                    a(href='#!') Start a chat!
+                .col-lg-4.text-center.mb-5.mb-lg-0
+                    .section-preheading Call Anytime
+                    a(href='#!') (555) 565-1846
+                .col-lg-4.text-center
+                    .section-preheading Email Us
+                    a(href='#!') support@startbootstrap.com
+            form
+                .form-row
+                    .form-group.col-md-6
+                        label.text-dark(for='inputName') Full name
+                        input#inputName.form-control.py-4(type='text', placeholder='Full name')
+                    .form-group.col-md-6
+                        label.text-dark(for='inputEmail') Email
+                        input#inputEmail.form-control.py-4(type='email', placeholder='name@example.com')
+                .form-group
+                    label.text-dark(for='inputMessage') Message
+                    textarea#inputMessage.form-control.py-3(type='text', placeholder='Enter your message...', rows='4')
+                .text-center
+                    button.btn.btn-primary.btn-marketing.mt-4(type='submit') Submit Request
+
+
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })
+
+append scripts
+    script(src='https://unpkg.com/aos@next/dist/aos.js')
+    script.
+        AOS.init({
+            disable: 'mobile',
+            duration: 600,
+            once: true
+        });

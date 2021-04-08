@@ -1,0 +1,32 @@
+.alert-icon {
+    position: relative;
+    display: flex;
+    padding: 0;
+    // Reposition the dismiss button
+    button.close {
+        position: absolute;
+        top: $alert-padding-y;
+        right: $alert-padding-x;
+    }
+    .alert-icon-aside {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: $alert-padding-y;
+        padding-bottom: $alert-padding-y;
+        padding-left: $alert-padding-x;
+        font-size: 1.5rem;
+        svg.feather,
+        svg,
+        i {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+    }
+    .alert-icon-content {
+        padding-top: $alert-padding-y;
+        padding-bottom: $alert-padding-y;
+        padding-left: $alert-padding-x;
+        padding-right: $alert-padding-x;
+    }
+}

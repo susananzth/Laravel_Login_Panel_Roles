@@ -1,0 +1,32 @@
+.pricing {
+    font-size: 0.9rem;
+    .pricing-price {
+        font-size: 3rem;
+        color: $gray-800;
+        margin-bottom: 1rem;
+        sup {
+            font-size: 1.5rem;
+        }
+        .pricing-price-period {
+            font-size: 1.25rem;
+        }
+    }
+    .pricing-list {
+        margin-bottom: 0;
+        margin-left: 1.6em;
+        .pricing-list-item {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .pricing-left {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .pricing-right {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}

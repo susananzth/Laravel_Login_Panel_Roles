@@ -1,0 +1,25 @@
+.testimonial {
+    .testimonial-brand {
+        fill: currentColor;
+        margin-bottom: 1.35rem;
+        svg {
+            height: 3rem;
+        }
+    }
+    .testimonial-quote {
+        font-size: 1.4rem;
+        font-weight: 300;
+    }
+    .testimonial-name {
+        font-weight: bold;
+    }
+    .testimonial-position {
+        font-weight: lighter;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .divider-right {
+        border-right: 0.0625rem solid $border-color;
+    }
+}

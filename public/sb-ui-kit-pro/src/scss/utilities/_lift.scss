@@ -1,0 +1,29 @@
+.lift {
+    box-shadow: $box-shadow;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &:hover {
+        transform: translateY(-$spacer / 3);
+        box-shadow: $box-shadow-lift;
+    }
+    &:active {
+        transform: none;
+        box-shadow: $box-shadow;
+    }
+}
+
+.lift-sm {
+    box-shadow: $box-shadow-sm;
+    &:hover {
+        transform: translateY(-$spacer / 6);
+        box-shadow: $box-shadow-lift-sm;
+    }
+    &:active {
+        transform: none;
+        box-shadow: $box-shadow-sm;
+    }
+}
+
+.card.lift {
+    text-decoration: none;
+    color: inherit;
+}

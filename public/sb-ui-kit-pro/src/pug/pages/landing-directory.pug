@@ -1,0 +1,207 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Directory'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-cover overlay',
+        pageHeaderBgImg: 'background-image: url("https://source.unsplash.com/hrlvr2ZlUNk/1500x700")',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content
+            .container
+                .row.justify-content-center
+                    .col-xl-8.col-lg-10.text-center
+                        h1.page-header-title Find the best businesses in town
+                        p.page-header-text.mb-5 Search for restaurants, contractors, and other local businesses in your area to find out which ones are the best!
+                        form.page-header-signup
+                            .form-row.justify-content-center
+                                .col-lg-6.col-md-8
+                                    .form-group.mr-0.mr-lg-2
+                                        label.sr-only(for='inputSearch') Find local businesses...
+                                        input#inputSearch.form-control.form-control-solid.rounded-pill(type='text', placeholder='Find local businesses...')
+                                .col-lg-3.col-md-4
+                                    button.btn.btn-teal.btn-block.btn-marketing.rounded-pill(type='submit') Search
+
+    //- * * * * * * * * * * *
+    //- * * Intro Section * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-6
+                    .mb-5.text-center
+                        .text-xs.text-uppercase-expanded.text-primary.mb-2 Browse Businesses
+                        p.lead.mb-0 Not sure what to search for? Browse some of the most popular categories.
+            .row.justify-content-center
+                .col-md-6.col-lg-4.col-xl-3.mb-5
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/Yr4n8O_3UPc/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Restaurants
+                .col-md-6.col-lg-4.col-xl-3.mb-5
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/YbGMa1Jz1yY/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Dry Cleaning
+                .col-md-6.col-lg-4.col-xl-3.mb-5
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/Cl-OpYWFFm0/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Painters
+                .col-md-6.col-lg-4.col-xl-3.mb-5
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/E285pJbC4uE/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Medical
+                .col-md-6.col-lg-4.col-xl-3.mb-5.mb-lg-0
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/CQfNt66ttZM/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Gyms
+                .col-md-6.col-lg-4.col-xl-3.mb-5.mb-lg-0
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/tNALoIZhqVM/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Coffee
+                .col-md-6.col-lg-4.col-xl-3.mb-5.mb-md-0
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/r3XvSBEQQLo/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Events
+                .col-md-6.col-lg-4.col-xl-3
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/WCm4dFvZnMM/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Breweries
+
+    //- * * * * * * * * * * *
+    //- * * Signup Section * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'pt-5 pb-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .card.mt-n15.mb-10.z-1
+                .card-body.p-5
+                    .row.align-items-center
+                        .col-lg-6
+                            h4 Get the latest news
+                            p.lead.text-gray-500.mb-0 Stay in the loop with the latest updates and features added to our application!
+                        .col-lg-6
+                            .input-group.mb-2
+                                input.form-control.form-control-solid(type='text', placeholder="youremail@example.com", aria-label="Recipient's username", aria-describedby='button-addon2')
+                                .input-group-append
+                                    button#button-addon2.btn.btn-primary(type='button') Sign up
+                            .small.text-gray-500 You can unsubscribe at any time.
+
+            .row.justify-content-center
+                .col-lg-6
+                    .mb-5.text-center
+                        .text-xs.text-uppercase-expanded.text-primary.mb-2 New Businesses
+                        p.lead.mb-0 Here are some of the most popular new businesses in your area.
+
+            .row
+                .col-lg-4.mb-5.mb-lg-0
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/E6HjQaB7UEA/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 The Bamboo Ranch
+                            .text-yellow
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star-half-alt
+                            .small.mb-2 (12 Reviews)
+                            .small Upper West Ceon, Gram
+                        .card-footer.text-center.text-xs
+                            i.fas.fa-store-alt.mr-1
+                            | Opened 2 weeks ago
+                .col-lg-4.mb-5.mb-lg-0
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/ODNxWmNja2U/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Lakeside Oyster
+                            .text-yellow
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star-half-alt
+                            .small.mb-2 (8 Reviews)
+                            .small East Fom, Kugan
+                        .card-footer.text-center.text-xs
+                            i.fas.fa-store-alt.mr-1
+                            | Opened 1 months ago
+                .col-lg-4
+                    a.card.lift(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/sWEpcc0Rm0U/800x500', alt='...')
+                        .card-body.text-center.py-3
+                            h6.card-title.mb-0 Wild Junction
+                            .text-yellow
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star-half-alt
+                                i.far.fa-star
+                            .small.mb-2 (29 Reviews)
+                            .small Shotles Wood, Drada
+                        .card-footer.text-center.text-xs
+                            i.fas.fa-store-alt.mr-1
+                            | Opened 2 months ago
+
+
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

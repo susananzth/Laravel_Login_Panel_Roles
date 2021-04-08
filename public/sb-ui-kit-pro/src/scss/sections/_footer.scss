@@ -1,0 +1,22 @@
+.footer {
+    .footer-brand {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+        svg {
+            height: 1rem;
+        }
+    }
+    a {
+        @extend .text-reset;
+    }
+    &.footer-dark {
+        color: fade-out($white, 0.4);
+        hr {
+            border-color: fade-out($white, 0.9)
+        }
+    }
+    &.footer-light {
+        color: $gray-500;
+    }
+}

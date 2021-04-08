@@ -1,0 +1,49 @@
+.card-flag  {
+    position: absolute;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    line-height: 1;
+}
+
+.card-flag-dark {
+    background-color: fade-out($gray-900, 0.3);
+    color: $white;
+}
+
+.card-flag-light {
+    background-color: fade-out($white, 0.3);
+    color: $gray-600;
+}
+
+.card-flag-lg {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.65rem;
+}
+
+.card-flag-top-right {
+    border-top-left-radius: $border-radius-sm;
+    border-bottom-left-radius: $border-radius-sm;
+    top: 0.5rem;
+    right: 0;
+}
+
+.card-flag-top-left {
+    border-top-right-radius: $border-radius-sm;
+    border-bottom-right-radius: $border-radius-sm;
+    top: 0.5rem;
+    left: 0;
+}
+
+.card-flag-bottom-right {
+    border-top-left-radius: $border-radius-sm;
+    border-bottom-left-radius: $border-radius-sm;
+    bottom: 0.5rem;
+    right: 0;
+}
+
+.card-flag-bottom-left {
+    border-top-right-radius: $border-radius-sm;
+    border-bottom-right-radius: $border-radius-sm;
+    bottom: 0.5rem;
+    left: 0;
+}

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+*, body, .tooltip, .popover{
+    font-family: 'Quicksand', sans-serif;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Varela Round', sans-serif;
+}
+.bg-secondary {
+    background-image: linear-gradient(135deg, #0a3f5d 0%, rgb(0, 0, 0) 100%);
+}
+.navbar-marketing .navbar-brand img {
+    height: 3rem;
+}
+.btn-primary {
+    color: #1A293C;
+    background-color: #FCD332;
+    border-color: #FCD332;
+}
+.btn-primary:hover {
+    color: #ffffff;
+    background-color: #FFCB32;
+    border-color: #FFCB32;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #FFCB32;
+    border-color: #FFCB32;
+}
+.btn-primary:focus, .btn-primary.focus {
+    color: #fff;
+    background-color: #FFCB32;
+    border-color: #FFCB32;
+    box-shadow: 0 0 0 0.2rem rgba(26,41,60, 1);
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #ffffff !important;
+}
+.nav-link:hover, .nav-link:focus{
+    color: dimgrey !important;
+}
+.bg-transparent {
+    background-color: transparent !important;
+}
+.navbar-toggler:hover, .navbar-toggler:focus {
+    text-decoration: none;
+    color: #7D8B94 !important;
+}
+.navbar-marketing.navbar-dark.navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+
+}
+.navbar-marketing.navbar-light.navbar-scrolled {
+    background-color: #eff3f9 !important;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-marketing.bg-transparent.navbar-dark {
+        /*background-color: #1f2d41 !important;*/
+        background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .navbar-marketing.bg-transparent.navbar-light {
+        background-color: #eff3f9 !important;
+    }
+
+    .animated--fade-in,
+    .animated--fade-in-up {
+        -webkit-animation: none;
+        animation: none;
+    }
+}

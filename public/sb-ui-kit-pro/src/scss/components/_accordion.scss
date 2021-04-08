@@ -1,0 +1,45 @@
+.accordion-faq {
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    .card {
+        box-shadow: none;
+        .card-header {
+            cursor: pointer;
+            background-color: $white;
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    .accordion-faq-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    .accordion-faq-item {
+        .card-header {
+            text-decoration: none;
+            .accordion-faq-item-heading {
+                width: 100%;
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: $gray-700;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+                .accordion-faq-item-heading-arrow {
+                    color: $gray-400;
+                    transition: transform 0.1s ease-in-out;
+                }
+            }
+            &.collapsed {
+                .accordion-faq-item-heading {
+                    .accordion-faq-item-heading-arrow {
+                        transform: rotate(-90deg);
+                    }
+                }
+            }
+        }
+    }
+}

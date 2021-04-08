@@ -1,0 +1,7 @@
+// Utility class which removes the arrow when using a Bootstrap dropdown
+// Append the .no-caret utility class to any .dropdown to remove the caret
+.no-caret {
+    .dropdown-toggle::after {
+        display: none;
+    }
+}

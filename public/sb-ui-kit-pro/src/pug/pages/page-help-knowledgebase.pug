@@ -1,0 +1,191 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Knowledgebase'
+
+append css
+    link(rel='stylesheet', href='https://unpkg.com/aos@next/dist/aos.css')
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-transparent',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content.pt-10
+            .container.text-center
+                .row.justify-content-center
+                    .col-lg-8
+                        h1.page-header-title.mb-3 Knowledgebase
+                        p.page-header-text Here are some answers to some commonly asked questions
+
+    //- * * * * * * * * * * *
+    //- * * Features Grid * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+
+            .d-flex.align-items-center.mb-5
+                .icon-stack.icon-stack-lg.bg-primary.text-white
+                    i(data-feather='users')
+                .ml-3
+                    h2.mb-0 Account
+                    p.lead.mb-0 Let's see if we can help.
+
+            //- Help Accordion 1
+
+            #authAccordion.accordion.accordion-faq.mb-5
+                .card.border-bottom
+                    .card-body
+                        .accordion-faq-title
+                            .mr-2
+                                h4.mb-0 Authentication issues
+                                p.card-text.text-gray-500 Issues related to logging in, registering a new account, and setting your account password
+                            .badge.badge-success-soft.badge-pill.text-success 3 Answers
+                .card.accordion-faq-item
+                    a#authHeadingOne.card-header(data-toggle='collapse', data-target='#authCollapseOne', aria-expanded='true', aria-controls='authCollapseOne', href='javascript:void(0);')
+                        .accordion-faq-item-heading
+                            | I can't remember my account email address.
+                            i(data-feather='chevron-down').accordion-faq-item-heading-arrow
+                    #authCollapseOne.collapse.show(aria-labelledby='authHeadingOne', data-parent='#authAccordion')
+                        .card-body.border-bottom
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                .card.accordion-faq-item
+                    a#authHeadingTwo.card-header.collapsed(data-toggle='collapse', data-target='#authCollapseTwo', aria-expanded='true', aria-controls='authCollapseTwo', href='javascript:void(0);')
+                        .accordion-faq-item-heading
+                            | Why doesn't my password work?
+                            i(data-feather='chevron-down').accordion-faq-item-heading-arrow
+                    #authCollapseTwo.collapse(aria-labelledby='authHeadingTwo', data-parent='#authAccordion')
+                        .card-body.border-bottom
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                .card.accordion-faq-item
+                    a#authHeadingThree.card-header.collapsed(data-toggle='collapse', data-target='#authCollapseThree', aria-expanded='true', aria-controls='authCollapseThree', href='javascript:void(0);')
+                        .accordion-faq-item-heading
+                            | Why do I keep getting logged out of my account?
+                            i(data-feather='chevron-down').accordion-faq-item-heading-arrow
+                    #authCollapseThree.collapse(aria-labelledby='authHeadingThree', data-parent='#authAccordion')
+                        .card-body.border-bottom
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+            //- Help Accordion 2
+
+            #billingAccordion.accordion.accordion-faq
+                .card.border-bottom
+                    .card-body
+                        .accordion-faq-title
+                            .mr-2
+                                h4.mb-0 Billing
+                                p.card-text.text-gray-500 Issues related to logging in, registering a new account, and setting your account password
+                            .badge.badge-success-soft.badge-pill.text-success 3 Answers
+                .card.accordion-faq-item
+                    a#billingHeadingOne.card-header.collapsed(data-toggle='collapse', data-target='#billingCollapseOne', aria-expanded='true', aria-controls='billingCollapseOne', href='javascript:void(0);')
+                        .accordion-faq-item-heading
+                            | I can't remember my account email address.
+                            i(data-feather='chevron-down').accordion-faq-item-heading-arrow
+                    #billingCollapseOne.collapse(aria-labelledby='authHeadingOne', data-parent='#billingAccordion')
+                        .card-body.border-bottom
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                .card.accordion-faq-item
+                    a#billingHeadingTwo.card-header.collapsed(data-toggle='collapse', data-target='#billingCollapseTwo', aria-expanded='true', aria-controls='billingCollapseTwo', href='javascript:void(0);')
+                        .accordion-faq-item-heading
+                            | Why doesn't my password work?
+                            i(data-feather='chevron-down').accordion-faq-item-heading-arrow
+                    #billingCollapseTwo.collapse(aria-labelledby='authHeadingTwo', data-parent='#billingAccordion')
+                        .card-body.border-bottom
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                .card.accordion-faq-item
+                    a#billingHeadingThree.card-header.collapsed(data-toggle='collapse', data-target='#billingCollapseThree', aria-expanded='true', aria-controls='billingCollapseThree', href='javascript:void(0);')
+                        .accordion-faq-item-heading
+                            | Why do I keep getting logged out of my account?
+                            i(data-feather='chevron-down').accordion-faq-item-heading-arrow
+                    #billingCollapseThree.collapse(aria-labelledby='authHeadingThree', data-parent='#billingAccordion')
+                        .card-body.border-bottom
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+
+
+            hr.my-5
+
+            .row.text-center
+                .col-lg-4.mb-5.mb-lg-0
+                    a.card.card-link.border-top.border-top-lg.border-primary.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-primary-soft.text-primary.mb-4
+                                i(data-feather='user')
+                            h6 Account
+                            p.card-text Issues related to logging in, out, or about multiple devices.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 21 Entries
+                .col-lg-4.mb-5.mb-lg-0
+                    a.card.card-link.border-top.border-top-lg.border-green.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-green-soft.text-green.mb-4
+                                i(data-feather='clock')
+                            h6 Integrations
+                            p.card-text Connecting with 3rd party apps to exchange data.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 9 Entries
+                .col-lg-4
+                    a.card.card-link.border-top.border-top-lg.border-yellow.h-100.lift(href='#!')
+                        .card-body.p-5
+                            .icon-stack.icon-stack-lg.bg-yellow-soft.text-yellow.mb-4
+                                i(data-feather='clock')
+                            h6 Billing
+                            p.card-text Issues with payments or invoicing.
+                        .card-footer.bg-transparent.pt-0.pb-5
+                            .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 14 Entries
+
+
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })
+
+append scripts
+    script(src='https://unpkg.com/aos@next/dist/aos.js')
+    script.
+        AOS.init({
+            disable: 'mobile',
+            duration: 600,
+            once: true
+        });

@@ -1,0 +1,116 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Job Listing'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-gradient-primary-to-secondary',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * * *
+    //- * * Text Section  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container.mt-10
+            .row
+                .col-lg-3
+                    ul.list-group.list-group-flush.list-group-careers
+                        li.list-group-item.pt-0
+                            a(href='page-careers-overview.html').small
+                                i.fas.fa-arrow-left.mr-1
+                                | Back to Careers
+                        li.list-group-item
+                            | Remote - Global
+                            i.fas.fa-globe.fa-fw.text-gray-400
+                        li.list-group-item
+                            | Full Time
+                            i.fas.fa-clock.fa-fw.text-gray-400
+                        li.list-group-item
+                            | New Product
+                            i.fas.fa-code.fa-fw.text-gray-400
+                .col-lg-9
+                    h1.mb-4 Software Engineer
+                    p.lead.mb-4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore laboriosam beatae perspiciatis voluptatem quis facere perferendis quae accusantium nisi tempora, eligendi, repellendus cupiditate numquam ullam tempore cum, unde quibusdam ipsum.
+                    h5.mb-4 Here are some types of projects you'll be working on
+                    ul.fa-ul.mb-5
+                        li.mb-3
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | API integrations with new software products
+                        li.mb-3
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Rapid prototyping of new product ideas
+                        li.mb-3
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Open source development
+                        li
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Expanding and creating new features in existing products
+
+                    h5.mb-4 Position description
+                    p.mb-4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, saepe quo libero ab perferendis iure impedit inventore quibusdam cumque, aliquid ea tenetur eum velit quidem est tempore! Dignissimos, tenetur saepe.
+                    p.mb-4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, saepe quo libero ab perferendis iure impedit inventore quibusdam cumque, aliquid ea tenetur eum velit quidem est tempore! Dignissimos, tenetur saepe.
+                    p.mb-5 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum qui deleniti impedit, sapiente consequuntur accusamus ut quibusdam aliquam repudiandae! Sunt animi obcaecati, nisi cumque placeat earum maiores et minima impedit.
+
+                    h5.mb-4 Requirements
+                    ul.fa-ul.mb-5
+                        li.mb-3
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Familiarity with JS based front-end frameworks (Angular, React, Vue, etc.)
+                        li.mb-3
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Proficient in programming languages commonly used in web development
+                        li.mb-3
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Problem solving skills
+                        li.mb-3
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Ability to prioritize features based on impact
+                        li
+                            span.fa-li
+                                i.far.fa-dot-circle.text-primary-soft
+                            | Bachelor's degree in computer science or a related field
+
+                    .card.bg-light.shadow-none
+                        .card-body.d-flex.align-items-center.justify-content-between.p-4
+                            p.lead.mb-0 We look forward to hearing from you
+                            a(href='#!').btn.btn-primary.btn-marketing.rounded-pill.ml-2 Apply Now
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

@@ -1,0 +1,18 @@
+.nav-sticky {
+    @extend .sticky-top;
+    top: $topnav-base-height + $grid-gutter-width;
+    font-size: 0.9rem;
+    .nav-link {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+    .nav-link.active {
+        font-weight: 700;
+    }
+    ul.nav > li.nav-item > .nav {
+        display: none;
+    }
+    ul.nav > li.nav-item > a.nav-link.active ~ .nav {
+        display: flex;
+    }
+}

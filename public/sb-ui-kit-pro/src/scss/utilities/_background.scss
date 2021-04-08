@@ -1,0 +1,132 @@
+// Background color utilities
+
+// Adds a background gradient with a $primary color fallback
+.bg-gradient-primary-to-secondary {
+    background-color: $primary;
+    background-image: linear-gradient(135deg, $primary 0%, fade-out($secondary, 0.2) 100%);
+}
+
+// Grayscale background utilities
+.bg-gray-100 {
+    background-color: $gray-100 !important;
+}
+
+.bg-gray-200 {
+    background-color: $gray-200 !important;
+}
+
+.bg-gray-300 {
+    background-color: $gray-300 !important;
+}
+
+.bg-gray-400 {
+    background-color: $gray-400 !important;
+}
+
+.bg-gray-500 {
+    background-color: $gray-500 !important;
+}
+
+.bg-gray-600 {
+    background-color: $gray-600 !important;
+}
+
+.bg-gray-700 {
+    background-color: $gray-700 !important;
+}
+
+.bg-gray-800 {
+    background-color: $gray-800 !important;
+}
+
+.bg-gray-900 {
+    background-color: $gray-900 !important;
+}
+
+// Page header style when using a background image
+.bg-img-cover {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+// Page header style when using a background texture
+.bg-img-repeat {
+    background-position: top left;
+    background-repeat: repeat;
+}
+
+.overlay {
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        // Fallbacks
+        background-color: $black;
+        opacity: 0.5;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .overlay-#{$color}:before {
+        background-color: $value !important;
+    }
+}
+
+.overlay-10 {
+    &:before {
+        opacity: 0.1;
+    }
+}
+
+.overlay-20 {
+    &:before {
+        opacity: 0.2;
+    }
+}
+
+.overlay-30 {
+    &:before {
+        opacity: 0.3;
+    }
+}
+
+.overlay-40 {
+    &:before {
+        opacity: 0.4;
+    }
+}
+
+.overlay-50 {
+    &:before {
+        opacity: 0.5;
+    }
+}
+
+.overlay-60 {
+    &:before {
+        opacity: 0.6;
+    }
+}
+
+.overlay-70 {
+    &:before {
+        opacity: 0.7;
+    }
+}
+
+.overlay-80 {
+    &:before {
+        opacity: 0.8;
+    }
+}
+
+.overlay-90 {
+    &:before {
+        opacity: 0.9;
+    }
+}

@@ -1,0 +1,143 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Careers'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-transparent',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content.pt-10
+            .container.text-center
+                .row.justify-content-center
+                    .col-lg-8
+                        h1.page-header-title.mb-3 Open positions
+                        p.page-header-text Join us in helping create better experiences for our customers
+
+    //- * * * * * * * * * * *
+    //- * * Text Section  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-10
+
+                    .d-flex.align-items-center.justify-content-between
+                        h2.mb-0 Administration
+                        .badge.badge-primary-soft.text-primary.badge-marketing 3 Openings
+                    hr.mb-0
+                    ul.list-group.list-group-flush.list-group-careers
+                        li.list-group-item
+                            a(href='#!') Senior Manager, Risk Management
+                            .small Remote - US (San Francisco, CA)
+                        li.list-group-item
+                            a(href='#!') Operations Manager
+                            .small San Francisco, CA (HQ)
+                        li.list-group-item
+                            a(href='#!') Administrative Assistant
+                            .small Dallas, TX
+
+                    .d-flex.align-items-center.justify-content-between
+                        h2.mb-0 Engineering
+                        .badge.badge-primary-soft.text-primary.badge-marketing 5 Openings
+                    hr.mb-0
+                    ul.list-group.list-group-flush.list-group-careers
+                        li.list-group-item
+                            a(href='#!') Senior Software Engineer
+                            .small Remote - US / Canada
+                        li.list-group-item
+                            a(href='#!') Software Engineer
+                            .small Remote - Global
+                        li.list-group-item
+                            a(href='#!') Data Scientist
+                            .small Remote - Global
+                        li.list-group-item
+                            a(href='#!') Front End Engineer
+                            .small San Francisco, CA (HQ)
+                        li.list-group-item
+                            a(href='#!') Technical Director
+                            .small San Francisco, CA (HQ)
+
+                    .d-flex.align-items-center.justify-content-between
+                        h2.mb-0 Sales
+                        .badge.badge-primary-soft.text-primary.badge-marketing 4 Openings
+                    hr.mb-0
+                    ul.list-group.list-group-flush.list-group-careers
+                        li.list-group-item
+                            a(href='#!') Sales Support Coordinator
+                            .small Remote - US (San Francisco, CA)
+                        li.list-group-item
+                            a(href='#!') Senior Sales Representative
+                            .small Remove - US Northeast
+                        li.list-group-item
+                            a(href='#!') Paid Search Specialist
+                            .small Remote - Global
+                        li.list-group-item
+                            a(href='#!') Junior Sales Representative
+                            .small San Francisco, CA (HQ)
+
+                    h4.mb-4
+                        .icon-stack.bg-primary.text-white.mr-2
+                            i(data-feather='smile')
+                        | Work happier
+                    p.mb-5 Build amazing things with autonomy, self-direction, and a healthy work-life balance. We offer flexible work schedules for all of our employees and unlimited PTO. We also believe that if a job allows for it, you should work wherever you’re happiest.
+
+                    h4.mb-4
+                        .icon-stack.bg-primary.text-white.mr-2
+                            i(data-feather='trending-up')
+                        | Keep growing
+                    p Learn how you learn best. From books to conferences, you’ll get a yearly budget for your individual learning and development goals. If ebooks are more your style, you’ll get a brand new Kindle on your first day.
+
+                    hr.my-5
+
+                    .card.bg-light.shadow-none
+                        .card-body.text-center.p-5
+                            h2 Internships
+                            p.lead.mb-4 Are you currently enrolled at a college or university and looking for hands-on experience while earning class credit? Take a look at our internship opportunities!
+                            a(href='#!').btn.btn-primary.btn-marketing.rounded-pill Explore Internships
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

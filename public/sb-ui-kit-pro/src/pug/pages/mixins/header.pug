@@ -1,0 +1,11 @@
+mixin header(options)
+
+    header.page-header(class=options.pageHeaderStyle + ' ' + options.pageHeaderBg, style=options.pageHeaderBgImg)
+
+        if block
+            block
+        else
+            p.text-center.py-5 No content provided
+
+        //- SVG Border
+        include includes/border-options.pug

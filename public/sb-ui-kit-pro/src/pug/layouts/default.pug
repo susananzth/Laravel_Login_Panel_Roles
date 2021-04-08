@@ -1,0 +1,32 @@
+doctype html
+
+//- Default layout configuration fallback
+block config
+    - var pageTitle = "No Page Title Set"
+
+html(lang='en')
+
+    head
+
+        include includes/head/meta.pug
+        include includes/head/title.pug
+        include includes/head/css.pug
+        include includes/head/icons.pug
+
+    body
+
+        #layoutDefault
+
+            #layoutDefault_content
+
+                main
+
+                    block content
+
+            #layoutDefault_footer
+
+                block footer
+
+                    p No footer set.
+
+        include includes/scripts.pug

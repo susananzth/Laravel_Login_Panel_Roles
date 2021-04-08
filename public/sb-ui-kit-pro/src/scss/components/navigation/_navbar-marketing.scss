@@ -1,0 +1,91 @@
+// Styling for the marketing style of the navbar
+
+.navbar-marketing {
+    transition: background-color 0.15s ease-in-out;
+    padding-top: $navbar-marketing-padding-y;
+    padding-bottom: $navbar-marketing-padding-y;
+    .navbar-toggler {
+        padding: 0.5rem;
+        border: 0;
+        svg {
+            vertical-align: middle;
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+    }
+    .navbar-brand {
+        font-size: 1.2rem;
+        font-weight: bold;
+        img {
+            height: 1rem;
+        }
+        svg {
+            height: 1rem;
+            fill: currentColor;
+        }
+    }
+    .navbar-nav {
+        padding-top: $navbar-marketing-padding-y;
+        padding-bottom: $navbar-marketing-padding-y;
+        .nav-item {
+            .nav-link {
+                font-weight: 500;
+            }
+        }
+    }
+    .btn {
+        font-size: 0.7rem;
+        padding: 0.75rem 2rem;
+        @extend .text-uppercase-expanded;
+    }
+    &.fixed-top {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .navbar-marketing {
+        padding-top: 0;
+        padding-bottom: 0;
+        .navbar-nav {
+            padding-top: $navbar-marketing-padding-y;
+            padding-bottom: $navbar-marketing-padding-y;
+            .nav-item {
+                margin-right: 1rem;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        &.fixed-top {
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+}
+
+// Fallbacks for scrolling on fixed position marketing navbar
+
+.navbar-marketing.navbar-dark.navbar-scrolled {
+    background-color: $gray-900 !important;
+}
+
+.navbar-marketing.navbar-light.navbar-scrolled {
+    background-color: $gray-100 !important;
+}
+
+// Fallbacks for transparent backgrounds on md and below and removes animations on collapsed menu
+
+@include media-breakpoint-down(md) {
+    .navbar-marketing.bg-transparent.navbar-dark {
+        background-color: $gray-900 !important;
+    }
+    .navbar-marketing.bg-transparent.navbar-light {
+        background-color: $gray-100 !important;
+    }
+    .animated--fade-in,
+    .animated--fade-in-up {
+        animation: none;
+    }
+}

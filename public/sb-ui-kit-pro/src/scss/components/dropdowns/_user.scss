@@ -1,0 +1,37 @@
+.dropdown-user {
+    .dropdown-user-img {
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+    }
+    .dropdown-menu {
+        min-width: 13rem;
+        .dropdown-header {
+            .dropdown-user-img {
+                height: 2.5rem;
+                width: 2.5rem;
+                margin-right: 1rem;
+            }
+            .dropdown-user-details {
+                font-weight: 400;
+                .dropdown-user-details-name {
+                    color: $gray-900;
+                    font-weight: 500;
+                    font-size: 0.9rem;
+                    max-width: 10rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .dropdown-user-details-email {
+                    color: $gray-600;
+                    font-size: 0.75rem;
+                    max-width: 10rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}

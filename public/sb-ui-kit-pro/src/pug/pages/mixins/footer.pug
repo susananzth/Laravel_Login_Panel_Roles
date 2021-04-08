@@ -1,0 +1,88 @@
+mixin footer(options)
+
+    footer.footer.pt-10.pb-5.mt-auto(class=options.footerBg, class=options.footerStyle)
+
+        if block
+            block
+        else
+            .container
+                .row
+                    .col-lg-3
+                        .footer-brand
+                            | SB UI Kit Pro
+                        .mb-3 Build better websites
+                        .icon-list-social.mb-5
+                            a.icon-list-social-link(href='javascript:void(0);')
+                                i.fab.fa-instagram
+                            a.icon-list-social-link(href='javascript:void(0);')
+                                i.fab.fa-facebook
+                            a.icon-list-social-link(href='javascript:void(0);')
+                                i.fab.fa-github
+                            a.icon-list-social-link(href='javascript:void(0);')
+                                i.fab.fa-twitter
+
+                    .col-lg-9
+                        .row
+                            .col-lg-3.col-md-6.mb-5.mb-lg-0
+                                .text-uppercase-expanded.text-xs.mb-4 Product
+                                ul.list-unstyled.mb-0
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Landing
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Pages
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Sections
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Documentation
+                                    li
+                                        a(href='javascript:void(0);') Changelog
+                            .col-lg-3.col-md-6.mb-5.mb-lg-0
+                                .text-uppercase-expanded.text-xs.mb-4 Technical
+                                ul.list-unstyled.mb-0
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Documentation
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Changelog
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Theme Customizer
+                                    li
+                                        a(href='javascript:void(0);') UI Kit
+                            .col-lg-3.col-md-6.mb-5.mb-md-0
+                                .text-uppercase-expanded.text-xs.mb-4 Includes
+                                ul.list-unstyled.mb-0
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Utilities
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Components
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Layouts
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Code Samples
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Products
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Affiliates
+                                    li
+                                        a(href='javascript:void(0);') Updates
+                            .col-lg-3.col-md-6
+                                .text-uppercase-expanded.text-xs.mb-4 Legal
+                                ul.list-unstyled.mb-0
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Privacy Policy
+                                    li.mb-2
+                                        a(href='javascript:void(0);') Terms and Conditions
+                                    li
+                                        a(href='javascript:void(0);') License
+                                
+                hr.my-5
+
+                .row.align-items-center
+
+                    .col-md-6.small
+                        | Copyright &copy; Your Website 2020
+                    .col-md-6.text-md-right.small
+                        a(href='javascript:void(0);') Privacy Policy
+                        | 
+                        | &middot;
+                        | 
+                        a(href='javascript:void(0);') Terms &amp; Conditions

@@ -1,0 +1,239 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Press'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * * *
+    //- * * Intro Section * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-5',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+
+            .d-flex.align-items-center.justify-content-between
+                h6.mb-0 Featured Story
+                div
+                    a.text-arrow-icon.small(href='#!')
+                        | More headlines
+                        i(data-feather='arrow-right')
+            hr.mb-4
+            .card.mb-4
+                .card-body.p-0
+                    .row.no-gutters
+                        .col-lg-6.p-5
+                            a.badge.badge-marketing.badge-primary-soft.badge-pill.text-primary.mb-3(href='#!') Web
+                            a.text-dark(href='#!')
+                                h1 News companies post headline about creating new websites with powerful UI kits
+                            p When creating and developing startups, using a UI kit to bootstrap your companies website can be an extremely efficient way to save time, money, and runway.
+                            a.text-arrow-icon.small(href='#!')
+                                | Read more
+                                i(data-feather='arrow-right')
+                        .col-lg-6.align-self-stretch.bg-img-cover.d-none.d-lg-flex(style='background-image: url("https://source.unsplash.com/npxXWgQ33ZQ/1200x800")')
+
+            .d-flex.align-items-center.justify-content-between
+                h6.mb-0 Top Stories
+                div
+                    a.text-arrow-icon.small(href='#!')
+                        | View more
+                        i(data-feather='arrow-right')
+
+            hr.mb-4
+
+            .row
+                .col-lg-7.col-xl-8
+                    .media
+                        .media-body
+                            a.text-dark(href='#!')
+                                h5.mt-0 Is the Bootstrap framework the best way to build a mobile responsive website?
+                            p
+                                | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            a.text-arrow-icon.small(href='#!')
+                                | Read more
+                                i(data-feather='arrow-right')    
+                        a(href='#!')
+                            img.align-self-start.rounded.shadow.media-img.ml-4(src='https://source.unsplash.com/fG1vt_RtUGs/160x160', alt='')
+                    hr.my-4
+                    .media
+                        .media-body
+                            a.text-dark(href='#!')
+                                h5.mt-0 Is virtual reality the new UI? Exploring the use of virtual reality and 3D user interfaces for everyday products
+                            p
+                                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt repellat possimus delectus odit vero! Accusantium, omnis! Amet reiciendis ex numquam. Minus corporis, tempore facere placeat repellat ipsum eaque similique neque.
+                            a.text-arrow-icon.small(href='#!')
+                                | Read more
+                                i(data-feather='arrow-right')    
+                        a(href='#!')
+                            img.align-self-start.rounded.shadow.media-img.ml-4(src='https://source.unsplash.com/QnSaohz728o/160x160', alt='')
+                    hr.my-4
+                    .media
+                        .media-body
+                            a.text-dark(href='#!')
+                                h5.mt-0 How cats can improve your workflow productivity
+                            p
+                                | Quasi error voluptates, commodi enim voluptate, quisquam vitae temporibus asperiores velit vero aperiam culpa iste eius autem praesentium ducimus similique iusto dolorum.
+                            a.text-arrow-icon.small(href='#!')
+                                | Read more
+                                i(data-feather='arrow-right')
+                        a(href='#!')
+                            img.align-self-start.rounded.shadow.media-img.ml-4(src='https://source.unsplash.com/bN9FFTPlLjU/160x160', alt='')
+                    hr.my-4.d-lg-none
+                .col-lg-5.col-xl-4
+                    .card
+                        .card-body
+                            h6 Opinion
+                            hr
+                            .d-flex.mb-4
+                                .avatar.avatar-lg
+                                    img.avatar-img(src='https://source.unsplash.com/MTZTGvDsHFY/64x64')
+                                .ml-3
+                                    a(href='#!').text-dark
+                                        h6.mb-1 Bootstrap is the best CSS framework, hands down
+                                    .small.text-gray-500
+                                        | by 
+                                        a.text-gray-500(href='#!') William Cole
+                            .d-flex.mb-4
+                                .avatar.avatar-lg
+                                    img.avatar-img(src='https://source.unsplash.com/KBv5dEN3QtY/64x64')
+                                .ml-3
+                                    a(href='#!').text-dark
+                                        h6.mb-1 Bootstrap is the best CSS framework, hands down
+                                    .small.text-gray-500
+                                        | by 
+                                        a.text-gray-500(href='#!') Ewan Rogers
+                            .d-flex.mb-4
+                                .avatar.avatar-lg
+                                    img.avatar-img(src='https://source.unsplash.com/QAB-WJcbgJk/64x64')
+                                .ml-3
+                                    a(href='#!').text-dark
+                                        h6.mb-1 Bootstrap is the best CSS framework, hands down
+                                    .small.text-gray-500
+                                        | by 
+                                        a.text-gray-500(href='#!') Alicia Allen
+                            .d-flex.mb-4
+                                .avatar.avatar-lg
+                                    img.avatar-img(src='https://source.unsplash.com/jIM8kVsFKlM/64x64')
+                                .ml-3
+                                    a(href='#!').text-dark
+                                        h6.mb-1 Bootstrap is the best CSS framework, hands down
+                                    .small.text-gray-500
+                                        | by 
+                                        a.text-gray-500(href='#!') Kolby Brock
+                            .d-flex
+                                .avatar.avatar-lg
+                                    img.avatar-img(src='https://source.unsplash.com/4ytMf8MgJlY/64x64')
+                                .ml-3
+                                    a(href='#!').text-dark
+                                        h6.mb-1 Bootstrap is the best CSS framework, hands down
+                                    .small.text-gray-500
+                                        | by 
+                                        a.text-gray-500(href='#!') Sara Gray
+
+            hr.my-4
+
+            .row.mb-5
+                .col-lg-4
+                    h6 Tech
+                    hr.my-4
+
+                    a(href='#!').text-dark.mb-4
+                        h6 Newest tech from 2020 that can improve our quality of life
+                        p.text-gray-600.small.mb-4 New technology is always improving the way we live. This year, we've made some major advancements.
+
+                    a(href='#!').text-dark.mb-4
+                        h6 Robotics and the future of industry
+                        p.text-gray-600.small.mb-4 Machining and tooling systems are improving everday with the help of modern robotics.
+
+                    a(href='#!').text-dark.mb-4
+                        h6 Artificial intelligence - should we be worried?
+                        p.text-gray-600.small.mb-4 Ever since James Cameron's blockbuster, the discussion about whether AI is safe has been on our minds.
+
+                    a.text-arrow-icon.small(href='#!')
+                        | More from Tech
+                        i(data-feather='arrow-right')
+
+                .col-lg-4
+                    h6 Business
+                    hr.my-4
+
+                    a(href='#!').text-dark.mb-4
+                        h6 Cottage industries and the passion economy
+                        p.text-gray-600.small.mb-4 An old turn of phase states that if you do what you love, you won't work a day in your life. In today's economy, some are pushing that concept to the limit.
+
+                    a(href='#!').text-dark.mb-4
+                        h6 Everybody love pizza!
+                        p.text-gray-600.small.mb-4 Well, not everybody, but pizza companies are making major moves towards global expansion.
+
+                    a(href='#!').text-dark.mb-4
+                        h6 Tax season is here, and you can file for free
+                        p.text-gray-600.small.mb-4 Before you go and pay to get your taxes filed, take a look at some of these free options!
+
+                    a.text-arrow-icon.small(href='#!')
+                        | More from Business
+                        i(data-feather='arrow-right')
+
+                .col-lg-4
+                    h6 Health
+                    hr.my-4
+
+                    a(href='#!').text-dark.mb-4
+                        h6 The carnivore diet, what the science says...
+                        p.text-gray-600.small.mb-4 It's like having a meat lover's pizza without the bread, cheese, and sauce - but is it healthy?
+
+                    a(href='#!').text-dark.mb-4
+                        h6 High intensity workouts and their effect on blood pressure
+                        p.text-gray-600.small.mb-4 Working out with more intensity for less time, is it worth the added exhaustion?
+
+                    a(href='#!').text-dark.mb-4
+                        h6 An annual review of pathology and disease
+                        p.text-gray-600.small.mb-4 This year's statistics are in, and the numbers have a lot to say.
+
+                    a.text-arrow-icon.small(href='#!')
+                        | More from Health
+                        i(data-feather='arrow-right')
+
+            .card.mb-n5.z-1
+                .card-body.p-5
+                    .row.align-items-center
+                        .col-lg-6
+                            h4 Get the latest news
+                            p.lead.text-gray-500.mb-0 Stay in the loop with the latest stories and breaking headlines!
+                        .col-lg-6
+                            .input-group.mb-2
+                                input.form-control.form-control-solid(type='text', placeholder="youremail@example.com", aria-label="Recipient's username", aria-describedby='button-addon2')
+                                .input-group-append
+                                    button#button-addon2.btn.btn-primary(type='button') Sign up
+                            .small.text-gray-500 You can unsubscribe at any time.
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

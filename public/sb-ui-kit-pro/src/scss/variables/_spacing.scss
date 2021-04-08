@@ -1,0 +1,64 @@
+// Restate and add to the Bootstrap default spacing variables
+//
+// The spacer is restated in order to add new entries to the $spacers map
+// The 10 and n1 through n10 spacers are newly added allowing for larger
+// spacing options and negative padding and margin utilities
+
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge(
+    (
+        0: 0,
+        1: (
+            $spacer * 0.25,
+        ),
+        2: (
+            $spacer * 0.5,
+        ),
+        3: $spacer,
+        4: (
+            $spacer * 1.5,
+        ),
+        5: (
+            $spacer * 3,
+        ),
+        10: (
+            $spacer * 6,
+        ),
+        15: (
+            $spacer * 9,
+        ),
+        n1: (
+            $spacer * -0.25,
+        ),
+        n2: (
+            $spacer * -0.5,
+        ),
+        n3: (
+            $spacer * -1,
+        ),
+        n4: (
+            $spacer * -1.5,
+        ),
+        n5: (
+            $spacer * -3,
+        ),
+        n10: (
+            $spacer * -6,
+        ),
+        n15: (
+            $spacer * -9,
+        ),
+    ),
+    $spacers
+);
+
+// Topnav fixed height variable
+//
+// The fixed height of the topnav
+
+$topnav-base-height: 3.625rem;
+
+// Footer base height
+
+$footer-base-height: 5rem;

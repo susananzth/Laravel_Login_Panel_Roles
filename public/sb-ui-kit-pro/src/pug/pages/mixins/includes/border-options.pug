@@ -1,0 +1,11 @@
+if options.svgBorderAngled
+    .svg-border-angled(class=options.svgBorderFill)
+        include partials/border-bottom-angled.pug
+
+else if options.svgBorderRounded
+    .svg-border-rounded(class=options.svgBorderFill)
+        include partials/border-bottom-rounded.pug
+
+else if options.svgBorderWaves
+    .svg-border-waves(class=options.svgBorderFill)
+        include partials/border-bottom-waves.pug

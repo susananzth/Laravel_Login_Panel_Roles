@@ -1,0 +1,87 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Basic'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content
+            .container
+                .row.justify-content-center
+                    .col-xl-8.col-lg-10.text-center
+                        h1.page-header-title Build your next project faster
+                        p.page-header-text.mb-5 Welcome to SB UI Kit Pro, a toolkit for building beautiful web interfaces, created by the developmet team at Start Bootstrap
+                        a.btn.btn-marketing.rounded-pill.btn-teal(href='#!') Get Started
+                        a.btn.btn-link.btn-marketing.rounded-pill(href='#!') Learn More
+
+    //- * * * * * * * * * * *
+    //- * * Intro Section * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.text-center
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='layers')
+                    h3 Built for developers
+                    p.mb-0
+                        | Our modular, block-based build system makes building your next project fast and easy!
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='smartphone')
+                    h3 Modern responsive design
+                    p.mb-0
+                        | This UI Kit is build mobile-first, meaning it is will function beautifully on any device!
+                .col-lg-4
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='code')
+                    h3 Complete documentation
+                    p.mb-0
+                        | All of the layouts, page sections, components, and utilities are fully covered in this products docs.
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

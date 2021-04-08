@@ -1,0 +1,37 @@
+// Set section positioning to relative for bottom borders
+section {
+    position: relative;
+}
+
+// Set the base styling for SVG borders used throughout sections and components
+.svg-border-angled {
+    padding-top: 5rem;
+    svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 5rem;
+        width: 100%;
+    }
+}
+
+.svg-border-rounded {
+    svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3rem;
+        width: 100%;
+    }
+}
+
+.svg-border-waves {
+    padding-top: 2rem;
+    svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3rem;
+        width: 100%;
+    }
+}

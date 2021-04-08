@@ -1,0 +1,5 @@
+.btn-marketing {
+    font-size: $btn-font-size-marketing;
+    padding: $btn-padding-y-marketing $btn-padding-x-marketing;
+    @extend .text-uppercase-expanded;
+}

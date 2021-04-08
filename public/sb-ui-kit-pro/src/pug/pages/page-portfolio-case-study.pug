@@ -1,0 +1,119 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Case Study'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-primary',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+        navbarPosition: ''
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-cover py-15',
+        pageHeaderBgImg: 'background-image: url("https://source.unsplash.com/RKwaj2g6OOU/1500x900")',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .my-15.py-lg-10
+
+    //- * * * * * * * * * * * * * *
+    //- * * Case Study Content  * *
+    //- * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-8
+                    h1 Curology
+                    p.lead A case study focused on building brand standards and creating effective advertising campaigns
+                    hr
+                    p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti quis voluptas amet accusamus temporibus corporis quia asperiores magni laudantium dolore iusto, adipisci rem id ratione repellat! Fuga esse molestias accusamus!
+                    p.mb-0 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet error pariatur voluptatibus consequuntur natus unde porro, soluta quisquam facere, deserunt repellat iusto odit labore doloremque velit qui mollitia quo numquam.
+                .col-lg-10
+                    img.img-fluid.rounded-lg.shadow.my-5(src='https://source.unsplash.com/DGH1u80sZik/1200x900')
+                .col-lg-8
+                    h4 Building Brand Awareness
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit a, iusto ratione minus labore illum sequi optio recusandae perferendis, et beatae corrupti! Nemo aut inventore maxime eligendi optio cupiditate et.
+                    p.pb-5 Lorem ipsum dolor sit amet consectetur adipisicing elit. A eius cupiditate similique officia aperiam adipisci reprehenderit veniam voluptate eum fugit voluptatem, aspernatur minus dolorum nemo impedit odit sit odio consectetur!
+                .col-lg-10
+                    .card-columns.card-columns-case-study.mb-5
+                        .card
+                            img.img-fluid.rounded-lg(src='https://source.unsplash.com/ZIihTgf5uGg/800x700')
+                        .card
+                            img.img-fluid.rounded-lg(src='https://source.unsplash.com/Eu_jPNRNub8/800x900')
+                        .card
+                            img.img-fluid.rounded-lg(src='https://source.unsplash.com/VItxz6u036U/800x900')
+                        .card
+                            img.img-fluid.rounded-lg(src='https://source.unsplash.com/E_dRKdBhxk4/800x700')
+                .col-lg-8
+                    .card.bg-primary-soft.text-primary.text-center.mb-5
+                        .card-body
+                            p.card-text.lead "Working with this agency helped us boost sales and raise brand awareness across all of our product lines."
+                    h4 Benchmarks &amp; Performance Metrics
+                    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa provident hic quaerat. Accusamus quidem quos fugit a aspernatur, magni obcaecati tenetur similique eaque, sequi id alias veritatis eius, maiores animi.
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. A neque ut reiciendis suscipit animi quaerat, est, repellat unde distinctio hic sapiente asperiores perspiciatis id! Quasi eveniet cupiditate quisquam. Itaque, esse.
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nobis odio modi optio sapiente neque saepe, facere culpa, doloribus voluptatem nemo quam, cumque fugiat qui excepturi. Nostrum, error. Impedit, quis!
+                    ul.fa-ul
+                        li.mb-3
+                            span.fa-li
+                            i.fas.fa-check.mr-2.text-green
+                            | Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        li.mb-3
+                            span.fa-li
+                            i.fas.fa-check.mr-2.text-green
+                            | Quidem dicta iste maiores eligendi numquam nam voluptas quia nisi consequatur illo neque sunt error doloremque vel.
+                        li.mb-3
+                            span.fa-li
+                            i.fas.fa-check.mr-2.text-green
+                            | Animi aliquam dolores suscipit saepe ratione corrupti veniam.
+                        li
+                            span.fa-li
+                            i.fas.fa-check.mr-2.text-green
+                            | Molestiae minima aliquam consequatur eius ab dignissimos at maxime odit culpa excepturi vero magnam vitae ipsa! Ducimus.
+
+                    hr.my-5
+
+                    .text-center
+                        a.btn.btn-transparent-dark.btn-marketing.rounded-pill(href='#!') Go Back
+
+
+
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

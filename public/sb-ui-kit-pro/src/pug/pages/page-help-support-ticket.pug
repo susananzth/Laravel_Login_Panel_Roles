@@ -1,0 +1,130 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Support Ticket'
+
+append css
+    link(rel='stylesheet', href='https://unpkg.com/aos@next/dist/aos.css')
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-gradient-primary-to-secondary',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * * * * * * * *
+    //- * * Support Ticket Section  * *
+    //- * * * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'pt-15 pb-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+
+            .row
+            
+                .col-lg-4.col-xl-3.mb-5
+
+                    .card
+                        .list-group.list-group-flush.small
+                            a.list-group-item.list-group-item-action(href='#!')
+                                i.fas.fa-plus.fa-fw.mr-2.text-gray-400
+                                | Make New Ticket
+                            a.list-group-item.list-group-item-action(href='#!')
+                                i.fas.fa-file-alt.fa-fw.mr-2.text-gray-400
+                                | View Open Tickets
+                            a.list-group-item.list-group-item-action(href='#!')
+                                i.fas.fa-archive.fa-fw.mr-2.text-gray-400
+                                | View Closed Tickets
+                            a.list-group-item.list-group-item-action(href='#!')
+                                i.fas.fa-star.fa-fw.mr-2.text-gray-400
+                                | View Starred Tickets
+                            a.list-group-item.list-group-item-action(href='#!')
+                                i.far.fa-handshake.fa-fw.mr-2.text-gray-400
+                                | Managed Services
+
+                .col-lg-8.col-xl-9
+
+                    .d-flex.align-items-center.justify-content-between.flex-column.flex-md-row
+                        h2.mb-0 Case #290225
+                        .h5
+                            span.badge.badge-warning-soft.text-warning.font-weight-normal Awaiting Response
+
+                    hr.mb-4
+
+                    .card.mb-5
+                        .card-header.d-flex.justify-content-between
+                            .mr-2.text-dark
+                                | Richard S.
+                                .text-xs.text-muted November 19, 2020 at 11:31 PM
+                            a(href='#!') #290225
+                        .card-body
+                            p Hello,
+
+                            p We hope you are well.
+
+                            p We have found an email account on your server to be sending out spam, we have changed the email password to the following:
+
+                            pre we823#d*LKe2dD29!d
+
+                            p We are removing the malicious spam messages from the mail queue. Please be aware, mail service may be temporarily disabled in order for us to finish this process. We apologize for any inconvenience this may cause.
+
+                            p.mb-0 If you have any questions don't hesitate to contact us.
+
+                            hr
+
+                            p.mb-0.small
+                                | Richard S.
+                                br
+                                | Abuse Response Analyst
+                                br
+                                a(href='#!') https://www.example.com/support
+
+                    .card
+                        .card-header Add Reply
+                        .card-body
+                            textarea.form-control.mb-2(rows='4')
+                            button.btn.btn-primary.btn-sm.mr-2
+                                | Add Reply
+                            button.btn.btn-light.btn-sm.mr-2
+                                i.fas.fa-paperclip.mr-2
+                                | Attach a File
+                            button.btn.btn-light.btn-sm
+                                i.fas.fa-archive.mr-2
+                                | Mark as Resolved
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })
+
+append scripts
+    script(src='https://unpkg.com/aos@next/dist/aos.js')
+    script.
+        AOS.init({
+            disable: 'mobile',
+            duration: 600,
+            once: true
+        });

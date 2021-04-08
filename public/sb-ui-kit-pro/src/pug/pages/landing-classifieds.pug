@@ -1,0 +1,325 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Classifieds'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-repeat bg-primary',
+        pageHeaderBgImg: 'background-image: url("assets/img/pattern-shapes.png")',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: true,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content
+            .container
+                .row.justify-content-center
+                    .col-xl-8.col-lg-10.text-center
+                        h1.page-header-title Buy and sell used items
+                        p.page-header-text.mb-5 Out with the old, in with the new! Your trash is another's treasure. Start making money, or find great deals today!
+                        a.btn.btn-marketing.rounded-pill.btn-teal(href='#!') Start Selling
+                        a.btn.btn-link.btn-marketing.rounded-pill(href='#!') Browse Categories
+
+    //- * * * * * * * * * * *
+    //- * * Grid Section  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+
+            h2.mb-4 Recent postings
+            .row
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $115
+                        img.card-img-top(src='https://source.unsplash.com/tG36rvCeqng/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Gray Bicycle
+                            .text-xs.text-gray-500 Readcaster, CO &middot; 2 days ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $29
+                        img.card-img-top(src='https://source.unsplash.com/nHOz7sp5nHE/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Hanimex Camera
+                            .text-xs.text-gray-500 Waterlow, CO &middot; 3 days ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $999
+                        img.card-img-top(src='https://source.unsplash.com/GkFQEOubrCo/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Macbook Pro
+                            .text-xs.text-gray-500 Waterlow, CO &middot; 4 hours ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $19
+                        img.card-img-top(src='https://source.unsplash.com/MCUOp3o4dgk/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Assorted Skin Care
+                            .text-xs.text-gray-500 Waterlow, CO &middot; 29 minutes ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $59
+                        img.card-img-top(src='https://source.unsplash.com/w9IHmVSNBfU/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Brown Ukulele
+                            .text-xs.text-gray-500 Readcaster, CO &middot; 3 days ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $249
+                        img.card-img-top(src='https://source.unsplash.com/bpg-ngqrPc8/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Leather Sofa
+                            .text-xs.text-gray-500 Readcaster, CO &middot; 2 hours ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $219
+                        img.card-img-top(src='https://source.unsplash.com/fZuleEfeA1Q/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Green Suede Sofa
+                            .text-xs.text-gray-500 Waterlow, CO &middot; 2 days ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $89
+                        img.card-img-top(src='https://source.unsplash.com/rjhAiP3cj9E/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Metal Chairs
+                            .text-xs.text-gray-500 Readcaster, CO &middot; 5 days ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $89
+                        img.card-img-top(src='https://source.unsplash.com/5ba6j8d_oXY/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Wireless Earbuds
+                            .text-xs.text-gray-500 Readcaster, CO &middot; 1 month ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $34,999
+                        img.card-img-top(src='https://source.unsplash.com/ESoE_buQvNQ/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Muscle Car
+                            .text-xs.text-gray-500 Waterlow, CO &middot; 1 week ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $69
+                        img.card-img-top(src='https://source.unsplash.com/zuE9jsaVHuA/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Hardwood Dresser
+                            .text-xs.text-gray-500 Waterlow, CO &middot; 2 weeks ago
+                .col-xl-3.col-lg-4.col-md-6.mb-5
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right.card-flag-lg
+                            | $9,999
+                        img.card-img-top(src='https://source.unsplash.com/WuRsjF4iZK0/800x500', alt='...')
+                        .card-body.p-3
+                            .card-title.small.mb-0 Classic Motorcycle
+                            .text-xs.text-gray-500 Readcaster, CO &middot; 1 week ago
+
+            .mb-10
+                a.text-arrow-icon(href='#!')
+                    | See more deals near you
+                    i(data-feather='arrow-right')
+
+            h2.mb-4 Browse Categories
+            .row
+                .col-lg-3.col-md-6.mb-5
+                    a.card.lift.border-bottom-lg.border-red(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-red.text-white.mb-2
+                                i.fas.fa-car
+                            .small.text-gray-600 Cars
+                .col-lg-3.col-md-6.mb-5
+                    a.card.lift.border-bottom-lg.border-orange(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-orange.text-white.mb-2
+                                i.fas.fa-home
+                            .small.text-gray-600 Housing
+                .col-lg-3.col-md-6.mb-5
+                    a.card.lift.border-bottom-lg.border-yellow(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-yellow.text-white.mb-2
+                                i.fas.fa-gift
+                            .small.text-gray-600 Free
+                .col-lg-3.col-md-6.mb-5
+                    a.card.lift.border-bottom-lg.border-green(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-green.text-white.mb-2
+                                i.fas.fa-mobile-alt
+                            .small.text-gray-600 Tech
+                .col-lg-3.col-md-6.mb-5.mb-lg-0
+                    a.card.lift.border-bottom-lg.border-cyan(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-cyan.text-white.mb-2
+                                i.fas.fa-couch
+                            .small.text-gray-600 Furniture
+                .col-lg-3.col-md-6.mb-5.mb-lg-0
+                    a.card.lift.border-bottom-lg.border-blue(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-blue.text-white.mb-2
+                                i.fas.fa-briefcase
+                            .small.text-gray-600 Jobs
+                .col-lg-3.col-md-6.mb-5.mb-lg-0
+                    a.card.lift.border-bottom-lg.border-purple(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-purple.text-white.mb-2
+                                i.fas.fa-motorcycle
+                            .small.text-gray-600 Leisure
+                .col-lg-3.col-md-6
+                    a.card.lift.border-bottom-lg.border-pink(href='#!')
+                        .card-body.text-center
+                            .icon-stack.icon-stack-xl.bg-pink.text-white.mb-2
+                                i.fas.fa-shopping-cart
+                            .small.text-gray-600 Other
+
+    hr.my-0
+
+    //- * * * * * * * * * * * * * *
+    //- * * Classified Section  * *
+    //- * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+
+            h2.mb-4 Browse by city
+
+            .row
+                .col-lg-3.col-md-6
+                    .mb-2
+                        a(href='#!') Atlanta, GA
+                    .mb-2
+                        a(href='#!') Austin, TX
+                    .mb-2
+                        a(href='#!') Baltimore, MD
+                    .mb-2
+                        a(href='#!') Boston, MA
+                    .mb-2
+                        a(href='#!') Chicago, IL
+                    .mb-2
+                        a(href='#!') Cleveland, OH
+                .col-lg-3.col-md-6
+                    .mb-2
+                        a(href='#!') Columbus, OH
+                    .mb-2
+                        a(href='#!') Dallas, TX
+                    .mb-2
+                        a(href='#!') Denver, CO
+                    .mb-2
+                        a(href='#!') Detroit, MI
+                    .mb-2
+                        a(href='#!') Houston, TX
+                    .mb-2
+                        a(href='#!') Las Vegas, NV
+                .col-lg-3.col-md-6
+                    .mb-2
+                        a(href='#!') Los Angeles, CA
+                    .mb-2
+                        a(href='#!') Miami, FL
+                    .mb-2
+                        a(href='#!') Nashville, TN
+                    .mb-2
+                        a(href='#!') New York, NY
+                    .mb-2
+                        a(href='#!') Orlando, FL
+                    .mb-2
+                        a(href='#!') Philadelphia, PA
+                .col-lg-3.col-md-6
+                    .mb-2
+                        a(href='#!') Phoenix, AZ
+                    .mb-2
+                        a(href='#!') Portland, OR
+                    .mb-2
+                        a(href='#!') San Francisco, CA
+                    .mb-2
+                        a(href='#!') Seattle, WA
+                    .mb-2
+                        a(href='#!') Tampa, FL
+                    .mb-2
+                        a(href='#!') See more...
+
+    //- * * * * * * * * * * * *
+    //- * * Callout Section * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-gradient-primary-to-secondary',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .container
+            .row.text-center.justify-content-center
+                .col-lg-8
+                    h2.display-4.text-white.font-weight-500 Get the app!
+                    p.lead.text-white-50.mb-5 Buy and sell items from your device with our new mobile app!
+                    .mb-5.mb-lg-0
+                        a.mr-3(href='javascript:void(0);')
+                            img(src='assets/img/app-store-badge.svg', style="height: 3rem;")
+                        a(href='javascript:void(0);')
+                            img(src='assets/img/google-play-badge.svg', style="height: 3rem;")
+                        .page-header-text.mt-2.text-xs.font-italic.text-white-50
+                            | * Requires Android OS 4.3+ or Apple iOS 9.3+
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-light',
+        footerStyle: 'footer-light'
+    })

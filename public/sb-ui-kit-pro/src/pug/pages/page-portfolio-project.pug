@@ -1,0 +1,93 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Project'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: ''
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-cover overlay overlay-60',
+        pageHeaderBgImg: 'background-image: url("https://source.unsplash.com/RKwaj2g6OOU/1500x900")',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content
+            .container.text-center
+                .row.justify-content-center
+                    .col-lg-8
+                        h1.page-header-title.mb-3 Curology
+                        p.page-header-text.mb-0 Creating a flourishing skincare product brand
+
+    //- * * * * * * * * *
+    //- * * Portfolio * *
+    //- * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-8
+                    .text-center
+                        p.lead.mb-5 Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, labore voluptatibus temporibus fuga nisi at provident velit mollitia doloribus odio, asperiores, fugiat quod ullam necessitatibus atque earum aliquid repellat maiores.
+
+                    img.img-fluid.shadow.rounded-lg.mb-2(src='https://source.unsplash.com/PDnw5MhJyKI/900x1200')
+                    .small.muted.font-italic.text-center.mb-5 Logo
+
+                    img.img-fluid.shadow.rounded-lg.mb-2(src='https://source.unsplash.com/E_dRKdBhxk4/900x1200')
+                    .small.muted.font-italic.text-center.mb-5 Packaging Design
+
+                    img.img-fluid.shadow.rounded-lg.mb-2(src='https://source.unsplash.com/0mbucN4QnJ0/900x600')
+                    .small.muted.font-italic.text-center.mb-5 Reflection
+
+                    img.img-fluid.shadow.rounded-lg.mb-2(src='https://source.unsplash.com/iKoH1gNON70/900x1300')
+                    .small.muted.font-italic.text-center.mb-5 Opening New Market Channels
+
+                    img.img-fluid.shadow.rounded-lg.mb-2(src='https://source.unsplash.com/s0yZ83xOBpM/900x600')
+                    .small.muted.font-italic.text-center.mb-5 Slow and Steady
+
+                    hr.my-5
+
+                    .text-center
+                        a.btn.btn-transparent-dark.btn-marketing.rounded-pill(href='page-portfolio-grid.html') Back to Projects
+
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

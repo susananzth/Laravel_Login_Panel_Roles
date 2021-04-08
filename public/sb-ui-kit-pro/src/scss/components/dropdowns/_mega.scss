@@ -1,0 +1,35 @@
+@include media-breakpoint-up(lg) {
+    .dropdown-lg,
+    .dropdown-xl {
+        position: relative;
+        .dropdown-menu {
+            position: absolute;
+            padding: 0;
+            overflow: hidden;
+            .dropdown-item,
+            .dropdown-header {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .dropdown-item {
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: inherit;
+                    color: $gray-600 !important;
+                }
+            }
+        }
+    }
+    .dropdown-lg {
+        .dropdown-menu {
+            min-width: 30rem;
+            overflow: hidden;
+        }
+    }
+    .dropdown-xl {
+        .dropdown-menu {
+            min-width: 45rem;
+        }
+    }
+}

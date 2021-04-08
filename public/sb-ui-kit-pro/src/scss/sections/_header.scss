@@ -1,0 +1,70 @@
+// Default styling for the page header
+.page-header {
+    position: relative;
+    padding-top: $page-header-padding-y;
+    padding-bottom: $page-header-padding-y;
+    .page-header-content {
+        .page-header-title {
+            font-size: 2.5rem;
+        }
+        .page-header-text {
+            font-size: 1.15rem;
+            &.small {
+                font-size: 0.9rem;
+            }
+        }
+        .page-header-signup {
+            justify-content: center;
+            .form-control {
+                font-size: $small-font-size;;
+                padding: 0 $btn-padding-x-marketing;
+                height: $btn-padding-y-marketing * 2 + $font-size-sm + 0.25rem;
+                line-height: 1.5;
+            }
+        }
+    }
+}
+
+// Page header style when using a dark background color
+.page-header-dark {
+    color: $white;
+    // Fallback background color
+    background-color: $gray-900;
+    .page-header-title {
+        color: $white;
+    }
+    .page-header-text {
+        @extend .text-white-50;
+        a {
+            @extend .text-white-75;
+        }
+    }
+    .btn-link {
+        @extend .text-light;
+    }
+}
+
+// Page header style when using a light background
+.page-header-light {
+    // Fallback background color
+    background-color: $gray-100;
+    .page-header-text {
+        color: $gray-600;
+        a {
+            color: $gray-700;
+        }
+    }
+    .btn-link {
+        @extend .text-dark;
+    }
+}
+
+// Behavior for fixed navbar
+.page-header.navbar-fixed {
+    .page-header-content {
+        padding-top: $page-header-padding-y + $navbar-marketing-padding-y * 2 + 1rem;
+    }
+    .navbar {
+        @extend .fixed-top;
+    }
+}

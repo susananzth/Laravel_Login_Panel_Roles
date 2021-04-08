@@ -1,0 +1,93 @@
+.avatar {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    .avatar-img {
+        border-radius: 100%;
+        object-fit: cover;
+        height: 2rem;
+        width: auto;
+    }
+}
+
+.avatar-xs {
+    height: 1.25rem;
+    width: 1.25rem;
+    .avatar-img {
+        height: 1rem;
+    }
+}
+
+.avatar-sm {
+    height: 1.75rem;
+    width: 1.75rem;
+    .avatar-img {
+        height: 1.5rem;
+    }
+}
+
+.avatar-lg {
+    height: 2.5rem;
+    width: 2.5rem;
+    .avatar-img {
+        height: 2.5rem;
+    }
+}
+
+.avatar-xl {
+    height: 3rem;
+    width: 3rem;
+    .avatar-img {
+        height: 3rem;
+    }
+}
+
+.avatar-xxl {
+    height: 3.75rem;
+    width: 3.75rem;
+    .avatar-img {
+        height: 3.75rem;
+    }
+}
+
+.avatar-busy,
+.avatar-idle,
+.avatar-offline,
+.avatar-online {
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        width: 20%;
+        height: 20%;
+        border-radius: 50%;
+        background-color: $gray-300;
+        border: 0.0625rem solid $white;
+    }
+}
+
+.avatar-busy {
+    &::before {
+        background-color: $red;
+    }
+}
+.avatar-idle {
+    &::before {
+        background-color: $yellow;
+    }
+}
+.avatar-offline {
+    &::before {
+        background-color: $gray-300;
+    }
+}
+.avatar-online {
+    &::before {
+        background-color: $green;
+    }
+}

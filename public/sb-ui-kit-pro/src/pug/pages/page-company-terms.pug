@@ -1,0 +1,86 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Terms & Conditions'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-gradient-primary-to-secondary',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * * *
+    //- * * Text Section  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-10.mt-5
+
+                    h1 Terms &amp; Privacy
+                    p.lead Last updated: January 2020
+
+                    hr.my-5
+
+                    h2.mb-3 1. Overview
+                    p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae, corporis? Facere quisquam earum dolore excepturi minima, fuga laborum reiciendis molestias nesciunt, impedit perspiciatis voluptatem nisi ad modi labore ipsam quas.
+                    p Lorem ipsum dolor sit, amet consectetur adipisicing elit. In, quis explicabo? Quis non minima, placeat aspernatur reiciendis, itaque quam quos eaque doloribus vero facere libero enim quo dolor. Et, fugit!
+                    p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere harum neque, repellendus, accusamus maiores libero iure corporis alias laboriosam voluptatem perferendis repellat excepturi iusto eos? Illum nam minus officia corrupti!
+
+                    hr.my-5
+
+                    h2.mb-3 2. Personal Data We Collect
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum fuga molestias atque, nesciunt, rerum quas voluptates maiores ad libero, eos illum. Dolorem sunt, modi dolores error ipsum deserunt architecto temporibus!
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero suscipit excepturi natus quae deserunt aliquam, aut distinctio, eum a laboriosam earum reiciendis beatae magni, cum minima unde? Sint, saepe reprehenderit.
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla repellendus qui quidem voluptatibus architecto unde aspernatur quam facilis incidunt expedita quisquam natus nemo, impedit iure dignissimos saepe ab minus molestiae.
+
+                    hr.my-5
+
+                    h2.mb-3 3. How We Use Personal Data
+                    p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem excepturi repellat ipsum veniam dolores, aperiam obcaecati quaerat! Reiciendis dolore, ipsa eaque a eum architecto sed perspiciatis deserunt totam! Exercitationem, ipsum!
+                    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero nam consequatur nisi eius odit eligendi ut tempora deserunt, repudiandae quo hic veritatis sunt optio ea nemo laborum mollitia quae illum.
+
+                    hr.my-5
+
+                    h2.mb-3 4. How We Disclose Personal Data
+                    p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, cumque sed porro dolorum ipsum eum quis eveniet natus, optio ipsa aperiam aliquid quaerat quos vitae maiores. Minima consequuntur quidem perferendis?
+                    p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates quaerat ipsam quis nisi in, rem aliquam odio quasi obcaecati. Dolorum error aliquam labore deserunt velit ipsa in corrupti, consectetur cumque!
+                    p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quia eligendi possimus odit, velit nihil eum perferendis laborum facilis sequi quo provident veritatis nostrum cupiditate accusamus quam tempore? Deleniti, architecto.
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius cum nemo ipsam eum, quam neque quae vel culpa, minus accusantium rerum ullam facere modi quo mollitia, non dolores ipsum aut.
+
+                    hr.my-5
+
+                    .card.z-1.mb-n10
+                        .card-body.text-center.py-5
+                            h2.mb-3 We're here to help
+                            a.btn.btn-primary.btn-marketing.rounded-pill(href='#!') Contact Us
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

@@ -1,0 +1,43 @@
+// Override and add to Bootstrap card style defaults
+
+.card {
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    position: relative;
+    .card-header {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        border-bottom: none;
+    }
+    // Sets the color of the card header to primary unless a background utility class is being used
+    &:not([class*='bg-']) {
+        .card-header {
+            color: $primary;
+        }
+    }
+}
+
+// Custom tabbed card option
+
+.card-tabbed {
+    .card-header {
+        padding-top: 0;
+        padding-bottom: 0;
+        justify-content: space-between;
+    }
+    .nav-item {
+        margin-right: 1rem;
+        &:last-child {
+            margin-right: 0;
+        }
+        .nav-link {
+            padding: calc(1rem - 0.0625rem) 0;
+            color: $gray-500;
+            &.active {
+                color: $primary;
+                border-bottom: 0.125rem solid $primary;
+            }
+        }
+    }
+}

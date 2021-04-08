@@ -1,0 +1,42 @@
+// Animation utilities
+
+// Fade in/up animation
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        margin-top: 0.75rem;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+.animated--fade-in-up {
+    animation-name: fadeInUp;
+    animation-duration: 200ms;
+    animation-timing-function: margin cubic-bezier(0.18, 1.25, 0.4, 1),
+    opacity cubic-bezier(0, 1, 0.4, 1);
+    &.dropdown-menu {
+        margin-top: 0 !important;
+        top: 0.125rem !important;
+    }
+}
+
+// Fade in animation
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animated--fade-in {
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+    animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
+}

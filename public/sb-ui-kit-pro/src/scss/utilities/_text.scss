@@ -1,0 +1,98 @@
+// Text utilities
+
+//-- Grayscale text color utilities
+.text-gray-100 {
+    color: $gray-100 !important;
+}
+.text-gray-200 {
+    color: $gray-200 !important;
+}
+.text-gray-300 {
+    color: $gray-300 !important;
+}
+.text-gray-400 {
+    color: $gray-400 !important;
+}
+.text-gray-500 {
+    color: $gray-500 !important;
+}
+.text-gray-600 {
+    color: $gray-600 !important;
+}
+.text-gray-700 {
+    color: $gray-700 !important;
+}
+.text-gray-800 {
+    color: $gray-800 !important;
+}
+.text-gray-900 {
+    color: $gray-900 !important;
+}
+
+//-- Font weight utilities
+.font-weight-100 {
+    font-weight: 100 !important;
+}
+
+.font-weight-200 {
+    font-weight: 200 !important;
+}
+
+.font-weight-300 {
+    font-weight: 300 !important;
+}
+
+.font-weight-400 {
+    font-weight: 400 !important;
+}
+
+.font-weight-500 {
+    font-weight: 500 !important;
+}
+
+.font-weight-600 {
+    font-weight: 600 !important;
+}
+
+.font-weight-700 {
+    font-weight: 700 !important;
+}
+
+.font-weight-800 {
+    font-weight: 800 !important;
+}
+
+.font-weight-900 {
+    font-weight: 900 !important;
+}
+
+// Text Color Utilities
+
+.text-white-75 {
+    color: fade-out($white, 0.25);
+}
+
+.text-xs {
+    font-size: 0.75rem !important;
+}
+
+.text-uppercase-expanded {
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.text-arrow-icon {
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    svg {
+        margin-left: 0.25rem;
+    }
+    &.small {
+        svg {
+            height: $font-size-sm;
+            width: $font-size-sm;
+        }
+    }
+}

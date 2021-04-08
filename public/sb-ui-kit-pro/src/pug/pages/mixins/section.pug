@@ -1,0 +1,10 @@
+mixin section(options)
+
+    section(class=options.sectionBg + ' ' + options.sectionPadding, style=options.sectionBgImg)
+        if block
+            block
+        else
+            p.text-center.py-5 No content provided
+
+        //- SVG Border
+        include includes/border-options.pug

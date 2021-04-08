@@ -1,0 +1,9 @@
+// Override Bootstrap card variables
+
+$card-spacer-y: 1rem;
+$card-spacer-x: 1.35rem;
+$card-inner-border-radius: $border-radius;
+$card-border-radius: $border-radius;
+$card-border-width: 0;
+
+$card-scrollable-max-height: 15rem;

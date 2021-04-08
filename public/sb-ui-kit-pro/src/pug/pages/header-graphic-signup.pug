@@ -1,0 +1,95 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Graphic Signup'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-primary',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-white',
+        pageHeaderStyle: 'page-header-light',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content
+            .container
+                .row.align-items-center
+                    .col-lg-7
+                        h1.page-header-title Build your next project faster
+                        p.page-header-text.mb-5 Welcome to SB UI Kit Pro, a toolkit for building beautiful web interfaces, created by the developmet team at Start Bootstrap
+                        form.page-header-signup.mb-2.mb-md-0
+                            .form-row.justify-content-center
+                                .col-md-8
+                                    .form-group.mr-0.mr-lg-2
+                                        label.sr-only(for='inputEmail') Enter your email...
+                                        input#inputEmail.form-control.form-control-solid.rounded-pill(type='email', placeholder='Enter your email...')
+                                .col-md-4
+                                    button.btn.btn-primary.btn-block.btn-marketing.rounded-pill(type='submit') Sign Up
+                    .col-lg-5.d-none.d-lg-block
+                        img.img-fluid(src='assets/img/drawkit/color/drawkit-user-mobile-color.svg')
+
+    //- * * * * * * * * * * *
+    //- * * Intro Section * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-primary'
+    })
+
+        .container
+            .row.text-center
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-primary.text-white.mb-4
+                        i(data-feather='layers')
+                    h3 Built for developers
+                    p.mb-0
+                        | Our modular, block-based build system makes building your next project fast and easy!
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-primary.text-white.mb-4
+                        i(data-feather='smartphone')
+                    h3 Modern responsive design
+                    p.mb-0
+                        | This UI Kit is build mobile-first, meaning it is will function beautifully on any device!
+                .col-lg-4
+                    .icon-stack.icon-stack-xl.bg-primary.text-white.mb-4
+                        i(data-feather='code')
+                    h3 Complete documentation
+                    p.mb-0
+                        | All of the layouts, page sections, components, and utilities are fully covered in this products docs.
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-primary',
+        footerStyle: 'footer-dark'
+    })

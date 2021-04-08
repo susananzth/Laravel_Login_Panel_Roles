@@ -1,0 +1,180 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Lead Capture'
+
+block content
+
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-repeat bg-secondary',
+        pageHeaderBgImg: 'background-image: url("assets/img/pattern-shapes.png")',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content
+            .container
+                .row.align-items-center
+                    .col-lg-6
+                        .badge.badge-marketing.badge-pill.badge-secondary-soft.text-secondary.mb-3 Start today!
+                        h1.page-header-title Get more leads, more customers, and more revenue
+                        p.page-header-text Stop losing leads because of a non-optimized landing page. Start converting your users to paying customers and winning more sales today with a new landing page!
+                    .col-lg-6
+                        .card.rounded-lg.text-dark
+                            .card-header.py-4
+                                | Sign up and get our free e-book!
+                            .card-body
+                                form
+                                    .form-row
+                                        .form-group.col-md-6
+                                            label.small.text-gray-600(for='leadCapFirstName') First Name
+                                            input#leadCapFirstName.form-control.rounded-pill(type='text')
+                                        .form-group.col-md-6
+                                            label.small.text-gray-600(for='leadCapLastName') Last Name
+                                            input#leadCapLastName.form-control.rounded-pill(type='text')
+                                    .form-group
+                                        label.small.text-gray-600(for='leadCapEmail') Email address
+                                        input#leadCapEmail.form-control.rounded-pill(type='email')
+                                    .form-group
+                                        label.small.text-gray-600(for='leadCapCompany') Company or Organization
+                                        input#leadCapCompany.form-control.rounded-pill(type='text')
+                                    button.btn.btn-primary.btn-marketing.btn-block.rounded-pill.mt-4(type='submit') Download Now
+
+    //- * * * * * * * * * *
+    //- * * Brands List * *
+    //- * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-5',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .container
+            .text-uppercase-expanded.text-right.mb-5.text-gray-300 Here's where you can find us
+            .row.brands.text-gray-500.align-items-center
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-lg-0
+                    include /assets/img/brand-logos/google.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-lg-0
+                    include /assets/img/brand-logos/product-hunt.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-lg-0
+                    include /assets/img/brand-logos/mailchimp.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-sm-0
+                    include /assets/img/brand-logos/instagram.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center
+                    include /assets/img/brand-logos/pinterest.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center
+                    include /assets/img/brand-logos/dribbble.svg
+
+    //- * * * * * * * * * * * *
+    //- * * Features Boxes  * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'pt-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+            .row
+                .col-lg-8.mb-5
+                    .badge.badge-marketing.badge-pill.badge-secondary-soft.text-secondary.mb-3 Marketing
+                    h2 A better way to capture leads
+                    p.lead Design can go a long way when capturing leads on your website. This lead caputre landing page example can help you get started!
+            .row.mb-n10.z-1
+                .col-lg-6.mb-5
+                    .card.h-100
+                        .card-body.p-5
+                            .icon-stack.icon-stack-xl.bg-secondary-soft.text-secondary.mb-4
+                                i(data-feather='users')
+                            h5 Cultivate better customers
+                            p.card-text
+                                | Learn how lead generation fits into your inbound marketing strategy and easy ways that you can start generating leads for your company
+                .col-lg-6.mb-5
+                    .card.h-100
+                        .card-body.p-5
+                            .icon-stack.icon-stack-xl.bg-success-soft.text-success.mb-4
+                                i(data-feather='trending-up')
+                            h5 Reach sales goals
+                            p.card-text
+                                | Attract and convert prospects into paying customers on your website by implementing a new design into your lead generation strategy
+                .col-lg-6.mb-5.mb-lg-0
+                    .card.h-100
+                        .card-body.p-5
+                            .icon-stack.icon-stack-xl.bg-primary-soft.text-primary.mb-4
+                                i(data-feather='tool')
+                            h5 Use the right tools
+                            p.card-text
+                                | By adding forms, call to action buttons, and information boxes, this template has the right tools to capture new leads
+                .col-lg-6
+                    .card.h-100
+                        .card-body.p-5
+                            .icon-stack.icon-stack-xl.bg-warning-soft.text-warning.mb-4
+                                i(data-feather='layout')
+                            h5 Easy to customimze
+                            p.card-text
+                                | Take sections and components from this UI Kit to build multiple variations of a lead caputre page to test which one performs better!
+
+    //- * * * * * * * * * * * *
+    //- * * Features Boxes  * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white border-bottom',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+            .row.align-items-center
+                .col-lg-6.mb-4.mb-lg-0
+                    h4.text-primary Ready to get started?
+                    p.lead.mb-0 Create your account now!
+                .col-lg-6.text-lg-right
+                    a.btn.btn-marketing.btn-primary.rounded-pill.mr-3(href='#!') Start Now
+                    a.btn.btn-marketing.btn-transparent-dark.rounded-pill(href='#!') Contact Us
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-white',
+        footerStyle: 'footer-light'
+    })

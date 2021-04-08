@@ -1,0 +1,97 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Blog Post'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-primary',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+        navbarPosition: ''
+    })
+
+    //- * * * * * * * * * * *
+    //- * * Blog Overview * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-10.col-xl-8
+                    .single-post
+                        h1 Boots on the Ground, Inclusive Thought Provoking Ideas
+                        p.lead Empower communities and energize engaging ideas; scale and impact do-gooders while disruptring industries. Venture philanthropy benefits corporations and people by moving the needle.
+                        .d-flex.align-items-center.justify-content-between.mb-5
+                            .single-post-meta.mr-4
+                                img.single-post-meta-img(src='https://source.unsplash.com/QAB-WJcbgJk/100x100')
+                                .single-post-meta-details
+                                    .single-post-meta-details-name Valerie Luna
+                                    .single-post-meta-details-date Feb 5 &middot; 6 min read
+                            .single-post-meta-links
+                                a(href='#!')
+                                    i.fab.fa-twitter.fa-fw
+                                a(href='#!')
+                                    i.fab.fa-facebook-f.fa-fw
+                                a(href='#!')
+                                    i.fas.fa-bookmark.fa-fw
+                        img.img-fluid.mb-2(src='https://source.unsplash.com/vZJdYl5JVXY/990x540')
+                        .small.text-gray-500.text-center Photo Credit: Unsplash
+                        .single-post-text.my-5
+                            p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit similique distinctio quidem blanditiis architecto ullam a itaque quisquam nihil! Unde ducimus deleniti exercitationem minima, molestiae ab saepe libero. Doloribus, a?
+                            p Magnam amet labore exercitationem maxime consectetur molestias quas quia dicta, praesentium minus illum quis fuga, fugiat velit voluptate sed nostrum ipsam atque.
+                            p Quaerat voluptas natus velit deleniti reprehenderit vero ad eos ab reiciendis. Libero dignissimos temporibus ipsam sint dolores voluptate consequatur debitis tempora doloremque.
+
+                            h4 Creating Something New
+
+                            p Laborum placeat quas accusantium vitae perferendis dolores possimus tempora, qui consectetur hic ullam autem. Enim, rerum obcaecati numquam quaerat necessitatibus voluptatem? Repellat!
+                            p Quasi, quos quaerat? Sint at odit possimus ullam saepe suscipit officiis nobis eaque, laudantium ut earum tempore repellendus mollitia odio nam! Unde?
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo unde perferendis reprehenderit ullam nobis? Laborum amet voluptatem sunt natus? Tempore commodi corporis accusamus laudantium assumenda blanditiis aut nobis culpa.
+
+                            h4 It's time to build your new project
+
+                            p Facilis enim voluptatibus qui voluptatum nemo non, facere, fugiat deserunt dicta ab sunt in sequi, assumenda nobis ipsam quidem corporis. Nemo, aliquam.
+                            p Illum numquam sapiente debitis similique, a accusantium quisquam recusandae! Nihil quia nulla blanditiis. Nobis numquam iure facilis consequuntur beatae eos adipisci doloremque!
+                            p Voluptate reiciendis nisi tempora laboriosam commodi sequi sapiente natus aut ab, cum aspernatur illo. Nobis laboriosam excepturi iste earum. Error, ab eius?
+                            p Quam, nesciunt iusto, praesentium amet necessitatibus quod porro libero voluptates soluta nostrum quisquam delectus repellendus totam accusamus sint magni dolore atque qui.
+
+                            img.img-fluid.mb-2(src='https://source.unsplash.com/sv8oOQaUb-o/990x540')
+                            .small.text-gray-500.text-center Photo Credit: Unsplash
+
+                            h4 It's time to build your new project
+
+                            p Laborum placeat quas accusantium vitae perferendis dolores possimus tempora, qui consectetur hic ullam autem. Enim, rerum obcaecati numquam quaerat necessitatibus voluptatem? Repellat!
+                            p Quasi, quos quaerat? Sint at odit possimus ullam saepe suscipit officiis nobis eaque, laudantium ut earum tempore repellendus mollitia odio nam! Unde?
+                            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi explicabo unde perferendis reprehenderit ullam nobis? Laborum amet voluptatem sunt natus? Tempore commodi corporis accusamus laudantium assumenda blanditiis aut nobis culpa.
+
+                            hr.my-5
+
+                            .text-center
+                                a.btn.btn-transparent-dark.btn-marketing.rounded-pill(href='page-blog-overview.html') Back to Blog Overview
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

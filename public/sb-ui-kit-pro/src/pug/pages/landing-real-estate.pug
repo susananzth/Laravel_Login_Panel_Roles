@@ -1,0 +1,299 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Real Estate'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-cover overlay overlay-primary overlay-90',
+        pageHeaderBgImg: 'background-image: url("https://source.unsplash.com/g39p1kDjvSY/1600x1200")',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content.py-5
+            .container
+                .row.justify-content-center
+                    .col-xl-8.col-lg-10.text-center
+                        h1.page-header-title Find your forever home
+                        p.page-header-text.mb-5 Opening your home to vacationers is a great way to earn some extra income, and this is a great way to get started!
+                        form.page-header-signup.mb-2.mb-md-0
+                            .form-row.justify-content-center
+                                .col-lg-9.col-md-8
+                                    .form-group.mr-0.mr-lg-2
+                                        label.sr-only(for='inputSearch') Enter and address, city, state, or ZIP 
+                                        input#inputSearch.form-control.form-control-solid.rounded-pill(type='text', placeholder='Enter and address, city, state, or ZIP')
+                                .col-lg-3.col-md-4
+                                    button.btn.btn-teal.btn-block.btn-marketing.rounded-pill(type='submit') Search
+                        p.page-header-text.small.mb-0.
+                            By signing up, you agree to our <a href="javascript:void(0);">terms of service</a>
+
+    //- * * * * * * * * * * * * * * * * *
+    //- * * Featured Listings Section * *
+    //- * * * * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+
+            .d-flex.align-items-center.justify-content-between.mb-4
+                h2.mb-0 Featured Listings
+                a.btn.btn-sm.btn-primary.d-inline-flex.align-items-center(href='#!')
+                    | See more
+                    i.ml-1(data-feather='arrow-right')
+
+            .row
+                .col-lg-4.mb-5.mb-lg-0
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right
+                            | Listed 1 month
+                        img.card-img-top(src='https://source.unsplash.com/2d4lAQAlbDA/800x500', alt='...')
+                        .card-body
+                            h3.text-primary.mb-0 $678,999
+                            .small.text-gray-800.font-weight-500 4 bd | 3 ba | 1,820 sqft
+                            .small.text-gray-500 Picsard, GA
+                        .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                            .small.text-gray-500
+                                | View listing
+                            .small.text-gray-500
+                                i(data-feather='arrow-right')
+                .col-lg-4.mb-5.mb-lg-0
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right
+                            | Listed 6 days
+                        img.card-img-top(src='https://source.unsplash.com/MP0bgaS_d1c/800x500', alt='...')
+                        .card-body
+                            h3.text-primary.mb-0 $409,000
+                            .small.text-gray-800.font-weight-500 3 bd | 2 ba | 1,350 sqft
+                            .small.text-gray-500 Sartalik, GA
+                        .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                            .small.text-gray-500
+                                | View listing
+                            .small.text-gray-500
+                                i(data-feather='arrow-right')
+                .col-lg-4
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right
+                            | Listed 2 weeks
+                        img.card-img-top(src='https://source.unsplash.com/iAftdIcgpFc/800x500', alt='...')
+                        .card-body
+                            h3.text-primary.mb-0 $1,299,999
+                            .small.text-gray-800.font-weight-500 6 bd | 5.5 ba | 4,220 sqft
+                            .small.text-gray-500 Picsard, GA
+                        .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                            .small.text-gray-500
+                                | View listing
+                            .small.text-gray-500
+                                i(data-feather='arrow-right')
+
+    hr.my-0
+
+    //- * * * * * * * * * * * * * * *
+    //- * * New Listings Section  * *
+    //- * * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .container
+
+            .d-flex.align-items-center.justify-content-between.mb-4
+                h2.mb-0 Newest Listings
+                a.btn.btn-sm.btn-primary.d-inline-flex.align-items-center(href='#!')
+                    | See more
+                    i.ml-1(data-feather='arrow-right')
+
+            .row
+                .col-lg-4.mb-5.mb-lg-0
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right
+                            | Listed 3 days
+                        img.card-img-top(src='https://source.unsplash.com/561igiTyvSk/800x500', alt='...')
+                        .card-body
+                            h3.text-primary.mb-0 $556,999
+                            .small.text-gray-800.font-weight-500 5 bd | 3 ba | 2,420 sqft
+                            .small.text-gray-500 Sartalik, GA
+                        .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                            .small.text-gray-500
+                                | View listing
+                            .small.text-gray-500
+                                i(data-feather='arrow-right')
+                .col-lg-4.mb-5.mb-lg-0
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right
+                            | Listed 5 days
+                        img.card-img-top(src='https://source.unsplash.com/IYfp2Ixe9nM/800x500', alt='...')
+                        .card-body
+                            h3.text-primary.mb-0 $384,000
+                            .small.text-gray-800.font-weight-500 4 bd | 2 ba | 1,750 sqft
+                            .small.text-gray-500 Picsard, GA
+                        .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                            .small.text-gray-500
+                                | View listing
+                            .small.text-gray-500
+                                i(data-feather='arrow-right')
+                .col-lg-4
+                    a(href='#!').card.lift.h-100
+                        .card-flag.card-flag-dark.card-flag-top-right
+                            | Listed 1 week
+                        img.card-img-top(src='https://source.unsplash.com/XbwHrt87mQ0/800x500', alt='...')
+                        .card-body
+                            h3.text-primary.mb-0 $349,999
+                            .small.text-gray-800.font-weight-500 3 bd | 2 ba | 1,231 sqft
+                            .small.text-gray-500 Sartalik, GA
+                        .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                            .small.text-gray-500
+                                | View listing
+                            .small.text-gray-500
+                                i(data-feather='arrow-right')
+
+    //- * * * * * * * * * * *
+    //- * * Photo Masonry * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-6.text-center.mb-5
+                    h2 Discover Piscard
+                    p.lead.mb-0 Voted the most desireable county in the region, discover what Piscard has to offer!
+            .card-columns.card-columns-portfolio
+                a.card.card-portfolio(href='#!')
+                    img.card-img-top(src='https://source.unsplash.com/NHPyk3hWt30/400x300', alt='...')
+                    .card-body
+                        .card-title Outdoor Activities
+                a.card.card-portfolio(href='#!')
+                    img.card-img-top(src='https://source.unsplash.com/GkZvxVsHYWw/400x500', alt='...')
+                    .card-body
+                        .card-title Historical Downtown
+                a.card.card-portfolio(href='#!')
+                    img.card-img-top(src='https://source.unsplash.com/lnsHBbBC__w/400x500', alt='...')
+                    .card-body
+                        .card-title Town Centers
+                a.card.card-portfolio(href='#!')
+                    img.card-img-top(src='https://source.unsplash.com/N_aihp118p8/400x300', alt='...')
+                    .card-body
+                        .card-title Award Winning Schools
+                a.card.card-portfolio(href='#!')
+                    img.card-img-top(src='https://source.unsplash.com/SIOdjcYotms/400x300', alt='...')
+                    .card-body
+                        .card-title Beautiful Beaches
+                a.card.card-portfolio(href='#!')
+                    img.card-img-top(src='https://source.unsplash.com/eE-ffApg7oI/400x500', alt='...')
+                    .card-body
+                        .card-title Community Farmers Market
+
+    //- * * * * * * * * * * *
+    //- * * Testimonials  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+            .row.mb-10
+                .col-lg-6.mb-5.mb-lg-0.divider-right
+                    .testimonial.p-lg-5
+                        .avatar.avatar-xl.mb-3
+                            img.avatar-img(src='https://source.unsplash.com/QAB-WJcbgJk/96x96')
+                        p.testimonial-quote.text-primary
+                            | "Working with the realtor's has been a true joy. They helped us purchase our home and made the whole process so easy!"
+                        .testimonial-name
+                            | Valerie Luna
+                        .testimonial-position
+                            | Jefferson, GA
+                .col-lg-6
+                    .testimonial.p-lg-5
+                        .avatar.avatar-xl.mb-3
+                            img.avatar-img(src='https://source.unsplash.com/MTZTGvDsHFY/96x96')
+                        p.testimonial-quote.text-primary
+                            | "Selling a home has never been so easy. The real estate group helped me prepare my home, list it, and sell it, all within a few weeks!"
+                        .testimonial-name
+                            | Destrian Barnes
+                        .testimonial-position
+                            | Fayetville, NC
+
+            .row
+                .col-lg-6.mb-5.mb-lg-0
+                    a.card.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .d-flex.align-items-center
+                                .icon-stack.icon-stack-xl.bg-primary.text-white.flex-shrink-0
+                                    i(data-feather='home')
+                                .ml-4
+                                    h5.text-primary Buy a home
+                                    p.card-text.text-gray-600 Looking for your dream home? Get in touch with us now to start your search!
+                .col-lg-6
+                    a.card.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .d-flex.align-items-center
+                                .icon-stack.icon-stack-xl.bg-secondary.text-white.flex-shrink-0
+                                    i(data-feather='dollar-sign')
+                                .ml-4
+                                    h5.text-secondary Sell your home
+                                    p.card-text.text-gray-600 Our award winning real estate group is ready to take on the challenge!
+
+    hr.my-0
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-white',
+        footerStyle: 'footer-light'
+    })

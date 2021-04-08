@@ -1,0 +1,397 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Multipurpose'
+
+append css
+    link(rel='stylesheet', href='https://unpkg.com/aos@next/dist/aos.css')
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-transparent',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content.pt-10
+            .container
+                .row.align-items-center
+                    .col-lg-6(data-aos='fade-up')
+                        h1.page-header-title Build your next project faster with SB UI Kit Pro
+                        p.page-header-text.mb-5 Welcome to SB UI Kit Pro, a toolkit for building beautiful web interfaces, created by the developmet team at Start Bootstrap
+                        a.btn.btn-teal.btn-marketing.rounded-pill.lift.lift-sm(href='index.html')
+                            | View Pages
+                            i.fas.fa-arrow-right.ml-1
+                        a(href='https://docs.startbootstrap.com/sb-ui-kit-pro/quickstart').btn.btn-link.btn-marketing Documentation
+                    .col-lg-6.d-none.d-lg-block(data-aos='fade-up', data-aos-delay='50')
+                        img.img-fluid(src='assets/img/drawkit/color/drawkit-content-man-color.svg')
+
+    //- * * * * * * * * * * *
+    //- * * Features Grid * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .container
+            .row.text-center
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='layers')
+                    h3 Built for developers
+                    p.mb-0
+                        | Our customizable, block-based build system makes creating your next project fast and easy!
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='smartphone')
+                    h3 Modern responsive design
+                    p.mb-0
+                        | Featuring carefully crafted, mobile-first components, your end product will function beautifully on any device!
+                .col-lg-4
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='code')
+                    h3 Complete documentation
+                    p.mb-0
+                        | All of the layouts, page sections, components, and utilities are fully covered in this products docs.
+
+    //- * * * * * * * * * * * * *
+    //- * * Features Detailed * *
+    //- * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+
+            .row.align-items-center.justify-content-center
+
+                .col-md-9.col-lg-6.order-1.order-lg-0(data-aos='fade-right')
+                    .content-skewed.content-skewed-right
+                        img.content-skewed-item.img-fluid.shadow-lg.rounded-lg(src='assets/img/screenshots/landing-portfolio.jpg')
+
+                .col-lg-6.order-0.order-lg-1.mb-5.mb-lg-0(data-aos='fade-left')
+                    .mb-5
+                        h2 Here's What You Get
+                        p.lead
+                            | When you purchase this UI Kit, you get access to a robust suite of powerful tools and components to help you build your next landing page quickly and easily.
+                    .row
+                        .col-md-6.mb-4
+                            h6 Landing Pages
+                            p.mb-2.small We've crafted landing page examples for many popular business and product types.
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+                        .col-md-6.mb-4
+                            h6 Page Examples
+                            p.mb-2.small.mb-0 Use our pre-built page examples to quickly create inner pages to your website.
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+                    .row
+                        .col-md-6.mb-4
+                            h6 Layouts
+                            p.mb-2.small.mb-0 Our flex box based layout options make your site beautifully responsive and adaptable to any device.
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+                        .col-md-6.mb-4
+                            h6 Modular Sections
+                            p.small.mb-0 All of the sections on each page are modular, so you can drop them into an existing page, or start with a new one!
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+
+    hr.m-0
+
+    //- * * * * * * * * * * * *
+    //- * * Pricing Section * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'pt-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .text-center.mb-5
+                h2 Simple Pricing
+                p.lead Easy pricing means no suprises.
+            .row.z-1
+                .col-lg-4.mb-5.mb-lg-n10(data-aos='fade-up', data-aos-delay='100')
+                    .card.pricing.h-100
+                        .card-body.p-5
+                            .text-center
+                                .badge.badge-light.badge-pill.badge-marketing.badge-sm Free
+                                .pricing-price
+                                    sup $
+                                    | 0
+                                    span.pricing-price-period /mo
+                            ul.fa-ul.pricing-list
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark 1 user
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Community support
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Style customizer
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Custom components
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Expanded utilities
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Third-party integration
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Layout options
+                .col-lg-4.mb-5.mb-lg-n10(data-aos='fade-up')
+                    .card.pricing.h-100
+                        .card-body.p-5
+                            .text-center
+                                .badge.badge-primary-soft.badge-pill.badge-marketing.badge-sm.text-primary Standard
+                                .pricing-price
+                                    sup $
+                                    | 19
+                                    span.pricing-price-period /mo
+                            ul.fa-ul.pricing-list
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Up to 15 users
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Email and live chat support
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Style customizer
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Custom components
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Expanded utilities
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Third-party integration
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Layout options
+                .col-lg-4.mb-lg-n10(data-aos='fade-up', data-aos-delay='100')
+                    .card.pricing.h-100
+                        .card-body.p-5
+                            .text-center
+                                .badge.badge-light.badge-pill.badge-marketing.badge-sm Enterprise
+                                p.card-text.py-10 We offer discounts for larger organizations. Contact us to inquire about enterprise level plans!
+
+    //- * * * * * * * * * *
+    //- * * FAQ Section * *
+    //- * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-dark',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+            .row.my-10
+                .col-lg-6.mb-5
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Can I use SB UI Kit Pro for clients?
+                            p.text-white-50 Yes! You can use SB UI Kit Pro for client projects. There are two types of licenses available depending on what you're trying to do.
+                .col-lg-6.mb-5
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Is there a money back guarantee?
+                            p.text-white-50 Yes! If you're not happy with your product then we will give you your money back.
+                .col-lg-6.mb-5.mb-lg-0
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Do I get free updates?
+                            p.text-white-50 All of Start Bootstrap's premium products will come with updates for feature additions, bugfixes, and other small updates.
+                .col-lg-6
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Does it work front end frameworks?
+                            p.text-white-50 When purchasing an HTML based product from Start Bootstrap, you get the HTML and CSS which you can bring into any framework.
+
+            .row.justify-content-center.text-center
+                .col-lg-8
+                    .badge.badge-transparent-light.badge-pill.badge-marketing.mb-4 Get Started
+                    h2.text-white Save time with SB UI Kit Pro
+                    p.lead.text-white-50.mb-5 Start Bootstrap's premium UI Kit beautifully and intuitively extends the Bootstrap framework making it easy to build your next project!
+                    a.btn.btn-teal.btn-marketing.rounded-pill.lift.lift-sm(href='#!') Buy Now!
+
+    //- * * * * * * * * * * *
+    //- * * Testimonials  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'pt-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .container
+
+            .row.mb-10
+
+                .col-lg-6.mb-5.mb-lg-0.divider-right(data-aos='fade')
+                    .testimonial.p-lg-5
+                        .testimonial-brand.text-gray-400
+                            include /assets/img/brand-logos/google.svg
+                        p.testimonial-quote.text-primary
+                            | "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut error vel omnis adipisci. Ad nam officiis sapiente dicta incidunt harum."
+                        .testimonial-name
+                            | Adam Hall
+                        .testimonial-position
+                            | Head of Engineering
+                .col-lg-6(data-aos='fade', data-aos-delay='100')
+                    .testimonial.p-lg-5
+                        .testimonial-brand.text-gray-400
+                            include /assets/img/brand-logos/instagram.svg
+                        p.testimonial-quote.text-primary
+                            | "Adipisci mollitia nemo magnam iure, temporibus molestiae odit, sit harum dolores neque maiores quo eligendi nam corrupti."
+                        .testimonial-name
+                            | Lia Peterson
+                        .testimonial-position
+                            | Technical Project Manager
+
+            .row
+                .col-lg-6.mb-lg-n10.mb-5.mb-lg-0.z-1
+                    a.card.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .d-flex.align-items-center
+                                .icon-stack.icon-stack-xl.bg-primary.text-white.flex-shrink-0
+                                    i(data-feather='activity')
+                                .ml-4
+                                    h5.text-primary Work smarter, not harder
+                                    p.card-text.text-gray-600 Learn more about how our product can save you time and effort in the long run!
+                .col-lg-6.mb-lg-n10.z-1
+                    a.card.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .d-flex.align-items-center
+                                .icon-stack.icon-stack-xl.bg-secondary.text-white.flex-shrink-0
+                                    i(data-feather='code')
+                                .ml-4
+                                    h5.text-secondary Built for developers
+                                    p.card-text.text-gray-600 Our components, utilities, and layouts are built with developers in mind.
+
+    //- * * * * * * * * * * * *
+    //- * * Company Section * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+        .container.mt-5
+            .row.align-items-center
+                .col-lg-6
+                    h4 Ready to get started?
+                    p.lead.mb-5.mb-lg-0.text-gray-500 Get in touch or create an account.
+                .col-lg-6.text-lg-right
+                    a.btn.btn-primary.btn-marketing.rounded-pill.mr-3.my-2.lift.lift-sm(href='#!') Contact Sales
+                    a.btn.btn-white.btn-marketing.rounded-pill.my-2.lift.lift-sm(href='#!') Create Account
+
+    hr.m-0
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-light',
+        footerStyle: 'footer-light'
+    })
+
+append scripts
+    script(src='https://unpkg.com/aos@next/dist/aos.js')
+    script.
+        AOS.init({
+            disable: 'mobile',
+            duration: 600,
+            once: true
+        });

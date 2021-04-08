@@ -1,0 +1,134 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Portfolio Grid'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: ''
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content
+            .container.text-center
+                .row.justify-content-center
+                    .col-lg-8
+                        h1.page-header-title.mb-3 Our work
+                        p.page-header-text.mb-0 A showcase of project's we've worked on in the past year
+
+    //- * * * * * * * * *
+    //- * * Portfolio * *
+    //- * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'pb-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+            .row
+                .col-md-6.col-xl-4.mb-5.mt-n5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/jWQj5Wjepuk/700x500', alt='...')
+                        .card-body
+                            .card-title Book
+                .col-md-6.col-xl-4.mb-5.mt-md-n5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/Ecnx13MEPK0/700x500', alt='...')
+                        .card-body
+                            .card-title Flower Mug
+                .col-md-6.col-xl-4.mb-5.mt-xl-n5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/eUCy1jb_B7I/700x500', alt='...')
+                        .card-body
+                            .card-title Cactus Display
+                .col-md-6.col-xl-4.mb-5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/cuTcfqsES6o/700x500', alt='...')
+                        .card-body
+                            .card-title Reading
+                .col-md-6.col-xl-4.mb-5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/jipR1oTCO7U/700x500', alt='...')
+                        .card-body
+                            .card-title White Book
+                .col-md-6.col-xl-4.mb-5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/n3sqjJzZiBM/700x500', alt='...')
+                        .card-body
+                            .card-title Photo Face
+                .col-md-6.col-xl-4.mb-5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/Zr7MxECDTQ8/700x500', alt='...')
+                        .card-body
+                            .card-title Catalog
+                .col-md-6.col-xl-4.mb-5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/QcyenJDqDzw/700x500', alt='...')
+                        .card-body
+                            .card-title Notebook
+                .col-md-6.col-xl-4.mb-5
+                    a.card.card-portfolio.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/TIutDBFEtcY/700x500', alt='...')
+                        .card-body
+                            .card-title Book Stand
+
+    //- * * * * * * * * * * * * * * * *
+    //- * * Contact Button Section  * *
+    //- * * * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-xl-6.col-lg-8.col-md-10.text-center.py-5
+                    h2 Ready to get Started?
+                    p.lead.text-gray-500.mb-5 We'd love to hear from you about your branding and digital needs. We are currently accepting new clients.
+                    a(href='javascript:void(0);').btn.btn-primary.btn-marketing.rounded-pill Contact us
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

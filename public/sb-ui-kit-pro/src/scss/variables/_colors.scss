@@ -1,0 +1,113 @@
+// Override Bootstrap color system
+
+$red: #e81500 !default;
+$orange: #f76400 !default;
+$yellow: #f4a100 !default;
+$green: #00ac69 !default;
+$teal: #00ba94 !default;
+$cyan: #00cfd5 !default;
+$blue: #0061f2 !default;
+$indigo: #5800e8 !default;
+$purple: #6900c7 !default;
+$pink: #e30059 !default;
+
+// Custom grayscale base hue variable
+//
+// Changing this to adjusts the hue of the grayscale
+
+$grayscale-base-hue: $blue !default;
+
+// Override Bootstrap grayscale with custom adaptive grayscale
+//
+// Mixes the $grayscale-base-hue variable with a desaturated
+// black and white grayscale to produce a grayscale with slight color saturation
+
+$white: #fff !default;
+$gray-100: mix(#f9f9f9, $grayscale-base-hue, 96%) !default;
+$gray-200: mix(#ececec, $grayscale-base-hue, 96%) !default;
+$gray-300: mix(#e2e2e2, $grayscale-base-hue, 95%) !default;
+$gray-400: mix(#d4d4d4, $grayscale-base-hue, 93%) !default;
+$gray-500: mix(#b4b4b4, $grayscale-base-hue, 90%) !default;
+$gray-600: mix(#747474, $grayscale-base-hue, 90%) !default;
+$gray-700: mix(#505050, $grayscale-base-hue, 90%) !default;
+$gray-800: mix(#3a3a3a, $grayscale-base-hue, 87%) !default;
+$gray-900: mix(#242424, $grayscale-base-hue, 86%) !default;
+$black: #000 !default;
+
+// Override Bootstrap default state colors
+
+$primary:   $blue !default;
+$secondary: $purple !default;
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $yellow !default;
+$danger:    $red !default;
+$dark:      $gray-900 !default;
+
+// Add soft color variations
+$red-soft:       mix($gray-100, $red, 80%) !default;
+$orange-soft:    mix($gray-100, $orange, 80%) !default;
+$yellow-soft:    mix($gray-100, $yellow, 80%) !default;
+$green-soft:     mix($gray-100, $green, 80%) !default;
+$teal-soft:      mix($gray-100, $teal, 80%) !default;
+$cyan-soft:      mix($gray-100, $cyan, 80%) !default;
+$blue-soft:      mix($gray-100, $blue, 80%) !default;
+$indigo-soft:    mix($gray-100, $indigo, 80%) !default;
+$purple-soft:    mix($gray-100, $purple, 80%) !default;
+$pink-soft:      mix($gray-100, $pink, 80%) !default;
+
+$primary-soft:   mix($gray-100, $primary, 80%) !default;
+$secondary-soft: mix($gray-100, $secondary, 80%) !default;
+$success-soft:   mix($gray-100, $success, 80%) !default;
+$info-soft:      mix($gray-100, $info, 80%) !default;
+$warning-soft:   mix($gray-100, $warning, 80%) !default;
+$danger-soft:    mix($gray-100, $danger, 80%) !default;
+
+
+// Add colors to the color map
+
+$theme-colors: (
+    'black': $black,
+    'white': $white,
+    'red': $red,
+    'orange': $orange,
+    'yellow': $yellow,
+    'green': $green,
+    'teal': $teal,
+    'cyan': $cyan,
+    'blue': $blue,
+    'indigo': $indigo,
+    'purple': $purple,
+    'pink': $pink,
+    'red-soft': $red-soft,
+    'orange-soft': $orange-soft,
+    'yellow-soft': $yellow-soft,
+    'green-soft': $green-soft,
+    'teal-soft': $teal-soft,
+    'cyan-soft': $cyan-soft,
+    'blue-soft': $blue-soft,
+    'indigo-soft': $indigo-soft,
+    'purple-soft': $purple-soft,
+    'pink-soft': $pink-soft,
+    'primary-soft': $primary-soft,
+    'secondary-soft': $secondary-soft,
+    'success-soft': $success-soft,
+    'info-soft': $info-soft,
+    'warning-soft': $warning-soft,
+    'danger-soft': $danger-soft,
+);
+
+// Override Bootstrap yiq lightness value
+
+$yiq-contrasted-threshold: 200 !default;
+
+// Brand color variables
+//
+// Used to create custom button styles for popular brands
+// You can add more brand color variables below, a good place to
+// find official brand colors is https://brandcolors.net/
+
+$facebook: #3b5998 !default;
+$twitter: #1da1f2 !default;
+$github: #333333 !default;
+$google: #ea4335 !default;

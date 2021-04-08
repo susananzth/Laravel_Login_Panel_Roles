@@ -1,0 +1,114 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'About'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-transparent',
+        navbarStyle: 'navbar-dark',
+        navbarBrandColor: 'text-white',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+        navbarPosition: 'fixed-top'
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content.pt-10
+            .container.text-center
+                .row.justify-content-center
+                    .col-lg-8
+                        h1.page-header-title.mb-3 About our company
+                        p.page-header-text Our company culture, and how we do things
+
+    //- * * * * * * * * * * *
+    //- * * Text Section  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-10
+
+                    h2.mb-4 A quick guide to our company culture
+                    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, eos quisquam expedita quo officiis porro provident laborum. Earum, consequatur provident, ipsam at excepturi rerum laborum aliquam facere molestias mollitia recusandae.
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, ipsam? Perspiciatis sunt voluptatum officia non harum, dolores omnis fugiat nam ad optio cumque molestiae impedit dignissimos velit commodi aliquid iure?
+                    p.mb-0 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem sapiente natus architecto aut porro! Vitae iusto praesentium recusandae debitis, cumque illum amet suscipit rem pariatur, magni iure laborum inventore in!
+
+                    hr.my-5
+
+                    h4.mb-4
+                        .icon-stack.bg-primary.text-white.mr-2
+                            i(data-feather='arrow-right')
+                        | This is what we do
+                    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, eos quisquam expedita quo officiis porro provident laborum. Earum, consequatur provident, ipsam at excepturi rerum laborum aliquam facere molestias mollitia recusandae.
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, ipsam? Perspiciatis sunt voluptatum officia non harum, dolores omnis fugiat nam ad optio cumque molestiae impedit dignissimos velit commodi aliquid iure?
+                    p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem sapiente natus architecto aut porro! Vitae iusto praesentium recusandae debitis, cumque illum amet suscipit rem pariatur, magni iure laborum inventore in!
+
+                    .card.bg-light.shadow-none
+                        .card-body
+                            h6 Questions you should ask yourself
+                            ul.mb-0
+                                li.text-italic Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed soluta fugiat eveniet, dignissimos facere quisquam, odit suscipit aliquid magnam,?
+
+                    hr.my-5
+
+                    h4.mb-4
+                        .icon-stack.bg-primary.text-white.mr-2
+                            i(data-feather='arrow-right')
+                        | Move with urgency and focus
+                    p.lead Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorem suscipit veniam excepturi soluta ducimus tempora quasi, itaque odit libero, eos in dolore natus, ipsam consectetur voluptate nulla provident aliquam?
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque laboriosam consequuntur iusto vero consequatur beatae, tempore voluptatem rerum sit facilis aut ea optio eaque quaerat, libero recusandae soluta molestiae veniam.
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, ut! Ut ipsum debitis numquam. Perferendis, laudantium! Itaque ab velit eaque magnam quis quam libero saepe nobis culpa. Vitae, dignissimos iusto.
+
+                    .card.bg-light.shadow-none
+                        .card-body
+                            h6 Questions you should ask yourself
+                            ul.mb-0
+                                li.text-italic Lorem ipsum dolor sit amet, consectetur adipisicing elit?
+                                li.text-italic Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas nobis illum nam?
+
+                    hr.my-5
+
+                    h4 Feedback
+                    p.lead.
+                        In the spirit of thinking rigorously, we’d love your open and honest feedback on this guide. <a href='#!'>Let us know what you think</a>.
+                    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum culpa optio nihil id distinctio excepturi dignissimos, iure totam minima, natus ducimus.
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

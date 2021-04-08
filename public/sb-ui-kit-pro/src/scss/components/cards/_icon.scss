@@ -1,0 +1,15 @@
+.card-icon {
+    .card-icon-aside {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        padding: 2rem;
+        i,
+        svg,
+        .feather {
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+}

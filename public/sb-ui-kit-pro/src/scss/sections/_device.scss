@@ -1,0 +1,109 @@
+.device-laptop {
+    position: relative;
+    .device-container {
+        display: block;
+        height: auto;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+    .device-screenshot {
+        display: block;
+        position: absolute;
+        top: 6%;
+        left: 11.8%;
+        height: auto;
+        width: 76.57%;
+        z-index: 0;
+    }
+}
+
+/*!
+ * html5-device-mockups (https://github.com/pixelsign/html5-device-mockups)
+ * Copyright 2013 - 2018 pixelsign
+ * Licensed under MIT (https://github.com/pixelsign/html5-device-mockups/blob/master/LICENSE.txt)
+ * Last Build: Thu Dec 20 2018 14:05:50
+ */
+
+ .device-wrapper {
+    max-width: 300px;
+    width: 100%; }
+  
+  .device {
+    position: relative;
+    background-size: cover; }
+    .device::after {
+      position: absolute;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; }
+    .device .screen {
+      position: absolute;
+      background-size: cover;
+      pointer-events: auto; }
+    .device .button {
+      position: absolute;
+      cursor: pointer; }
+  
+  .device[data-device="iPhoneX"][data-orientation="portrait"][data-color="black"] {
+    padding-bottom: 198.89807163%;
+    background-image: url(../assets/img/device-mockups/iPhoneX/portrait.png);
+    z-index: initial;
+  }
+    .device[data-device="iPhoneX"][data-orientation="portrait"][data-color="black"] .screen {
+      top: 3.254847645%;
+      left: 7.162534435%;
+      width: 85.67493113%;
+      height: 93.49030471%;
+      border: 0px;
+      z-index: 0;
+    }
+  
+  .device[data-device="iPhoneX"][data-orientation="landscape"][data-color="black"] {
+    padding-bottom: 50.27700831%;
+    background-image: url(../assets/img/device-mockups/iPhoneX/landscape.png);
+    z-index: initial;
+  }
+    .device[data-device="iPhoneX"][data-orientation="landscape"][data-color="black"] .screen {
+      top: 7.162534435%;
+      left: 3.254847645%;
+      width: 93.49030471%;
+      height: 85.67493113%;
+      border: 0px;
+      z-index: 0;
+    }
+  
+  .device[data-device="iPhoneX"][data-orientation="portrait"][data-color="black"] {
+    padding-bottom: 198.898071625%; }
+    .device[data-device="iPhoneX"][data-orientation="portrait"][data-color="black"] .screen {
+      top: 3.1855955679%;
+      left: 6.8870523416%;
+      width: 86.2258953168%;
+      height: 93.6288088643%; }
+    .device[data-device="iPhoneX"][data-orientation="portrait"][data-color="black"]::after {
+      content: '';
+      background-image: url(../assets/img/device-mockups/iPhoneX/portrait_black.png); }
+    .device[data-device="iPhoneX"][data-orientation="portrait"][data-color="black"] .button {
+      display: none;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%; }
+  
+  .device[data-device="iPhoneX"][data-orientation="landscape"][data-color="black"] {
+    padding-bottom: 50.2770083102%; }
+    .device[data-device="iPhoneX"][data-orientation="landscape"][data-color="black"] .screen {
+      top: 6.3360881543%;
+      left: 3.4626038781%;
+      width: 93.0747922438%;
+      height: 87.3278236915%; }
+    .device[data-device="iPhoneX"][data-orientation="landscape"][data-color="black"]::after {
+      content: '';
+      background-image: url(../assets/img/device-mockups/iPhoneX/landscape_black.png); }
+    .device[data-device="iPhoneX"][data-orientation="landscape"][data-color="black"] .button {
+      display: none;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%; }

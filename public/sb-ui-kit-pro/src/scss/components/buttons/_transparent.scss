@@ -1,0 +1,33 @@
+// Use Bootstrap button variant mixin to create .btn-transparent-dark button style
+
+.btn-transparent-dark {
+    @include button-variant(
+        transparent,
+        transparent,
+        fade-out($gray-900, 0.9),
+        transparent,
+        fade-out($gray-900, 0.875),
+        transparent
+    );
+    color: fade-out($gray-900, 0.5) !important;
+    &:focus {
+        box-shadow: 0 0 0 $btn-focus-width fade-out($gray-900, 0.75) !important;
+    }
+}
+
+// Use Bootstrap button variant mixin to create .btn-transparent-light button style
+
+.btn-transparent-light {
+    @include button-variant(
+        transparent,
+        transparent,
+        fade-out($white, 0.9),
+        transparent,
+        fade-out($white, 0.875),
+        transparent
+    );
+    color: fade-out($white, 0.5) !important;
+    &:focus {
+        box-shadow: 0 0 0 $btn-focus-width fade-out($white, 0.75) !important;
+    }
+}

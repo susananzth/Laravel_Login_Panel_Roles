@@ -1,0 +1,482 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Desktop App'
+
+append css
+    link(rel='stylesheet', href='https://unpkg.com/aos@next/dist/aos.css')
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-primary',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-white',
+        pageHeaderStyle: 'page-header-light',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light',
+    })
+
+        .page-header-content
+            .container
+                .row.justify-content-center
+                    .col-xl-8.col-lg-10.text-center(data-aos='fade')
+                        h1.page-header-title Introducing a full suite of premium products
+                        p.page-header-text Build a marketing site for your desktop app with this easy to use layout included with SB UI Kit Pro
+                        button.btn.btn-primary.btn-marketing.rounded-pill.lift.lift-sm Get Started
+                        button.btn.btn-link.btn-marketing.rounded-pill Learn More
+
+    //- * * * * * * * * * * * *
+    //- * * Device Preview  * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'pb-10 pt-1',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+        .container
+            .device-laptop.text-gray-200.mt-n10(data-aos='fade-up')
+                svg.device-container(xmlns='http://www.w3.org/2000/svg', fill='currentColor', viewBox='83.911 298.53 426.962 243.838')
+                    path(d='M474.843 516.208V309.886c0-6.418-4.938-11.355-11.354-11.355H131.791c-6.417 0-11.354 4.938-11.354 11.355v206.816H83.911v13.326c4.938 7.896 31.098 12.34 40.969 12.34h345.024c10.366 0 36.526-4.936 40.969-12.34v-13.326h-36.03v-.494zM134.26 313.341h326.762v203.361H134.26V313.341z')
+                img.device-screenshot(src='assets/img/app-desktop-demo-screenshot.jpg')
+
+    //- * * * * * * * * * *
+    //- * * Brands List * *
+    //- * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'pb-10 pt-0',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+            .row.brands.text-gray-500.align-items-center
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-lg-0
+                    include /assets/img/brand-logos/google.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-lg-0
+                    include /assets/img/brand-logos/product-hunt.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-lg-0
+                    include /assets/img/brand-logos/mailchimp.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center.mb-5.mb-sm-0
+                    include /assets/img/brand-logos/instagram.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center
+                    include /assets/img/brand-logos/pinterest.svg
+                .col-6.col-sm-4.col-lg-2.d-flex.justify-content-center
+                    include /assets/img/brand-logos/dribbble.svg
+
+    //- * * * * * * * * * * * * *
+    //- * * Features Section  * *
+    //- * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+            .row.text-center
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='layers')
+                    h3 Built for developers
+                    p.mb-0
+                        | Our customizable, block-based build system makes creating your next project fast and easy!
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='smartphone')
+                    h3 Modern responsive design
+                    p.mb-0
+                        | Featuring carefully crafted, mobile-first components, your end product will function beautifully on any device!
+                .col-lg-4
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='code')
+                    h3 Complete documentation
+                    p.mb-0
+                        | All of the layouts, page sections, components, and utilities are fully covered in this products docs.
+
+    //- * * * * * * * * * * *
+    //- * * Section Cards * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-6
+                    .text-center
+                        .text-xs.text-uppercase-expanded.text-primary.mb-2 Application Features
+                        h2.mb-5 We have a simple solution to a complex problem
+            .row
+                .col-lg-4.col-md-6.mb-5(data-aos='fade-up')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-green-soft.text-green.mb-4
+                                i(data-feather='layers')
+                            h5 Components
+                            p.card-text.small Our product is full of customized and extendable components.
+                .col-lg-4.col-md-6.mb-5(data-aos='fade-up', data-aos-delay='100')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-red-soft.text-red.mb-4
+                                i(data-feather='tool')
+                            h5 Utilities
+                            p.card-text.small Powerful utility classes makes it easy to customize your product.
+                .col-lg-4.col-md-6.mb-5(data-aos='fade-up', data-aos-delay='150')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-yellow-soft.text-yellow.mb-4
+                                i(data-feather='layout')
+                            h5 Layouts
+                            p.card-text.small Our flex based layouts offer a beautifully reponsive approach.
+                .col-lg-4.col-md-6.mb-5.mb-lg-0(data-aos='fade-up')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-purple-soft.text-purple.mb-4
+                                i(data-feather='book')
+                            h5 Documentation
+                            p.card-text.small Our code is fully documented with instructions and usage examples.
+                .col-lg-4.col-md-6.mb-5.mb-md-0(data-aos='fade-up', data-aos-delay='100')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-blue-soft.text-blue.mb-4
+                                i(data-feather='code')
+                            h5 Code Snippets
+                            p.card-text.small Use code snippets to easily drop new components into your project.
+                .col-lg-4.col-md-6(data-aos='fade-up', data-aos-delay='150')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-orange-soft.text-orange.mb-4
+                                i(data-feather='package')
+                            h5 Plugins
+                            p.card-text.small We've implemented powerful third party plugins for added functionality.
+
+    //- * * * * * * * * * * * * *
+    //- * * Features Detailed * *
+    //- * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+
+            .row.align-items-center.justify-content-center
+
+                .col-lg-6
+                    .badge.badge-primary-soft.text-primary.badge-marketing.badge-pill.mb-3 Get Started!
+                    .mb-5
+                        h2 Here's What You Get
+                        p.lead
+                            | When you purchase this UI Kit, you get access to a robust suite of powerful tools and components to help you build your next landing page quickly and easily.
+                    .row
+                        .col-md-6.mb-4
+                            h6 Landing Pages
+                            p.mb-2.small We've crafted landing page examples for many popular business and product types.
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+                        .col-md-6.mb-4
+                            h6 Page Examples
+                            p.mb-2.small.mb-0 Use our pre-built page examples to quickly create inner pages to your website.
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+                    .row
+                        .col-md-6.mb-4
+                            h6 Layouts
+                            p.mb-2.small.mb-0 Our flex box based layout options make your site beautifully responsive and adaptable to any device.
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+                        .col-md-6.mb-4
+                            h6 Modular Sections
+                            p.small.mb-0 All of the sections on each page are modular, so you can drop them into an existing page, or start with a new one!
+                            a.small.text-arrow-icon(href="#!")
+                                | Learn More
+                                i(data-feather="arrow-right")
+
+                .col-md-9.col-lg-6(data-aos='slide-left')
+                    .mb-4
+                        .content-skewed.content-skewed-left
+                            img.img-fluid.content-skewed-item.shadow-lg.rounded-lg(src='assets/img/app-desktop-demo-screenshot.jpg')
+
+    //- * * * * * * * * * * * *
+    //- * * Pricing Section * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'pt-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .text-center.mb-5
+                h2 Simple Pricing
+                p.lead Easy pricing means no suprises.
+            .row.z-1
+                .col-lg-4.mb-5.mb-lg-n10(data-aos='fade-up', data-aos-delay='100')
+                    .card.pricing.h-100
+                        .card-body.p-5
+                            .text-center
+                                .badge.badge-light.badge-pill.badge-marketing.badge-sm Free
+                                .pricing-price
+                                    sup $
+                                    | 0
+                                    span.pricing-price-period /mo
+                            ul.fa-ul.pricing-list
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark 1 user
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Community support
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Style customizer
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Custom components
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Expanded utilities
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Third-party integration
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-circle.text-gray-200
+                                    | Layout options
+                .col-lg-4.mb-5.mb-lg-n10(data-aos='fade-up')
+                    .card.pricing.h-100
+                        .card-body.p-5
+                            .text-center
+                                .badge.badge-primary-soft.badge-pill.badge-marketing.badge-sm.text-primary Standard
+                                .pricing-price
+                                    sup $
+                                    | 19
+                                    span.pricing-price-period /mo
+                            ul.fa-ul.pricing-list
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Up to 15 users
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Email and live chat support
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Style customizer
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Custom components
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Expanded utilities
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Third-party integration
+                                li.pricing-list-item
+                                    span.fa-li
+                                        i.far.fa-check-circle.text-teal
+                                    span.text-dark Layout options
+                .col-lg-4.mb-lg-n10(data-aos='fade-up', data-aos-delay='100')
+                    .card.pricing.h-100
+                        .card-body.p-5
+                            .text-center
+                                .badge.badge-light.badge-pill.badge-marketing.badge-sm Enterprise
+                                p.card-text.py-10 We offer discounts for larger organizations. Contact us to inquire about enterprise level plans!
+
+    //- * * * * * * * * * *
+    //- * * FAQ Section * *
+    //- * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-dark',
+        sectionPadding: 'pb-10 pt-15',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+            .row.mb-10.mt-5
+                .col-lg-6.mb-5
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Can I use SB UI Kit Pro for clients?
+                            p.text-white-50 Yes! You can use SB UI Kit Pro for client projects. There are two types of licenses available depending on what you're trying to do.
+                .col-lg-6.mb-5
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Is there a money back guarantee?
+                            p.text-white-50 Yes! If you're not happy with your product then we will give you your money back.
+                .col-lg-6.mb-5.mb-lg-0
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Do I get free updates?
+                            p.text-white-50 All of Start Bootstrap's premium products will come with updates for feature additions, bugfixes, and other small updates.
+                .col-lg-6
+                    .d-flex.h-100
+                        .icon-stack.flex-shrink-0.bg-teal.text-white
+                            i.fas.fa-question
+                        .ml-4
+                            h5.text-white Does it work front end frameworks?
+                            p.text-white-50 When purchasing an HTML based product from Start Bootstrap, you get the HTML and CSS which you can bring into any framework.
+
+            .row.justify-content-center.text-center
+                .col-lg-8
+                    .badge.badge-transparent-light.badge-pill.badge-marketing.mb-4 Get Started
+                    h2.text-white Get SB UI Kit Pro and save time.
+                    p.lead.text-white-50.mb-5 Start Bootstrap's premium UI Kit beautifully and intuitively extends the Bootstrap framework making it easy to build your next project!
+                    a.btn.btn-teal.btn-marketing.rounded-pill.lift.lift-sm(href='#!') Buy Now!
+
+    //- * * * * * * * * * * * * * * *
+    //- * * Image Spacer Section  * *
+    //- * * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-img-cover overlay overlay-primary overlay-80',
+        sectionBgImg: 'background-image: url("https://source.unsplash.com/e3OUQGT9bWU/1400x900")',
+        sectionPadding: 'pt-15',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        div(style="height: 35vh;")
+
+    //- * * * * * * * * * * * *
+    //- * * Company Section * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'pb-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: true,
+        svgBorderFill: 'text-dark'
+    })
+        .container
+            .row.mb-5
+                .col-lg-6.mt-n10.mb-5.mb-lg-0.z-1
+                    a.card.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .d-flex.align-items-center
+                                .icon-stack.icon-stack-xl.bg-primary.text-white.flex-shrink-0
+                                    i(data-feather='edit-3')
+                                .ml-4
+                                    h5.text-primary Work smarter, not harder
+                                    p.card-text.text-gray-600 Learn more about how our product can save you time and effort in the long run!
+                .col-lg-6.mt-0.mt-lg-n10.z-1
+                    a.card.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .d-flex.align-items-center
+                                .icon-stack.icon-stack-xl.bg-secondary.text-white.flex-shrink-0
+                                    i(data-feather='code')
+                                .ml-4
+                                    h5.text-secondary Built for developers
+                                    p.card-text.text-gray-600 Our components, utilities, and layouts are built with developers in mind.
+            .row.align-items-center
+                .col-lg-6
+                    h4 Get the latest news
+                    p.lead.text-gray-500.mb-0 Stay in the loop with the latest updates and features added to our application!
+                .col-lg-6
+                    .input-group.mb-2
+                        input.form-control.form-control-solid(type='text', placeholder="youremail@example.com", aria-label="Recipient's username", aria-describedby='button-addon2')
+                        .input-group-append
+                            button#button-addon2.btn.btn-primary(type='button') Sign up
+                    .small.text-gray-500 You can unsubscribe at any time.
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })
+
+append scripts
+    script(src='https://unpkg.com/aos@next/dist/aos.js')
+    script.
+        AOS.init({
+            disable: 'mobile',
+            duration: 600,
+            once: true
+        });

@@ -1,0 +1,67 @@
+// Border Large - Custom utility
+
+.border-lg {
+    border-width: $border-width-lg !important;
+}
+.border-top-lg {
+    border-top-width: $border-width-lg !important;
+}
+.border-right-lg {
+    border-right-width: $border-width-lg !important;
+}
+.border-bottom-lg {
+    border-bottom-width: $border-width-lg !important;
+}
+.border-left-lg {
+    border-left-width: $border-width-lg !important;
+}
+
+// Rebuild border after adding large borders
+@each $color, $value in $theme-colors {
+    .border-#{$color} {
+        border-color: $value !important;
+    }
+}
+
+// Border Radius
+.rounded-xl {
+    border-radius: $border-radius-xl !important;
+}
+
+// Grayscale Border Colors
+
+.border-gray-100 {
+    border-color: $gray-100 !important;
+}
+
+.border-gray-200 {
+    border-color: $gray-200 !important;
+}
+
+.border-gray-300 {
+    border-color: $gray-300 !important;
+}
+
+.border-gray-400 {
+    border-color: $gray-400 !important;
+}
+
+.border-gray-500 {
+    border-color: $gray-500 !important;
+}
+
+.border-gray-600 {
+    border-color: $gray-600 !important;
+}
+
+.border-gray-700 {
+    border-color: $gray-700 !important;
+}
+
+.border-gray-800 {
+    border-color: $gray-800 !important;
+}
+
+.border-gray-900 {
+    border-color: $gray-900 !important;
+}

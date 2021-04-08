@@ -1,0 +1,185 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Blog Overview'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-primary',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+        navbarPosition: ''
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-cover overlay overlay-60',
+        pageHeaderBgImg: 'background-image: url(https://source.unsplash.com/PTRzqc_h1r4/1600x900);',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .page-header-content
+            .container.text-center
+                .row.justify-content-center
+                    .col-lg-8
+                        h1.page-header-title.mb-3 Publications
+                        p.page-header-text.mb-0 Browse articles, keep up to date, and learn more on our blog!
+
+    //- * * * * * * * * * * *
+    //- * * Blog Overview * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: true,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            //- Featured Post
+            a.card.post-preview.post-preview-featured.lift.mb-5(href='#!')
+                .row.no-gutters
+                    .col-lg-5
+                        .post-preview-featured-img(style='background-image: url("https://source.unsplash.com/vZJdYl5JVXY/660x360")')
+                    .col-lg-7
+                        .card-body
+                            .py-5
+                                h5.card-title Boots on the Ground, Inclusive Thought Provoking Ideas
+                                p.card-text
+                                    | Empower communities and energize engaging ideas; scale and impact do-gooders while disruptring industries. Venture philanthropy benefits corporations and people by moving the needle.
+                            hr
+                            .post-preview-meta
+                                img.post-preview-meta-img(src='https://source.unsplash.com/QAB-WJcbgJk/100x100')
+                                .post-preview-meta-details
+                                    .post-preview-meta-details-name Valerie Luna
+                                    .post-preview-meta-details-date Feb 5 &middot; 6 min read
+            //- Posts List
+            .row
+                .col-md-6.col-xl-4.mb-5
+                    a.card.post-preview.lift.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/KE0nC8-58MQ/660x360', alt='...')
+                        .card-body
+                            h5.card-title Invest In Social Impact
+                            p.card-text
+                                | Expose the truth, problem-solvers impact mobilized green spaces.
+                        .card-footer
+                            .post-preview-meta
+                                img.post-preview-meta-img(src='https://source.unsplash.com/vTL_qy03D1I/100x100')
+                                .post-preview-meta-details
+                                    .post-preview-meta-details-name Aariz Fischer
+                                    .post-preview-meta-details-date Feb 4 &middot; 5 min read
+                .col-md-6.col-xl-4.mb-5
+                    a.card.post-preview.lift.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/hGV2TfOh0ns/660x360', alt='...')
+                        .card-body
+                            h5.card-title Save the World, Social Entrepreneur
+                            p.card-text
+                                | Contextualize co-creation and do good while building your startup.
+                        .card-footer
+                            .post-preview-meta
+                                img.post-preview-meta-img(src='https://source.unsplash.com/e12wQLAjQi0/100x100')
+                                .post-preview-meta-details
+                                    .post-preview-meta-details-name Henry Iman
+                                    .post-preview-meta-details-date Feb 3 &middot; 7 min read
+                .col-md-6.col-xl-4.mb-5
+                    a.card.post-preview.lift.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/9l_326FISzk/660x360', alt='...')
+                        .card-body
+                            h5.card-title Design Thinking Benefits Corporation Thought Leadership 
+                            p.card-text
+                                | Global changemakers, a state of play releives stress and creates inspirational work environments.
+                        .card-footer
+                            .post-preview-meta
+                                img.post-preview-meta-img(src='https://source.unsplash.com/zEMl5XuLfew/100x100')
+                                .post-preview-meta-details
+                                    .post-preview-meta-details-name Mahesh Kumar
+                                    .post-preview-meta-details-date Feb 1 &middot; 4 min read
+                .col-md-6.col-xl-4.mb-5
+                    a.card.post-preview.lift.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/oqStl2L5oxI/660x360', alt='...')
+                        .card-body
+                            h5.card-title Collaborative Consumption, Human-Centered Technology Thought Leader Systems
+                            p.card-text
+                                | Milestones theory of change, an effective paradigm, exposes the truth and best practices to uplift equal opportunity.
+                        .card-footer
+                            .post-preview-meta
+                                img.post-preview-meta-img(src='https://source.unsplash.com/-FOUPtqP-mY/100x100')
+                                .post-preview-meta-details
+                                    .post-preview-meta-details-name Amy Love
+
+                                    .post-preview-meta-details-date Jan 30 &middot; 12 min read
+                .col-md-6.col-xl-4.mb-5
+                    a.card.post-preview.lift.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/Oalh2MojUuk/660x360', alt='...')
+                        .card-body
+                            h5.card-title Co-create, Empower - Moving the Needle on Investor Interests
+                            p.card-text
+                                | Scalable efficient systems and thinking as a social entrepreneur creates a transparent, targeted vison.
+                        .card-footer
+                            .post-preview-meta
+                                img.post-preview-meta-img(src='https://source.unsplash.com/QAB-WJcbgJk/100x100')
+                                .post-preview-meta-details
+                                    .post-preview-meta-details-name Valerie Luna
+                                    .post-preview-meta-details-date Jan 29 &middot; 4 min read
+                .col-md-6.col-xl-4.mb-5
+                    a.card.post-preview.lift.h-100(href='#!')
+                        img.card-img-top(src='https://source.unsplash.com/-uHVRvDr7pg/660x360', alt='...')
+                        .card-body
+                            h5.card-title Inclusive Shared Units of Analysis
+                            p.card-text
+                                | Commit to inspiring social capital, social capital inspires the body and the mind.
+                        .card-footer
+                            .post-preview-meta
+                                img.post-preview-meta-img(src='https://source.unsplash.com/qsjM7zomoEI/100x100')
+                                .post-preview-meta-details
+                                    .post-preview-meta-details-name David Walker
+                                    .post-preview-meta-details-date Jan 25 &middot; 7 min read
+            //- Pagination
+            nav(aria-label='Page navigation example')
+                ul.pagination.pagination-blog.justify-content-center
+                    li.page-item.disabled
+                        a.page-link(href='#!', aria-label='Previous')
+                            span(aria-hidden='true') «
+                    li.page-item.active
+                        a.page-link(href='#!') 1
+                    li.page-item
+                        a.page-link(href='#!') 2
+                    li.page-item
+                        a.page-link(href='#!') 3
+                    li.page-item.disabled
+                        a.page-link(href='#!') ...
+                    li.page-item
+                        a.page-link(href='#!') 12
+                    li.page-item
+                        a.page-link(href='#!', aria-label='Next')
+                            span(aria-hidden='true') »
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })

@@ -1,0 +1,240 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Mobile App'
+
+append css
+    link(rel='stylesheet', href='https://unpkg.com/aos@next/dist/aos.css')
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-primary',
+        navbarBtnColor: 'btn-primary',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-gradient-primary-to-secondary',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: true,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content.mb-n5
+            .container
+                .row.justify-content-center.align-items-center
+                    .col-lg-6(data-aos='fade-right')
+                        h1.page-header-title Build a landing page for your mobile app
+                        p.page-header-text.mb-5 Marketing pages for your mobile app have never been easier. Get started now!
+                        .mb-5.mb-lg-0
+                            a.mr-3(href='javascript:void(0);')
+                                img(src='assets/img/app-store-badge.svg', style="height: 3rem;")
+                            a(href='javascript:void(0);')
+                                img(src='assets/img/google-play-badge.svg', style="height: 3rem;")
+                            .page-header-text.mt-2.text-xs.font-italic
+                                | * Requires Android OS 4.3+ or Apple iOS 9.3+
+                    .col-lg-6.z-1(data-aos='fade-left')
+                        .device-wrapper.mx-auto.mb-n15
+                            .device(data-device='iPhoneX', data-orientation='portrait', data-color='black')
+                                .screen
+                                    img(src='https://source.unsplash.com/eluzJSfkNCk/518x1122').img-fluid.z-1
+
+    //- * * * * * * * * * * * * *
+    //- * * Features Section  * *
+    //- * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+            .row.text-center
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='layers')
+                    h3 Built for developers
+                    p.mb-0
+                        | Our customizable, block-based build system makes creating your next project fast and easy!
+                .col-lg-4.mb-5.mb-lg-0
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='smartphone')
+                    h3 Modern responsive design
+                    p.mb-0
+                        | Featuring carefully crafted, mobile-first components, your end product will function beautifully on any device!
+                .col-lg-4
+                    .icon-stack.icon-stack-xl.bg-gradient-primary-to-secondary.text-white.mb-4
+                        i(data-feather='code')
+                    h3 Complete documentation
+                    p.mb-0
+                        | All of the layouts, page sections, components, and utilities are fully covered in this products docs.
+
+    hr
+
+    //- * * * * * * * * * * *
+    //- * * Testimonials  * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+
+            .row
+
+                .col-lg-6.mb-5.mb-lg-0.divider-right(data-aos='fade')
+                    .testimonial.p-lg-5
+                        .testimonial-brand.text-gray-400
+                            include /assets/img/brand-logos/google.svg
+                        p.testimonial-quote.text-primary
+                            | "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut error vel omnis adipisci. Ad nam officiis sapiente dicta incidunt harum."
+                        .testimonial-name
+                            | Adam Hall
+                        .testimonial-position
+                            | Head of Engineering
+                .col-lg-6(data-aos='fade', data-aos-delay='100')
+                    .testimonial.p-lg-5
+                        .testimonial-brand.text-gray-400
+                            include /assets/img/brand-logos/instagram.svg
+                        p.testimonial-quote.text-primary
+                            | "Adipisci mollitia nemo magnam iure, temporibus molestiae odit, sit harum dolores neque maiores quo eligendi nam corrupti."
+                        .testimonial-name
+                            | Lia Peterson
+                        .testimonial-position
+                            | Technical Project Manager
+
+    //- * * * * * * * * * * *
+    //- * * Feature Cards * *
+    //- * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: ''
+    })
+
+        .container
+            .row.justify-content-center
+                .col-lg-6
+                    .text-center
+                        .text-xs.text-uppercase-expanded.text-primary.mb-2 Application Features
+                        h2.mb-5 We have a simple solution to a complex problem
+            .row
+                .col-lg-4.col-md-6.mb-5(data-aos='fade-up')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-green-soft.text-green.mb-4
+                                i(data-feather='layers')
+                            h5 Components
+                            p.card-text.small Our product is full of customized and extendable components.
+                .col-lg-4.col-md-6.mb-5(data-aos='fade-up', data-aos-delay='100')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-red-soft.text-red.mb-4
+                                i(data-feather='tool')
+                            h5 Utilities
+                            p.card-text.small Powerful utility classes makes it easy to customize your product.
+                .col-lg-4.col-md-6.mb-5(data-aos='fade-up', data-aos-delay='150')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-yellow-soft.text-yellow.mb-4
+                                i(data-feather='layout')
+                            h5 Layouts
+                            p.card-text.small Our flex based layouts offer a beautifully reponsive approach.
+                .col-lg-4.col-md-6.mb-5.mb-lg-0(data-aos='fade-up')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-purple-soft.text-purple.mb-4
+                                i(data-feather='book')
+                            h5 Documentation
+                            p.card-text.small Our code is fully documented with instructions and usage examples.
+                .col-lg-4.col-md-6.mb-5.mb-md-0(data-aos='fade-up', data-aos-delay='100')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-blue-soft.text-blue.mb-4
+                                i(data-feather='code')
+                            h5 Code Snippets
+                            p.card-text.small Use code snippets to easily drop new components into your project.
+                .col-lg-4.col-md-6(data-aos='fade-up', data-aos-delay='150')
+                    a.card.text-center.text-decoration-none.h-100.lift(href='#!')
+                        .card-body.py-5
+                            .icon-stack.icon-stack-lg.bg-orange-soft.text-orange.mb-4
+                                i(data-feather='package')
+                            h5 Plugins
+                            p.card-text.small We've implemented powerful third party plugins for added functionality.
+
+
+    //- * * * * * * * * * * * *
+    //- * * Get App Section * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: false,
+        svgBorderRounded: false,
+        svgBorderWaves: true,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+            .row.align-items-center
+                .col-lg-6
+                    h4 Get the app now!
+                    p.lead.mb-5.mb-lg-0 Ready to get started? Download the app now!
+                .col-lg-6.text-lg-right
+                    a.mr-3(href='javascript:void(0);')
+                        img(src='assets/img/app-store-badge.svg', style="height: 3rem;")
+                    a(href='javascript:void(0);')
+                        img(src='assets/img/google-play-badge.svg', style="height: 3rem;")
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })
+
+append scripts
+    script(src='https://unpkg.com/aos@next/dist/aos.js')
+    script.
+        AOS.init({
+            disable: 'mobile',
+            duration: 600,
+            once: true
+        });

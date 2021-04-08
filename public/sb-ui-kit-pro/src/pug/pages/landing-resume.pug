@@ -1,0 +1,214 @@
+extends ../layouts/default.pug
+
+block config
+
+    //- Global Page Configuration
+    - var pageTitle = 'Resume'
+
+block content
+
+    //- * * * * * * * *
+    //- * * Navbar  * *
+    //- * * * * * * * *
+
+    include mixins/navbar.pug
+    +navbar({
+        navbarBg: 'bg-white',
+        navbarStyle: 'navbar-light',
+        navbarBrandColor: 'text-dark',
+        navbarBtnColor: 'btn-teal',
+        navbarContainer: 'container',
+    })
+
+    //- * * * * * * * * * *
+    //- * * Page Header * *
+    //- * * * * * * * * * *
+
+    include mixins/header.pug
+    +header({
+        pageHeaderBg: 'bg-img-cover overlay overlay-60',
+        pageHeaderBgImg: 'background-image: url("https://source.unsplash.com/6dW3xyQvcYE/1600x1200")',
+        pageHeaderStyle: 'page-header-dark',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .page-header-content.py-15
+            .container
+                .row
+                    .col-xl-6.col-lg-8
+                        h1.page-header-title Chris Kelly
+                        p.page-header-text.mb-5 I am a sales professional specializing in product marketing and distribution based in Clarcton, MA
+                        a.btn.btn-marketing.rounded-pill.btn-teal.lift.lift-sm(href='#!')
+                            i.fas.fa-file-pdf.mr-2
+                            | Download Resume
+
+    //- * * * * * * * * * * * * * *
+    //- * * Experience Section  * *
+    //- * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .container
+
+            .text-uppercase-expanded.small.mb-2 Experience
+            hr.mt-0.mb-5
+
+            .row.mb-5
+                .col-lg-8
+                    h4.mb-0 Senior Sales Analyst
+                    p.lead Intelitec Solutions
+                    p Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+                .col-lg-4.text-lg-right
+                    .text-gray-400.small May 2018 - Present
+            .row.mb-5
+                .col-lg-8
+                    h4.mb-0 Marketing Analyst
+                    p.lead Shout Media Productions
+                    p Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+                .col-lg-4.text-lg-right
+                    .text-gray-400.small August 2015 - May 2018
+
+            .row
+                .col-lg-8
+                    h4.mb-0 Sales Representative
+                    p.lead Gamby Enterprises
+                    p Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
+                .col-lg-4.text-lg-right
+                    .text-gray-400.small June 2011 - August 2015
+
+
+    //- * * * * * * * * * * * * * *
+    //- * * Education Section  * *
+    //- * * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+
+            .text-uppercase-expanded.small.mb-2 Education
+            hr.mt-0.mb-5
+
+            .row.mb-5
+                .col-lg-8
+                    h4.mb-0 University of Colorado Boulder
+                    p.lead Master of Business Administration (MBA)
+                    p Graduated from University of Colorado Boulder's lockstep evening MBA program
+                .col-lg-4.text-lg-right
+                    .text-gray-400.small September 2013 - May 2015
+            .row
+                .col-lg-8
+                    h4.mb-0 Clarcton University
+                    p.lead Bachelor of Science
+                    p Graduated with a degree in Marketing, with a specialization in product management and a minor in Finance
+                .col-lg-4.text-lg-right
+                    .text-gray-400.small August 2009 - May 2013
+
+    //- * * * * * * * * * * * *
+    //- * * Skills Section  * *
+    //- * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-light'
+    })
+
+        .container
+
+            .text-uppercase-expanded.small.mb-2 Skills
+            hr.mt-0.mb-5
+
+            .row
+                .col-lg-8
+                    p Attention to detail and a general sense of product viability are my specialties. I am motivated to provide value in a team environment, and I am committed to creating the best possible experience for customers.
+                    ul.mb-0.text-gray-700
+                        li Market analysis
+                        li Supply chain management
+                        li Business plan preparation
+                        li Technological entrepreneurship
+                        li Report generation
+                        li Presentation creation
+
+    //- * * * * * * * * * * * * *
+    //- * * Interests Section * *
+    //- * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-light',
+        sectionPadding: 'py-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-white'
+    })
+
+        .container
+
+            .text-uppercase-expanded.small.mb-2 Interests
+            hr.mt-0.mb-5
+
+            .row
+                .col-lg-8
+                    p Apart from being a marketing analyst, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.
+                    p When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the marketing management world.         
+
+    //- * * * * * * * * * * * * *
+    //- * * Contact Section * *
+    //- * * * * * * * * * * * * *
+
+    include mixins/section.pug
+    +section({
+        sectionBg: 'bg-white',
+        sectionPadding: 'py-10',
+        svgBorderAngled: true,
+        svgBorderRounded: false,
+        svgBorderWaves: false,
+        svgBorderFill: 'text-dark'
+    })
+
+        .container
+
+            .text-uppercase-expanded.small.mb-2 Contact
+            hr.mt-0.mb-5
+
+            .row
+                .col-lg-8.mb-4.mb-lg-0
+                    h3 Chris Kelly
+                    p.lead.mb-0 (555) 392-0323
+                    a(href='#!') ckelly@example.com
+                .col-lg-4.text-lg-right
+                    a.btn.btn-marketing.btn-teal.rounded-pill(href='#!')
+                        i.fas.fa-file-pdf.mr-2
+                        | Download Resume
+
+block footer
+
+    include mixins/footer.pug
+    +footer({
+        footerBg: 'bg-dark',
+        footerStyle: 'footer-dark'
+    })
