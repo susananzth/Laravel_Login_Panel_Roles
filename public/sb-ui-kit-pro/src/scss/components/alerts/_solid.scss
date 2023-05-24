@@ -1,8 +1,0 @@
-@each $color, $value in $theme-colors {
-    .alert-#{$color}.alert-solid {
-        @include alert-variant($value, $value, color-yiq($value));
-        .close {
-            color: color-yiq($value);
-        }
-    }
-}
