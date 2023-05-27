@@ -8,7 +8,8 @@ Proyecto base de inicio de sesión (login) en **Laravel 10** utilizando **Larave
 * Confirmación de contraseña.
 * Perfil del usuario.
 
-Agregando perzonalizacion y funcionalidades adicionales como:
+Agregando perzonalización y funcionalidades adicionales como:
+* Logo y colores representativos de la marca.
 * Respuesta de excepciones.
 * Cambio de lenguaje entre Español - Inglés.
 * Mayor información del usuario.
