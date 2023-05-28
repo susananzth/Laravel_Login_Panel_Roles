@@ -21,8 +21,9 @@
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <div class="shrink-0 flex items-center">
-                            <a href="{{ '/' }}">
+                            <a href="{{ '/' }}" class="flex items-center">
                                 <x-application-logo class="block h-9 w-auto fill-current text-slate-800 dark:text-slate-200" />
+                                <span class="font-medium dark:text-neutral-200 px-2">Susananzth</span>
                             </a>
                         </div>
                     </div>
@@ -35,8 +36,14 @@
                             active:border-pink-400 dark:active:border-pink-600
                             transition duration-150 ease-in-out">
                             <x-slot name="trigger">
-                                <button>
-                                    <div>{{ __('Language') }}, {{ strtoupper(app()->getLocale()) }}</div>
+                                <button class="inline-flex items-center">
+                                    <div>
+                                        <span class="hidden sm:inline">{{ __('Language') }},</span>
+                                        {{ strtoupper(app()->getLocale()) }}
+                                    </div>
+                                    <div class="ml-1 text-xs">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
                                 </button>
                             </x-slot>
 
