@@ -16,22 +16,22 @@
     </head>
     <body class="font-sans antialiased">
 
-        <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+        <nav class="bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <div class="shrink-0 flex items-center">
                             <a href="{{ '/' }}">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                                <x-application-logo class="block h-9 w-auto fill-current text-slate-800 dark:text-slate-200" />
                             </a>
                         </div>
                     </div>
                     <div class="flex">
                         <x-dropdown align="right" width="48" class="inline-flex items-center px-2 pt-1 border-b-2 border-transparent
-                            text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700
-                            dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none
-                            focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700
-                            active:border-indigo-400 dark:active:border-indigo-600
+                            text-sm font-medium leading-5 text-slate-500 dark:text-slate-400 hover:text-slate-700
+                            dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 focus:outline-none
+                            focus:text-slate-700 dark:focus:text-slate-300 focus:border-slate-300 dark:focus:border-slate-700
+                            active:border-pink-400 dark:active:border-pink-600
                             transition duration-150 ease-in-out">
                             <x-slot name="trigger">
                                 <button>
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </nav>
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-slate-100 dark:bg-slate-900">
             {{ $slot }}
         </div>
     </body>
