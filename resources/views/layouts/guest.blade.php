@@ -27,6 +27,7 @@
                         </div>
                     </div>
                     <div class="flex">
+                        @if(count(config('app.languages')) > 1)
                         <x-dropdown align="right" width="48" class="inline-flex items-center px-2 pt-1 border-b-2 border-transparent
                             text-sm font-medium leading-5 text-slate-500 dark:text-slate-400 hover:text-slate-700
                             dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 focus:outline-none
@@ -35,19 +36,19 @@
                             transition duration-150 ease-in-out">
                             <x-slot name="trigger">
                                 <button>
-                                    <div>{{ __('Language') }}</div>
+                                    <div>{{ __('Language') }}, {{ strtoupper(app()->getLocale()) }}</div>
                                 </button>
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile.edit')">
-                                    {{ __('Español') }}
+                                @foreach(config('app.languages') as $lang_locale => $lang_name)
+                                <x-dropdown-link :href="url()->current().'?lang='.$lang_locale">
+                                    @lang($lang_name) ({{ strtoupper($lang_locale) }})
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('profile.edit')">
-                                    {{ __('English') }}
-                                </x-dropdown-link>
+                                @endforeach
                             </x-slot>
                         </x-dropdown>
+                        @endif
                         @if (Route::has('login'))
                             @auth
                                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
