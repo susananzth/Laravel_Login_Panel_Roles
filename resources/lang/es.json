@@ -10,6 +10,7 @@
     "Add": "Agregar",
     "Save": "Guardar",
     "Edit": "Editar",
+    "Actions": "Acciones",
     "Profile": "Perfil",
     "Profile Information": "Información de perfil",
     "Cancel": "Cancelar",
@@ -22,6 +23,12 @@
     "Reset password": "Restablecer contraseña",
     "Email Password Reset Link": "Enviar enlace de restablecimiento de contraseña",
     "Confirm Password": "Confirmar Contraseña",
+    "Language": "Idioma",
     "Register": "Registrarse",
-    "Name": "Nombre"
+    "Name": "Nombre",
+    "Status": "Estado",
+    "Created at": "Creado en",
+    "Updated at": "Actualizado en",
+    "Role": "Rol",
+    "Roles": "Roles"
 }
