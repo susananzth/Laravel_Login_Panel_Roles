@@ -17,6 +17,8 @@
     "Email": "Correo electrónico",
     "Password": "Contraseña",
     "Remember me": "Recuérdame",
+    "Permissions": "Permisos",
+    "Title": "Título",
     "Forgot your password?": "¿Olvidó contraseña?",
     "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "¿Olvidaste tu contraseña? No hay problema. Simplemente háganos saber su dirección de correo electrónico y le enviaremos un enlace de restablecimiento de contraseña que le permitirá elegir una nueva.",
     "Already registered? Log in":"¿Ya estás registrado(a)? Inicia sesión",
