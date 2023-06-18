@@ -10,14 +10,13 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="bg-slate-100 dark:bg-slate-900">
-            @include('layouts.navigation')
-            <div class="md:pl-[15rem] ">
+            <div class="md:pl-[15rem] pt-16 flex flex-col min-h-screen">
+                @include('layouts.navigation')
                 <!-- Page Heading -->
                 @if (isset($header))
                     <header class="bg-white dark:bg-slate-800 shadow">
@@ -28,9 +27,17 @@
                 @endif
 
                 <!-- Page Content -->
-                <main>
+                <main class="flex-grow">
                     {{ $slot }}
                 </main>
+                <footer
+                    class="text-center border-t lg:text-left">
+                    <div class="p-4 text-center text-slate-700 dark:text-slate-200">
+                        © 2020 - 2023 Copyright:
+                        <a class="text-slate-800 dark:text-slate-400"
+                        href="https://tailwind-elements.com/">Susana Piñero Rodríguez</a>
+                    </div>
+                </footer>
             </div>
         </div>
     </body>
