@@ -32,5 +32,8 @@
     "Created at": "Creado en",
     "Updated at": "Actualizado en",
     "Role": "Rol",
-    "Roles": "Roles"
+    "Roles": "Roles",
+    "Create Role": "Crear Rol",
+    "Edit Role": "Editar Rol",
+    "Delete Role": "Eliminar Rol"
 }
