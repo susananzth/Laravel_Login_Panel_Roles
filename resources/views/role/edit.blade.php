@@ -19,15 +19,15 @@
 
                         <div>
                             <x-input-label for="title" :value="__('Title')" />
-                            <x-text-input id="title" name="title" type="text" 
-                                class="mt-1 block w-full" maxlength="150" 
-                                :value="old('title', $role->title)" 
+                            <x-text-input id="title" name="title" type="text"
+                                class="mt-1 block w-full" maxlength="150"
+                                :value="old('title', $role->title)"
                                 required autofocus autocomplete="title" />
                             <x-input-error class="mt-2" :messages="$errors->get('title')" />
                         </div>
                         <div>
                             <x-input-label for="permission" :value="__('Permissions')" />
-                            <x-select-input id="permission" name="permission[]" type="text" 
+                            <x-select-input id="permission" name="permission[]" type="text"
                                 class="mt-1 block w-full" required multiple>
                                 @php $name_menu = ""; @endphp
                                 @foreach ($permissions as $item)
@@ -44,10 +44,10 @@
 
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __('Update') }}</x-primary-button>
-                            <x-secondary-button-link href="{{route('role.index')}}">
+                            <x-secondary-button-link href="{{route('roles')}}">
                                 {{ __('Cancel') }}
                             </x-secondary-button-link>
-                
+
                             @if (session('status') === 'role-updated')
                                 <p
                                     x-data="{ show: true }"

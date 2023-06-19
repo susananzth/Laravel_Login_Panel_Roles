@@ -36,12 +36,12 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         if (Gate::denies('role_edit')) {
-            return redirect()->route('role.index')
+            return redirect()->route('roles')
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         } else {
             if ($role->id == 1) {
-                return redirect()->route('role.index')
+                return redirect()->route('roles')
                 ->with('message', trans('message.Editing or deleting parent roles is not allowed. Contact the administrator.'))
                 ->with('alert_class', 'danger');
             } else {

@@ -87,7 +87,7 @@
         <div class="pt-4 pb-1 border-t border-slate-200 dark:border-slate-600">
             <div class="mt-3 space-y-1">
                 @can('role_index')
-                <x-responsive-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
+                <x-responsive-nav-link :href="route('roles')" :active="request()->routeIs('role.index')">
                     {{ __('Roles') }}
                 </x-responsive-nav-link>
                 @endcan

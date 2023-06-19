@@ -1,17 +1,24 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-200 leading-tight">
-            {{ __('Roles') }}
-        </h2>
-    </x-slot>
+<x-slot name="header">
+    <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-200 leading-tight">
+        {{ __('Roles') }}
+    </h2>
+</x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-slate-800 shadow sm:rounded-lg">
-                <x-validation-errors/>
-                <div class="flex flex-col">
-                    <div class="inline-block min-w-full">
-                        <div class="rounded overflow-x-auto">
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+        <div class="p-4 sm:p-8 bg-white dark:bg-slate-800 shadow sm:rounded-lg">
+            @if($addRol)
+                @include('role.create')
+            @endif
+            <x-validation-errors/>
+            <div class="flex flex-col">
+                <div class="inline-block min-w-full">
+                    @if(!$addRol)
+                        <x-primary-button type="button" wire:click="create()" class="mb-2">
+                            <i class="fa-solid fa-plus me-1"></i>{{ __('Create Role') }}
+                        </x-primary-button>
+                    @endif
+                    <div class="rounded overflow-x-auto">
                         <table class="min-w-full text-left text-sm font-light">
                             <thead class="border-b bg-slate-800 font-medium text-white dark:border-slate-500 dark:bg-slate-900">
                                 <tr>
@@ -31,17 +38,12 @@
                                     <td class="whitespace-nowrap border-r px-6 py-4">{{ $role->created_at }}</td>
                                     <td class="whitespace-nowrap border-r px-6 py-4">{{ $role->updated_at }}</td>
                                     <td class="whitespace-nowrap text-center px-6 py-4">
-                                        <a href="{{ route('role.show', $role->id) }}" data-bs-tooltip="tooltip"
-                                            data-bs-placement="top" title="@lang('See Role')" class="btn-table btn-show me-1">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-                                        <a href="{{ route('role.edit', $role->id) }}" data-bs-tooltip="tooltip"
+                                        <a href="#" wire:click="edit({{ $role->id }})" data-bs-tooltip="tooltip"
                                             data-bs-placement="top" title="@lang('Edit Role')" class="btn-table me-1">
                                             <i class="fa-solid fa-edit"></i>
                                         </a>
-                                        <a href="#" data-id="{{$role->id}}" data-bs-toggle="modal" data-bs-target="#modal_delete"
-                                            data-bs-tooltip="tooltip" data-bs-placement="top" title="@lang('Delete Role')"
-                                            class="btn-table btn-delete me-1">
+                                        <a href="#" onclick="delete({{$role->id}})" data-bs-tooltip="tooltip" data-bs-placement="top"
+                                            title="@lang('Delete Role')" class="btn-table btn-delete me-1">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>
@@ -49,10 +51,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
