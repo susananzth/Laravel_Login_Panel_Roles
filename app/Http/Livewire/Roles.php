@@ -48,6 +48,7 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         } else {
             $this->roles = Role::latest()->get();
+            $this->listeners['refreshRoles'] = '$refresh';
             return view('role.index');
         }
     }
@@ -132,6 +133,7 @@ class Roles extends Component
         $this->addRol = false;
         $this->update_rol = false;
         $this->resetFields();
+        $this->emit('refreshRoles');
     }
 
     /**
