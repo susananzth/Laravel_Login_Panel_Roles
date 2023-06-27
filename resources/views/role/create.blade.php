@@ -1,4 +1,4 @@
-<x-modal name="create-role" wire:model="addRol" focusable>
+<x-modal title="Create New Role" wire:model="addRol" focusable>
     <form class="mt-6 space-y-6">
         @method('patch')
         @csrf
@@ -16,7 +16,7 @@
             <x-input-error class="mt-2" :messages="$errors->get('title')" />
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex justify-end gap-4">
             <x-primary-button type="button" wire:click.prevent="store()">
                 {{ __('Save') }}
             </x-primary-button>
