@@ -1,6 +1,6 @@
 <x-slot name="header">
     <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-200 leading-tight">
-        {{ __('Roles') }}
+        <i class="fa-solid fa-user-gear me-1"></i>{{ __('Roles') }}
     </h2>
 </x-slot>
 

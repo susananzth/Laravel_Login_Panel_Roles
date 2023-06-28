@@ -34,6 +34,8 @@
     "Role": "Rol",
     "Roles": "Roles",
     "Create Role": "Crear Rol",
+    "Create new role": "Crear nuevo rol",
     "Edit Role": "Editar Rol",
-    "Delete Role": "Eliminar Rol"
+    "Delete Role": "Eliminar Rol",
+    "Fields marked with * are required": "Los campos marcados con * son obligatorios"
 }

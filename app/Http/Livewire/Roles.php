@@ -73,8 +73,8 @@ class Roles extends Component
 
     /**
      * store the user inputted role data in the roles table
-    * @return void
-    */
+     * @return void
+     */
     public function store()
     {
         $this->validate();
@@ -113,6 +113,18 @@ class Roles extends Component
      */
     public function update()
     {
+        if (!Gate::denies('role_edit')) {
+            return redirect()->route('roles')
+                ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
+                ->with('alert_class', 'danger');
+        } else {
+            $this->resetFields();
+            $this->addRol = true;
+            $this->update_rol = false;
+            $this->permissions = Permission::latest()->get();
+            return view('role.create');
+        }
+
         $this->validate();
 
         Role::whereId($this->role_id)->update([

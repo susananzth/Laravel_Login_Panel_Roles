@@ -80,19 +80,28 @@
     <!-- Sidebar -->
     <div :class="{'block': open, 'hidden': ! open}" class="md:block fixed h-screen w-60 overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-zinc-800">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="flex flex-row">
+                <div class="basis-6">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <span>{{ __('Dashboard') }}</span>
             </x-responsive-nav-link>
         </div>
         <div class="pt-4 pb-1 border-t border-slate-200 dark:border-slate-600">
             <div class="mt-3 space-y-1">
                 @can('role_index')
-                <x-responsive-nav-link :href="route('roles')" :active="request()->routeIs('role.index')">
-                    {{ __('Roles') }}
+                <x-responsive-nav-link :href="route('roles')" :active="request()->routeIs('role.index')" class="flex flex-row">
+                    <div class="basis-6">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <span>{{ __('Roles') }}</span>
                 </x-responsive-nav-link>
                 @endcan
-                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                    {{ __('Profile') }}
+                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')" class="flex flex-row">
+                    <div class="basis-6">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span>{{ __('Profile') }}</span>
                 </x-responsive-nav-link>
             </div>
         </div>
