@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class Roles extends Component
 {
-    public $roles, $permissions, $title, $role_id, $update_rol = false, $addRol = false;
+    public $roles, $permissions, $title, $role_id, $update_rol = false, $addRol = false, $activeItem = null;
 
     /**
      * delete action listener
@@ -64,12 +64,44 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         } else {
             $this->resetFields();
+            $this->activeItem = null;
             $this->addRol = true;
             $this->update_rol = false;
-            $this->permissions = Permission::latest()->get();
+            $list_permissions = Permission::latest()->get();
+            
+            $title_menu = '';
+            $permisions = [];
+            foreach ($list_permissions as $permission) {
+                if ($title_menu != $permission->menu) {
+                    $title_menu = $permission->menu;
+    
+                    $checkbox       = New \stdClass();
+                    $checkbox->menu = $title_menu;
+                    $checkbox->permissions = [];
+
+                    foreach ($list_permissions as $item) {
+                        if ($title_menu == $item->menu) {
+                            $children = (object)[];
+                            $children->id = $item->id;
+                            $children->permission = $item->permission;
+                            $checkbox->permissions[] = $children;
+                        }
+                    }
+
+                    $permisions[] = $checkbox;
+                }
+            }
+
+            $this->permissions = $permisions;
             return view('role.create');
         }
     }
+
+    public function toggle($index)
+    {
+        $this->activeItem = $this->activeItem === $index ? null : $index;
+    }
+
 
     /**
      * store the user inputted role data in the roles table

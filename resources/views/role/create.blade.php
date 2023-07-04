@@ -1,4 +1,4 @@
-<x-modal title="{{ _('Create new role') }}" wire:model="addRol" focusable>
+<x-modal title="{{ _('Create new role') }}" wire:model="addRol" focusable wire:initial-data="{ 'activeItem': $activeItem }">
     <form class="mt-6 space-y-6">
         @method('patch')
         @csrf
@@ -17,14 +17,26 @@
         </div>
         <div>
             <h4>{{ __('Permissions') }}</h4>
-
             <ul>
-                @foreach ($permissions as $permission)
+                @foreach ($permissions as $index => $item)
                     <li>
-                        <label>
-                            <input type="checkbox" wire:model="permissions.{{ $permission->id }}">
-                            {{ $permission->menu }} - {{ $permission->permission }}
-                        </label>
+                        <h5 x-on:click="toggle({{ $index }})"
+                            class="w-full flex justify-between items-center py-2 px-4 bg-gray-200 
+                            cursor-pointer font-semibold text-lg text-slate-800 dark:text-slate-200 leading-tight">
+                            <input type="checkbox" wire:model="menu.{{ $item->menu }}">
+                            {{ __($item->menu) }}
+                            <span x-bind:class="{ 'transform rotate-180': {{ $activeItem }} === {{ $index }} }" class="transition-transform duration-300 ease-in-out">
+                                &#9650;
+                            </span>
+                        </h5>
+                        <ul x-show="{{ $activeItem }} === {{ $index }}" class="px-4 py-2 bg-white">
+                            @foreach ($item->permissions as $child)
+                                <li class="text-slate-800 dark:text-slate-200 leading-tight">
+                                    <input type="checkbox" wire:model="permissions.{{ $child->id }}">
+                                    {{ __($child->permission) }}
+                                </li>
+                            @endforeach
+                        </ul>
                     </li>
                 @endforeach
             </ul>
