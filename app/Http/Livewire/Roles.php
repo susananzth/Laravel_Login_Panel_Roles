@@ -11,35 +11,18 @@ use Livewire\Component;
 
 class Roles extends Component
 {
-    public $roles, $permissions, $title, $role_id, $update_rol = false, $addRol = false, $activeItem = null;
+    public $roles, $permissions, $title, $role_id, $update_rol = false, $addRol = false, $selectedPermissions = [];
 
-    /**
-     * delete action listener
-     */
-    protected $listeners = [
-        'deleteRoleListner'=>'delete'
-    ];
+    protected $listeners = ['render'];
 
-    /**
-     * List of add/edit form rules
-     */
     protected $rules = [
-        'title' => 'required',
-        'description' => 'required'
+        'title' => ['required', 'string', 'max:255'],
     ];
 
-    /**
-     * Reseting all inputted fields
-     * @return void
-     */
     public function resetFields(){
         $this->title = '';
     }
 
-    /**
-     * render the role data
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function render()
     {
         if (Gate::denies('role_index')) {
@@ -52,10 +35,6 @@ class Roles extends Component
         }
     }
 
-    /**
-     * Open Add Role form
-     * @return void
-     */
     public function create()
     {
         if (!Gate::denies('role_add')) {
@@ -64,17 +43,16 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         } else {
             $this->resetFields();
-            $this->activeItem = null;
             $this->addRol = true;
             $this->update_rol = false;
             $list_permissions = Permission::latest()->get();
-            
+
             $title_menu = '';
             $permisions = [];
             foreach ($list_permissions as $permission) {
                 if ($title_menu != $permission->menu) {
                     $title_menu = $permission->menu;
-    
+
                     $checkbox       = New \stdClass();
                     $checkbox->menu = $title_menu;
                     $checkbox->permissions = [];
@@ -90,41 +68,31 @@ class Roles extends Component
 
                     $permisions[] = $checkbox;
                 }
-            }
+            };
 
             $this->permissions = $permisions;
             return view('role.create');
         }
     }
 
-    public function toggle($index)
-    {
-        $this->activeItem = $this->activeItem === $index ? null : $index;
-    }
-
-
-    /**
-     * store the user inputted role data in the roles table
-     * @return void
-     */
     public function store()
     {
         $this->validate();
 
-        Role::create([
-            'title' => $this->title,
-            'description' => $this->description
+        $role = Role::create([
+            'title' => $this->title
         ]);
-        session()->flash('message', trans('messages.Created Successfully.', ['name' => __('Role')]));
+        $role->permissions()->attach(array_keys($this->selectedPermissions));
+        $role->save();
+
+        $this->emit('render');
         $this->resetFields();
         $this->addRol = false;
+
+        session()->flash('message', trans('message.Created Successfully.', ['name' => __('Role')]));
+        session()->flash('alert_class', 'success');
     }
 
-    /**
-     * show existing role data in edit role form
-     * @param mixed $id
-     * @return void
-     */
     public function edit($id)
     {
         $role = Role::findOrFail($id);
@@ -139,10 +107,6 @@ class Roles extends Component
         $this->addRol = false;
     }
 
-    /**
-     * update the role data
-     * @return void
-     */
     public function update()
     {
         if (!Gate::denies('role_edit')) {
@@ -162,15 +126,11 @@ class Roles extends Component
         Role::whereId($this->role_id)->update([
             'title' => $this->title,
         ]);
-        session()->flash('message', trans('messages.Updated Successfully.', ['name' => __('Role')]));
+        session()->flash('message', trans('message.Updated Successfully.', ['name' => __('Role')]));
         $this->resetFields();
         $this->update_rol = false;
     }
 
-    /**
-     * Cancel Add/Edit form and redirect to role listing page
-     * @return void
-     */
     public function cancel()
     {
         $this->addRol = false;
@@ -178,14 +138,9 @@ class Roles extends Component
         $this->resetFields();
     }
 
-    /**
-     * delete specific role data from the roles table
-     * @param mixed $id
-     * @return void
-     */
     public function delete($id)
     {
         Role::find($id)->delete();
-        session()->flash('message', trans('messages.Deleted Successfully.', ['name' => __('Role')]));
+        session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('Role')]));
     }
 }

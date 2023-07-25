@@ -1,6 +1,5 @@
-<x-modal title="{{ _('Create new role') }}" wire:model="addRol" focusable wire:initial-data="{ 'activeItem': $activeItem }">
-    <form class="mt-6 space-y-6">
-        @method('patch')
+<x-modal title="{{ _('Create new role') }}" wire:model="addRol" focusable>
+    <form class="mt-6 space-y-6" method="POST">
         @csrf
         <x-validation-errors/>
         <p class="italic text-sm text-red-700 m-0">
@@ -15,31 +14,34 @@
                 required autofocus autocomplete="title" />
             <x-input-error class="mt-2" :messages="$errors->get('title')" />
         </div>
-        <div>
-            <h4>{{ __('Permissions') }}</h4>
-            <ul>
-                @foreach ($permissions as $index => $item)
-                    <li>
-                        <h5 x-on:click="toggle({{ $index }})"
-                            class="w-full flex justify-between items-center py-2 px-4 bg-gray-200 
-                            cursor-pointer font-semibold text-lg text-slate-800 dark:text-slate-200 leading-tight">
-                            <input type="checkbox" wire:model="menu.{{ $item->menu }}">
-                            {{ __($item->menu) }}
-                            <span x-bind:class="{ 'transform rotate-180': {{ $activeItem }} === {{ $index }} }" class="transition-transform duration-300 ease-in-out">
-                                &#9650;
-                            </span>
-                        </h5>
-                        <ul x-show="{{ $activeItem }} === {{ $index }}" class="px-4 py-2 bg-white">
-                            @foreach ($item->permissions as $child)
-                                <li class="text-slate-800 dark:text-slate-200 leading-tight">
-                                    <input type="checkbox" wire:model="permissions.{{ $child->id }}">
-                                    {{ __($child->permission) }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
-            </ul>
+        <h4>{{ __('Permissions') }}</h4>
+        <div x-data="{ openMenus: [] }">
+            @foreach($permissions as $item)
+            @php
+                $itemMenu = is_object($item) ? $item->menu : $item['menu'];
+            @endphp
+            <div class="border rounded-lg">
+                <button type="button" 
+                    x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')" 
+                    class="w-full text-left px-4 py-2 bg-gray-200 rounded-t-lg">
+                    {{ $itemMenu }}
+                </button>
+                <div x-show="openMenus.includes('{{ $itemMenu }}')" class="p-4 space-y-2">
+                    @php
+                        $itemPermissions = is_object($item) ? $item->permissions : $item['permissions'];
+                    @endphp
+                    @foreach($itemPermissions as $per)
+                    @php
+                        $id = is_object($per) ? $per->id : $per['id'];
+                    @endphp
+                    <div class="flex items-center space-x-2">
+                        <input type="checkbox" wire:model="selectedPermissions.{{ $id }}">
+                        <span>{{ is_object($per) ? $per->permission : $per['permission'] }}</span>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endforeach
         </div>
 
         <div class="flex justify-end gap-4">
