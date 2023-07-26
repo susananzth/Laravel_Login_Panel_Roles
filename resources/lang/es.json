@@ -49,5 +49,7 @@
     "Create new role": "Crear nuevo rol",
     "Edit Role": "Editar Rol",
     "Delete Role": "Eliminar Rol",
-    "Fields marked with * are required": "Los campos marcados con * son obligatorios"
+    "Fields marked with * are required": "Los campos marcados con * son obligatorios",
+    "Are you sure you want to delete the record?": "¿Está seguro(a) de eliminar el registro?",
+    "Once the record is deleted, all data will be permanently erased.": "Una vez eliminado el registro, todos los datos se borrarán permanentemente."
 }

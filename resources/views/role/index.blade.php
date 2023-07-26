@@ -33,14 +33,16 @@
                                     <td class="whitespace-nowrap border-r px-6 py-4">{{ $role->created_at }}</td>
                                     <td class="whitespace-nowrap border-r px-6 py-4">{{ $role->updated_at }}</td>
                                     <td class="whitespace-nowrap text-center px-6 py-4">
-                                        <a href="#" wire:click="edit({{ $role->id }})" data-bs-tooltip="tooltip"
-                                            data-bs-placement="top" title="@lang('Edit Role')" class="btn-table me-1">
-                                            <i class="fa-solid fa-edit"></i>
-                                        </a>
-                                        <a href="#" onclick="delete({{$role->id}})" data-bs-tooltip="tooltip" data-bs-placement="top"
-                                            title="@lang('Delete Role')" class="btn-table btn-delete me-1">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
+                                        <x-tooltip :content="__('Edit Role')">
+                                            <a href="#" wire:click="edit({{ $role->id }})" class="me-1">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </a>
+                                        </x-tooltip>
+                                        <x-tooltip :content="__('Delete Role')">
+                                            <a href="#" wire:click="setDeleteId({{ $role->id }})">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </x-tooltip>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -51,6 +53,24 @@
             </div>
             @if($addRol)
                 @include('role.create')
+            @endif
+            @if($deleteRol)
+                <x-modal wire:model="deleteRol" focusable
+                    :title="__('Are you sure you want to delete the record?')">
+
+                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                            {{ __('Once the record is deleted, all data will be permanently erased.') }}
+                        </p>
+            
+                        <div class="mt-6 flex justify-end gap-4">
+                            <x-secondary-button wire:click.prevent="cancel()">
+                                <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
+                            </x-secondary-button>
+                            <x-danger-button type="button" wire:click.prevent="delete()">
+                                <i class="fa-solid fa-trash me-1"></i>{{ __('Delete') }}
+                            </x-danger-button>
+                        </div>
+                </x-modal>
             @endif
         </div>
     </div>
