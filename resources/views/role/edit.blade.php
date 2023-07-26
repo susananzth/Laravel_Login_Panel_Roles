@@ -43,20 +43,12 @@
                         </div>
 
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Update') }}</x-primary-button>
+                            <x-primary-button>
+                                <i class="fa-solid fa-save me-1"></i>{{ __('Update') }}
+                            </x-primary-button>
                             <x-secondary-button-link href="{{route('roles')}}">
-                                {{ __('Cancel') }}
+                                <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
                             </x-secondary-button-link>
-
-                            @if (session('status') === 'role-updated')
-                                <p
-                                    x-data="{ show: true }"
-                                    x-show="show"
-                                    x-transition
-                                    x-init="setTimeout(() => show = false, 2000)"
-                                    class="text-sm text-gray-600 dark:text-gray-400"
-                                >{{ __('Updated.') }}</p>
-                            @endif
                         </div>
                     </form>
                 </div>
