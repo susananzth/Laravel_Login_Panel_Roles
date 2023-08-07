@@ -89,6 +89,14 @@
         </div>
         <div class="pt-4 pb-1 border-t border-slate-200 dark:border-slate-600">
             <div class="mt-3 space-y-1">
+                @can('user_index')
+                <x-responsive-nav-link :href="route('users')" :active="request()->routeIs('user.index')" class="flex flex-row">
+                    <div class="basis-6">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <span>{{ __('Users') }}</span>
+                </x-responsive-nav-link>
+                @endcan
                 @can('role_index')
                 <x-responsive-nav-link :href="route('roles')" :active="request()->routeIs('role.index')" class="flex flex-row">
                     <div class="basis-6">
