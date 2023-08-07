@@ -34,7 +34,7 @@
                                     <td class="whitespace-nowrap border-r px-6 py-4">{{ Carbon\Carbon::parse($role->created_at)->format('d/m/Y h:m:s') }}</td>
                                     <td class="whitespace-nowrap border-r px-6 py-4">{{ Carbon\Carbon::parse($role->updated_at)->format('d/m/Y h:m:s') }}</td>
                                     <td class="whitespace-nowrap border-r px-6 py-4">
-                                        @if ($role->status = 1)
+                                        @if ($role->status = true)
                                             <span
                                                 class="inline-block whitespace-nowrap rounded-full bg-emerald-400 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-white">
                                                 {{ __('Active') }}

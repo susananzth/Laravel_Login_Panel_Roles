@@ -17,19 +17,19 @@ class RoleSeeder extends Seeder
         $roles = [
             [
                 'title' => 'Super Admin',
-                'status' => 1,
+                'status' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'Admin',
-                'status' => 1,
+                'status' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'User',
-                'status' => 1,
+                'status' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

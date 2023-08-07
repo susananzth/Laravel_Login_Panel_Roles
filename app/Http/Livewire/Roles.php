@@ -29,7 +29,7 @@ class Roles extends Component
     public function render()
     {
         if (Gate::denies('role_index')) {
-            return redirect()->route('home')
+            return redirect()->route('dashboard')
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         }
