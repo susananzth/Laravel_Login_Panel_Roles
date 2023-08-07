@@ -14,35 +14,37 @@
                 required autofocus autocomplete="title" />
             <x-input-error class="mt-2" :messages="$errors->get('title')" />
         </div>
-        <h4>{{ __('Permissions') }}</h4>
-        <div x-data="{ openMenus: [] }">
-            @foreach($permissions as $item)
-            @php
-                $itemMenu = is_object($item) ? $item->menu : $item['menu'];
-            @endphp
-            <div class="border rounded-lg">
-                <button type="button" 
-                    x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')" 
-                    class="w-full text-left px-4 py-2 bg-gray-200 rounded-t-lg">
-                    {{ $itemMenu }}
-                </button>
-                <div x-show="openMenus.includes('{{ $itemMenu }}')" class="p-4 space-y-2">
-                    @php
-                        $itemPermissions = is_object($item) ? $item->permissions : $item['permissions'];
-                    @endphp
-                    @foreach ($itemPermissions as $per)
-                    @php
-                        $id = is_object($per) ? $per->id : $per['id'];
-                        $permissionName = is_object($per) ? $per->permission : $per['permission'];
-                    @endphp
-                    <div class="flex items-center space-x-2">
-                        <input type="checkbox" wire:model="selectedPermissions" value="{{ $id }}" id="permission-{{ $id }}">
-                        <label for="permission-{{ $id }}">{{ $permissionName }}</label>
+        <div>
+            <h4>{{ __('Permissions') }}</h4>
+            <div x-data="{ openMenus: [] }">
+                @foreach($permissions as $item)
+                @php
+                    $itemMenu = is_object($item) ? $item->menu : $item['menu'];
+                @endphp
+                <div class="border">
+                    <button type="button" 
+                        x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')" 
+                        class="w-full text-left px-4 py-2 bg-gray-200">
+                        {{ __($itemMenu) }}
+                    </button>
+                    <div x-show="openMenus.includes('{{ $itemMenu }}')" class="p-4 space-y-2">
+                        @php
+                            $itemPermissions = is_object($item) ? $item->permissions : $item['permissions'];
+                        @endphp
+                        @foreach ($itemPermissions as $per)
+                        @php
+                            $id = is_object($per) ? $per->id : $per['id'];
+                            $permissionName = is_object($per) ? $per->permission : $per['permission'];
+                        @endphp
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" wire:model="selectedPermissions" value="{{ $id }}" id="permission-{{ $id }}">
+                            <label for="permission-{{ $id }}">{{ __($permissionName) }}</label>
+                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
 
         <div class="flex justify-end gap-4">

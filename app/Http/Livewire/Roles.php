@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class Roles extends Component
 {
-    public $roles, $permissions, $title, $role_id;
+    public $permissions, $title, $role_id;
     public $updateRol = false, $addRol = false, $deleteRol = false, $selectedPermissions = [];
 
     protected $listeners = ['render'];
@@ -34,8 +34,8 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         }
 
-        $this->roles = Role::orderBy('title', 'asc')->get();
-        return view('role.index');
+        $roles = Role::orderBy('title', 'asc')->paginate(15);
+        return view('role.index', compact('roles'));
     }
 
     public function create()
@@ -91,7 +91,7 @@ class Roles extends Component
         $role = Role::create([
             'title' => $this->title
         ]);
-        $role->permissions()->attach(array_keys($this->selectedPermissions));
+        $role->permissions()->attach($this->selectedPermissions);
         $role->save();
         DB::commit();
 
