@@ -1,59 +1,57 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-slate-800 dark:text-slate-200 leading-tight">
-            {{ __('Edit Role') }}
-        </h2>
-    </x-slot>
+<x-modal title="{{ _('Edit Role') }}" wire:model="updateRol" focusable>
+    <form class="mt-6 space-y-6" method="POST">
+        @csrf
+        <x-validation-errors/>
+        <p class="italic text-sm text-red-700 m-0">
+            {{ __('Fields marked with * are required') }}
+        </p>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    <form id="form_update" action="{{route('role.update', $role->id)}}" method="post" class="mt-6 space-y-6">
-                        @method('patch')
-                        @csrf
-                        <x-validation-errors/>
-                        <p class="italic text-sm text-red-700 m-0">
-                            {{ __('Fields marked with * are required') }}
-                        </p>
-
-                        <div>
-                            <x-input-label for="title" :value="__('Title')" />
-                            <x-text-input id="title" name="title" type="text"
-                                class="mt-1 block w-full" maxlength="150"
-                                :value="old('title', $role->title)"
-                                required autofocus autocomplete="title" />
-                            <x-input-error class="mt-2" :messages="$errors->get('title')" />
-                        </div>
-                        <div>
-                            <x-input-label for="permission" :value="__('Permissions')" />
-                            <x-select-input id="permission" name="permission[]" type="text"
-                                class="mt-1 block w-full" required multiple>
-                                @php $name_menu = ""; @endphp
-                                @foreach ($permissions as $item)
-                                @if ($item->menu != $name_menu)
-                                    </optgroup>
-                                    <optgroup label="@lang($item->menu)">
-                                @endif
-                                    <option value="{{$item->id}}">@lang($item->permission . ' ' .$item->menu)</option>
-                                @php $name_menu = $item->menu @endphp
-                                @endforeach
-                            </x-select-input>
-                            <x-input-error class="mt-2" :messages="$errors->get('permission')" />
-                        </div>
-
-                        <div class="flex items-center gap-4">
-                            <x-primary-button>
-                                <i class="fa-solid fa-save me-1"></i>{{ __('Update') }}
-                            </x-primary-button>
-                            <x-secondary-button-link href="{{route('roles')}}">
-                                <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
-                            </x-secondary-button-link>
-                        </div>
-                    </form>
+        <div>
+            <x-input-label for="title" :value="__('Title')" />
+            <x-text-input id="title" name="title" type="text"
+                class="mt-1 block w-full" maxlength="150"
+                value="{{ $title }}" wire:model="title"
+                required autofocus autocomplete="title" />
+            <x-input-error class="mt-2" :messages="$errors->get('title')" />
+        </div>
+        <h4>{{ __('Permissions') }}</h4>
+        <div x-data="{ openMenus: [] }">
+            @foreach($permissions as $item)
+            @php
+                $itemMenu = is_object($item) ? $item->menu : $item['menu'];
+            @endphp
+            <div class="border rounded-lg">
+                <button type="button" 
+                    x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')" 
+                    class="w-full text-left px-4 py-2 bg-gray-200 rounded-t-lg">
+                    {{ $itemMenu }}
+                </button>
+                <div x-show="openMenus.includes('{{ $itemMenu }}')" class="p-4 space-y-2">
+                    @php
+                        $itemPermissions = is_object($item) ? $item->permissions : $item['permissions'];
+                    @endphp
+                    @foreach ($itemPermissions as $per)
+                    @php
+                        $id = is_object($per) ? $per->id : $per['id'];
+                        $permissionName = is_object($per) ? $per->permission : $per['permission'];
+                    @endphp
+                    <div class="flex items-center space-x-2">
+                        <input type="checkbox" wire:model="selectedPermissions" value="{{ $id }}" id="permission-{{ $id }}">
+                        <label for="permission-{{ $id }}">{{ $permissionName }}</label>
+                    </div>
+                    @endforeach
                 </div>
             </div>
+            @endforeach
         </div>
-    </div>
-</x-app-layout>
 
+        <div class="flex justify-end gap-4">
+            <x-primary-button type="button" wire:click.prevent="update()">
+                <i class="fa-solid fa-save me-1"></i>{{ __('Update') }}
+            </x-primary-button>
+            <x-secondary-button wire:click.prevent="cancel()">
+                <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
+            </x-secondary-button>
+        </div>
+    </form>
+</x-modal>

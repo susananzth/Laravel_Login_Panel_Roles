@@ -54,6 +54,9 @@
             @if($addRol)
                 @include('role.create')
             @endif
+            @if($updateRol)
+                @include('role.edit')
+            @endif
             @if($deleteRol)
                 <x-modal wire:model="deleteRol" focusable
                     :title="__('Are you sure you want to delete the record?')">
