@@ -16,13 +16,16 @@ class RoleSeeder extends Seeder
     {
         $roles = [
             [
-                'id'    => 1,
+                'title' => 'Super Admin',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'title' => 'Admin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'id'    => 2,
                 'title' => 'User',
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -42,5 +45,14 @@ class RoleSeeder extends Seeder
             }
         });
         Role::findOrFail(2)->permissions()->sync($user_permissions);
+        $user_permissions = $admin_permissions->filter(function ($permission) {
+            $str = strpos($permission->title, 'profile');
+            if ($str !== false) {
+                return true;
+            }else{
+                return false;
+            }
+        });
+        Role::findOrFail(3)->permissions()->sync($user_permissions);
     }
 }
