@@ -3,10 +3,9 @@
 namespace App\Http\Livewire;
 
 use DB;
+use App\Http\Requests\RoleRequest;
 use App\Models\Role;
 use App\Models\Permission;
-use App\Http\Requests\Roles\StoreRequest;
-use App\Http\Requests\Roles\UpdateRequest;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
@@ -17,13 +16,25 @@ class Roles extends Component
 
     protected $listeners = ['render'];
 
-    protected $rules = [
-        'title' => ['required', 'string', 'max:255'],
-    ];
+    public function rules()
+    {
+        return RoleRequest::rules($this->role_id);
+    }
 
-    public function resetFields(){
+    public function resetFields()
+    {
         $this->title = '';
         $this->permissions = '';
+        $this->selectedPermissions = [];
+    }
+
+    public function resetValidationAndFields()
+    {
+        $this->resetValidation();
+        $this->resetFields();
+        $this->addRol = false;
+        $this->updateRol = false;
+        $this->deleteRol = false;
     }
 
     public function render()
@@ -45,10 +56,7 @@ class Roles extends Component
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         }
-        $this->resetFields();
-        $this->addRol = true;
-        $this->updateRol = false;
-        $this->deleteRol = false;
+        $this->resetValidationAndFields();
         $list_permissions = Permission::orderBy('menu', 'asc')->get();
 
         $title_menu = '';
@@ -95,9 +103,8 @@ class Roles extends Component
         $role->save();
         DB::commit();
 
+        $this->resetValidationAndFields();
         $this->emit('render');
-        $this->resetFields();
-        $this->addRol = false;
 
         session()->flash('message', trans('message.Created Successfully.', ['name' => __('Role')]));
         session()->flash('alert_class', 'success');
@@ -171,9 +178,8 @@ class Roles extends Component
         $role->save();
         DB::commit();
 
+        $this->resetValidationAndFields();
         $this->emit('render');
-        $this->resetFields();
-        $this->updateRol = false;
 
         session()->flash('message', trans('message.Updated Successfully.', ['name' => __('Role')]));
         session()->flash('alert_class', 'success');
@@ -181,11 +187,7 @@ class Roles extends Component
 
     public function cancel()
     {
-        $this->addRol = false;
-        $this->updateRol = false;
-        $this->deleteRol = false;
-        $this->selectedPermissions = [];
-        $this->resetFields();
+        $this->resetValidationAndFields();
     }
 
     public function setDeleteId($id)
@@ -219,9 +221,8 @@ class Roles extends Component
         DB::beginTransaction();
         Role::findOrFail($this->role_id)->delete();
         DB::commit();
+        $this->resetValidationAndFields();
         $this->emit('render');
-
-        $this->deleteRol = false;
 
         session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('Role')]));
         session()->flash('alert_class', 'success');
