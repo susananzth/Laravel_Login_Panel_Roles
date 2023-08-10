@@ -6,7 +6,7 @@
 
 <div class="max-w-7xl py-6 mx-auto sm:px-4 lg:px-6 space-y-6">
     <div class="p-4 sm:p-8 bg-white dark:bg-slate-800 shadow sm:rounded-lg">
-        <x-validation-errors/>
+        <x-session-status/>
         <div class="flex flex-col">
             <div class="inline-block min-w-full">
                 <x-primary-button type="button" wire:click="create()" class="mb-2">
