@@ -17,7 +17,7 @@ class Users extends Component
                 ->with('alert_class', 'danger');
         }
 
-        $users = User::orderBy('name', 'asc')->paginate(15);
+        $users = User::orderBy('name', 'asc')->paginate(10);
         return view('user.index', compact('users'));
     }
 }

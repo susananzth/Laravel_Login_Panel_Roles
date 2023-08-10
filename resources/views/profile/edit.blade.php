@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="p-6 space-y-6">
+    <div class="max-w-7xl py-6 mx-auto sm:px-4 lg:px-6 space-y-6">
         <x-validation-errors/>
 
         <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">

@@ -34,7 +34,7 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         }
 
-        $roles = Role::orderBy('title', 'asc')->paginate(15);
+        $roles = Role::orderBy('title', 'asc')->paginate(10);
         return view('role.index', compact('roles'));
     }
 
