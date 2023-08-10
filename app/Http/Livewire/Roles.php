@@ -57,6 +57,7 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         }
         $this->resetValidationAndFields();
+        $this->addRol = true;
         $list_permissions = Permission::orderBy('menu', 'asc')->get();
 
         $title_menu = '';
@@ -124,12 +125,11 @@ class Roles extends Component
             session()->flash('error','Role not found');
             $this->emit('render');
         } else {
+            $this->resetValidationAndFields();
             $this->role_id = $role->id;
-            $this->title = $role->title;
+            $this->title   = $role->title;
             $this->selectedPermissions = $role->permissions()->pluck('permissions.id')->toArray();
-            $this->addRol = false;
-            $this->updateRol = true;
-            $this->deleteRol = false;
+            $this->updateRol  = true;
             $list_permissions = Permission::orderBy('menu', 'asc')->get();
 
             $title_menu = '';
