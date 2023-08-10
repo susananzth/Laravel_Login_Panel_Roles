@@ -37,14 +37,17 @@ class Roles extends Component
         $this->deleteRol = false;
     }
 
-    public function render()
+    public function mount()
     {
         if (Gate::denies('role_index')) {
             return redirect()->route('dashboard')
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         }
+    }
 
+    public function render()
+    {
         $roles = Role::orderBy('title', 'asc')->paginate(10);
         return view('role.index', compact('roles'));
     }
