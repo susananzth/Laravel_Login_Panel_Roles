@@ -1,4 +1,4 @@
-<x-modal title="{{ _('Edit Role') }}" wire:model="updateRol" focusable>
+<x-modal title="{{ __('Edit Role') }}" wire:model="updateRol" focusable>
     <form class="mt-6 space-y-6" method="POST">
         @csrf
         <x-validation-errors/>
