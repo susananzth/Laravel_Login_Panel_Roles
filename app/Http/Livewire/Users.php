@@ -163,7 +163,6 @@ class Users extends Component
             $this->resetValidationAndFields();
             $this->deleteUser = true;
         }
-
     }
 
     public function delete()
