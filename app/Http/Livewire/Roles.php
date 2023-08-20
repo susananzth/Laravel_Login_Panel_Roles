@@ -8,9 +8,12 @@ use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Roles extends Component
 {
+    use WithPagination;
+
     public $permissions, $title, $role_id;
     public $updateRol = false, $addRol = false, $deleteRol = false, $selectedPermissions = [];
 

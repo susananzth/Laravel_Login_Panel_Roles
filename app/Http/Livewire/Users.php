@@ -8,9 +8,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Users extends Component
 {
+    use WithPagination;
+
     public $name, $email, $password, $password_confirmation, $user_id;
     public $addUser = false, $updateUser = false, $deleteUser = false;
 
@@ -90,7 +93,7 @@ class Users extends Component
         session()->flash('alert_class', 'success');
     }
 
-    
+
     public function edit($id)
     {
         if (Gate::denies('user_edit')) {

@@ -6,11 +6,13 @@ use DB;
 use App\Http\Requests\CountryRequest;
 use App\Models\Country;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Countries extends Component
 {
+    use WithPagination;
+
     public $name, $iso_2, $iso_3, $iso_number, $phone_code, $country_id;
     public $addCountry = false, $updateCountry = false, $deleteCountry = false;
 
@@ -93,7 +95,7 @@ class Countries extends Component
         session()->flash('alert_class', 'success');
     }
 
-    
+
     public function edit($id)
     {
         if (Gate::denies('country_edit')) {
