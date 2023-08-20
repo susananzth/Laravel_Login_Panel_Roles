@@ -4,7 +4,7 @@
         <div x-show="open" class="fixed inset-0 bg-gray-800 bg-opacity-50 transition-opacity"></div>
         <div x-show="open"
             class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <div class="bg-white p-8">
+            <div class="bg-white max-h-[90vh] overflow-y-auto p-8">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
                     <!-- Título del modal -->
                     {{ $title }}

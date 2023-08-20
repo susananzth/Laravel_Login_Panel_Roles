@@ -76,13 +76,12 @@ class Roles extends Component
                 $checkbox->menu = $title_menu;
                 $checkbox->permissions = [];
 
-                foreach ($list_permissions as $item) {
-                    if ($title_menu == $item->menu) {
-                        $children = (object)[];
-                        $children->id = $item->id;
-                        $children->permission = $item->permission;
-                        $checkbox->permissions[] = $children;
-                    }
+                $get_permissions = Permission::orderBy('permission', 'asc')->where('menu', $title_menu)->get();
+                foreach ($get_permissions as $item) {
+                    $children = (object)[];
+                    $children->id = $item->id;
+                    $children->permission = $item->permission;
+                    $checkbox->permissions[] = $children;
                 }
 
                 $permisions[] = $checkbox;
@@ -148,13 +147,12 @@ class Roles extends Component
                     $checkbox->menu = $title_menu;
                     $checkbox->permissions = [];
 
-                    foreach ($list_permissions as $item) {
-                        if ($title_menu == $item->menu) {
-                            $children = (object)[];
-                            $children->id = $item->id;
-                            $children->permission = $item->permission;
-                            $checkbox->permissions[] = $children;
-                        }
+                    $get_permissions = Permission::orderBy('permission', 'asc')->where('menu', $title_menu)->get();
+                    foreach ($get_permissions as $item) {
+                        $children = (object)[];
+                        $children->id = $item->id;
+                        $children->permission = $item->permission;
+                        $checkbox->permissions[] = $children;
                     }
 
                     $permisions[] = $checkbox;
