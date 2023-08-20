@@ -7,7 +7,7 @@
         </p>
 
         <div>
-            <x-input-label for="title" :value="__('Title')" />
+            <x-input-label for="title">{{ __('Title') }} *</x-input-label>
             <x-text-input id="title" name="title" type="text"
                 class="mt-1 block w-full" maxlength="150"
                 wire:model="title"
@@ -22,8 +22,8 @@
                     $itemMenu = is_object($item) ? $item->menu : $item['menu'];
                 @endphp
                 <div class="border">
-                    <button type="button" 
-                        x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')" 
+                    <button type="button"
+                        x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')"
                         class="w-full text-left px-4 py-2 bg-gray-200">
                         {{ __($itemMenu) }}
                     </button>

@@ -7,33 +7,33 @@
         </p>
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" 
-                name="name" :value="old('name')" wire:model="name" 
+            <x-input-label for="name">{{ __('Name') }} *</x-input-label>
+            <x-text-input id="name" class="block mt-1 w-full" type="text"
+                name="name" :value="old('name')" wire:model="name"
                 autocomplete="name" maxlength="255" required autofocus />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" 
-                name="email" :value="old('email')" wire:model="email" 
+            <x-input-label for="email">{{ __('Email') }} *</x-input-label>
+            <x-text-input id="email" class="block mt-1 w-full" type="email"
+                name="email" :value="old('email')" wire:model="email"
                 autocomplete="username" maxlength="255" required />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" 
-                type="password" name="password" wire:model="password" 
+            <x-input-label for="password">{{ __('Password') }} *</x-input-label>
+            <x-text-input id="password" class="block mt-1 w-full"
+                type="password" name="password" wire:model="password"
                 autocomplete="new-password" maxlength="255" required />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="password_confirmation">{{ __('Confirm Password') }} *</x-input-label>
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
-               type="password" name="password_confirmation" wire:model="password_confirmation" 
+               type="password" name="password_confirmation" wire:model="password_confirmation"
                autocomplete="new-password" maxlength="255" required />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
