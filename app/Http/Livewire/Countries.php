@@ -80,9 +80,9 @@ class Countries extends Component
         DB::beginTransaction();
         $country = Country::create([
             'name'       => $this->name,
-            'iso_2'      => $this->iso_2,
-            'iso_3'      => $this->iso_3,
-            'iso_number' => $this->iso_number,
+            'iso_2'      => $this->iso_2 ? $this->iso_2 : null,
+            'iso_3'      => $this->iso_3 ? $this->iso_3 : null,
+            'iso_number' => $this->iso_number ? $this->iso_number : null,
             'phone_code' => $this->phone_code,
         ]);
         $country->save();

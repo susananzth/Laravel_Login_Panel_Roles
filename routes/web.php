@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Countries;
 use App\Http\Livewire\Roles;
 use App\Http\Livewire\Users;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get   ('/role',    Roles::class                         )->name('roles');
     Route::get   ('/user',    Users::class                         )->name('users');
+    Route::get   ('/country', Countries::class                     )->name('countries');
 });
 
 require __DIR__.'/auth.php';
