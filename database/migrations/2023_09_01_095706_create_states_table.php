@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('iso_2', 4)->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique(['country_id', 'name']);
         });
     }
 

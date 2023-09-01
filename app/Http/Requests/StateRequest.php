@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StateRequest extends FormRequest
 {
@@ -28,10 +29,10 @@ class StateRequest extends FormRequest
         ];
 
         if ($stateId) {
-            $baseRules['name'][] = 'unique:states,name,' . $stateId;
+            $baseRules['name'][] = 'unique:states,name,' . $stateId . ',country_id';
             $baseRules['iso_2'][] = 'unique:states,iso_2,' . $stateId;
         } else {
-            $baseRules['name'][] = 'unique:states,name';
+            $baseRules['name'][] = Rule::unique('states', 'name')->where('country_id', request('country_id'));
             $baseRules['iso_2'][] = 'unique:states,iso_2';
         }
 
