@@ -30,11 +30,13 @@ class CountryRequest extends FormRequest
         ];
 
         if ($countryId) {
+            $baseRules['name'][] = 'unique:countries,name,' . $countryId;
             $baseRules['iso_2'][] = 'unique:countries,iso_2,' . $countryId;
             $baseRules['iso_3'][] = 'unique:countries,iso_3,' . $countryId;
             $baseRules['iso_number'][] = 'unique:countries,iso_number,' . $countryId;
             $baseRules['phone_code'][] = 'unique:countries,phone_code,' . $countryId;
         } else {
+            $baseRules['name'][] = 'unique:countries,name';
             $baseRules['iso_2'][] = 'unique:countries,iso_2';
             $baseRules['iso_3'][] = 'unique:countries,iso_3';
             $baseRules['iso_number'][] = 'unique:countries,iso_number';
