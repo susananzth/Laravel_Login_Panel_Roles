@@ -105,6 +105,14 @@
                     <span>{{ __('Countries') }}</span>
                 </x-responsive-nav-link>
                 @endcan
+                @can('state_index')
+                <x-responsive-nav-link :href="route('states')" :active="request()->routeIs('state.index')" class="flex flex-row">
+                    <div class="basis-6">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <span>{{ __('States') }}</span>
+                </x-responsive-nav-link>
+                @endcan
                 @can('role_index')
                 <x-responsive-nav-link :href="route('roles')" :active="request()->routeIs('role.index')" class="flex flex-row">
                     <div class="basis-6">
