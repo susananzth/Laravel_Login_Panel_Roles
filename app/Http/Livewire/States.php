@@ -64,7 +64,7 @@ class States extends Component
                 ->with('alert_class', 'danger');
         }
         $this->resetValidationAndFields();
-        $this->countries = Country::orderBy('menu', 'asc')->get();
+        $this->countries = Country::orderBy('name', 'asc')->get();
         $this->addState = true;
         return view('state.create');
     }
@@ -104,7 +104,6 @@ class States extends Component
         }
 
         $state = State::find($id);
-        $this->countries = Country::orderBy('menu', 'asc')->get();
 
         if (!$state) {
             session()->flash('error', 'State not found');
@@ -115,6 +114,7 @@ class States extends Component
             $this->name        = $state->name;
             $this->iso_2       = $state->iso_2;
             $this->country_id  = $state->country_id;
+            $this->countries = Country::orderBy('name', 'asc')->get();
             $this->updateState = true;
             return view('state.edit');
         }
