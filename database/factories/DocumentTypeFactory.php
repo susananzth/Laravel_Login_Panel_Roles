@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\City>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DocumentType>
  */
-class CityFactory extends Factory
+class DocumentTypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +17,8 @@ class CityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'     => fake()->name(),
-            'state_id' => State::inRandomOrder()->first()->id,
+            'name'   => fake()->name(),
+            'status' => true,
         ];
     }
 }
