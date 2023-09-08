@@ -97,6 +97,14 @@
                     <span>{{ __('Users') }}</span>
                 </x-responsive-nav-link>
                 @endcan
+                @can('document_type_index')
+                <x-responsive-nav-link :href="route('document_types')" :active="request()->routeIs('document_type.index')" class="flex flex-row">
+                    <div class="basis-6">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <span>{{ __('Document Types') }}</span>
+                </x-responsive-nav-link>
+                @endcan
                 @can('country_index')
                 <x-responsive-nav-link :href="route('countries')" :active="request()->routeIs('country.index')" class="flex flex-row">
                     <div class="basis-6">

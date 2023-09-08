@@ -85,6 +85,12 @@
     "Create new city": "Crear nuevo ciudad",
     "Edit City": "Editar Ciudad",
     "Delete City": "Eliminar Ciudad",
+    "Document Type": "Tipo de Documento",
+    "Document Types": "Tipo de Documentos",
+    "Create Document Type": "Crear Tipo de Documento",
+    "Create new document type": "Crear nuevo tipo de documento",
+    "Edit Document Type": "Editar Tipo de Documento",
+    "Delete Document Type": "Eliminar Tipo de Documento",
     "Fields marked with * are required": "Los campos marcados con * son obligatorios",
     "Are you sure you want to delete the record?": "¿Está seguro(a) de eliminar el registro?",
     "Once the record is deleted, all data will be permanently erased.": "Una vez eliminado el registro, todos los datos se borrarán permanentemente."
