@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Cities;
 use App\Http\Livewire\Countries;
 use App\Http\Livewire\Roles;
 use App\Http\Livewire\States;
@@ -33,6 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get   ('/user',    Users::class                         )->name('users');
     Route::get   ('/country', Countries::class                     )->name('countries');
     Route::get   ('/state',   States::class                        )->name('states');
+    Route::get   ('/city',    Cities::class                        )->name('cities');
 });
 
 require __DIR__.'/auth.php';
