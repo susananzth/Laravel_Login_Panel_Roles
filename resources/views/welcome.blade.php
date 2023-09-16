@@ -17,7 +17,7 @@
             <li>Página de "perfil" donde el usuario puede actualizar su información.</li>
         </ul>
         <p class="mb-1 mt-0 text-lg leading-relaxed">
-            Agregando perzonalización y funcionalidades adicionales como:
+            Agregando personalización y funcionalidades adicionales como:
         </p>
         <ul class="list-disc list-inside leading-relaxed mb-4 mt-0">
             <li>Logo y colores representativos de la marca.</li>
