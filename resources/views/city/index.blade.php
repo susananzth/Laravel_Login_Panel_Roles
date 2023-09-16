@@ -28,7 +28,7 @@
                                 class="border-b transition duration-300 ease-in-out hover:bg-slate-100 dark:border-slate-500 dark:hover:bg-slate-600">
                                 <td class="whitespace-nowrap border-r px-6 py-4">{{ $city->name }}</td>
                                 <td class="whitespace-nowrap border-r px-6 py-4">{{ $city->state->name }}</td>
-                                <td class="whitespace-nowrap border-r px-6 py-4">{{ $city->country->name }}</td>
+                                <td class="whitespace-nowrap border-r px-6 py-4">{{ $city->state->country->name }}</td>
                                 <td class="whitespace-nowrap text-center px-6 py-4">
                                     <x-tooltip :content="__('Edit City')">
                                         <a href="#" wire:click="edit({{ $city->id }})" class="me-1">
@@ -64,7 +64,7 @@
                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Once the record is deleted, all data will be permanently erased.') }}
                     </p>
-        
+
                     <div class="mt-6 flex justify-end gap-4">
                         <x-secondary-button wire:click.prevent="cancel()">
                             <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}

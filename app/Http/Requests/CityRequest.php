@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CityRequest extends FormRequest
 {
@@ -19,7 +20,7 @@ class CityRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public static function rules($cityId = null): array
+    public static function rules($stateId = null, $cityId = null): array
     {
         $baseRules = [
             'name'     => ['required', 'string', 'max:200'],
@@ -27,9 +28,9 @@ class CityRequest extends FormRequest
         ];
 
         if ($cityId) {
-            $baseRules['name'][] = 'unique:cities,name,' . $stateId . ',state_id';
+            $baseRules['name'][] = Rule::unique('cities', 'name')->where('state_id', $stateId)->ignore($cityId);
         } else {
-            $baseRules['name'][] = Rule::unique('cities', 'name')->where('state_id', request('state_id'));
+            $baseRules['name'][] = Rule::unique('cities', 'name')->where('state_id', $stateId);
         }
 
         return $baseRules;

@@ -21,7 +21,7 @@ class Cities extends Component
 
     public function rules()
     {
-        return CityRequest::rules($this->city_id);
+        return CityRequest::rules($this->state_id, $this->city_id);
     }
 
     public function resetFields()
