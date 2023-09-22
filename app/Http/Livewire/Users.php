@@ -93,7 +93,6 @@ class Users extends Component
         session()->flash('alert_class', 'success');
     }
 
-
     public function edit($id)
     {
         if (Gate::denies('user_edit')) {
