@@ -39,6 +39,11 @@ class PermissionSeeder extends Seeder
             ['title' => 'city_add', 'menu' => 'City', 'permission' => 'Add', 'created_at' => now(), 'updated_at' => now(),],
             ['title' => 'city_edit', 'menu' => 'City', 'permission' => 'Edit', 'created_at' => now(), 'updated_at' => now(),],
             ['title' => 'city_delete', 'menu' => 'City', 'permission' => 'Delete', 'created_at' => now(), 'updated_at' => now(),],
+            // Document Type
+            ['title' => 'document_type_index', 'menu' => 'Document type', 'permission' => 'See', 'created_at' => now(), 'updated_at' => now(),],
+            ['title' => 'document_type_add', 'menu' => 'Document type', 'permission' => 'Add', 'created_at' => now(), 'updated_at' => now(),],
+            ['title' => 'document_type_edit', 'menu' => 'Document type', 'permission' => 'Edit', 'created_at' => now(), 'updated_at' => now(),],
+            ['title' => 'document_type_delete', 'menu' => 'Document type', 'permission' => 'Delete', 'created_at' => now(), 'updated_at' => now(),],
             // Profile
             ['title' => 'profile_index', 'menu' => 'Profile', 'permission' => 'See', 'created_at' => now(), 'updated_at' => now(),],
             ['title' => 'profile_edit', 'menu' => 'Profile', 'permission' => 'Edit', 'created_at' => now(), 'updated_at' => now(),],
