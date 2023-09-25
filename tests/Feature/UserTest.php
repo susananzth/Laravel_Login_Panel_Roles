@@ -13,7 +13,7 @@ test('it shows user list', function () {
 
     $response->assertOk();
 });
-/*
+
 test('it can create a user', function () {
     $this->actingAs(User::find(1));
 
@@ -52,6 +52,8 @@ test('it can delete a user', function () {
     $user = User::latest()->first();
     Livewire::test(Users::class)
         ->set('user_id', $user->id)
-        ->call('setDeleteId')
+        ->call('setDeleteId', $user->id)
         ->call('delete');
-});*/
+
+    $this->assertModelMissing($user);
+});
