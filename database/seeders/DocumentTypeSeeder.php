@@ -21,13 +21,13 @@ class DocumentTypeSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name'   => 'Pasaporte',
+                'name'   => 'RIF',
                 'status' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'   => 'RIF',
+                'name'   => 'Pasaporte',
                 'status' => true,
                 'created_at' => now(),
                 'updated_at' => now(),

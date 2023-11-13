@@ -13,7 +13,7 @@ class DocumentTypes extends Component
 {
     use WithPagination;
 
-    public $name, $document_type_id;
+    public $name, $status, $document_type_id;
     public $addDocumentType = false, $updateDocumentType = false, $deleteDocumentType = false;
 
     protected $listeners = ['render'];
@@ -26,6 +26,7 @@ class DocumentTypes extends Component
     public function resetFields()
     {
         $this->name = '';
+        $this->status = '';
     }
 
     public function resetValidationAndFields()
@@ -79,12 +80,10 @@ class DocumentTypes extends Component
         ]);
         $document_type->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Created Successfully.', ['name' => __('Document Type')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/document');
     }
 
 
@@ -100,11 +99,12 @@ class DocumentTypes extends Component
 
         if (!$document_type) {
             session()->flash('error','Document Type not found');
-            $this->emit('render');
+            return redirect()->to('/document');
         } else {
             $this->resetValidationAndFields();
             $this->document_type_id   = $document_type->id;
             $this->name               = $document_type->name;
+            $this->status             = $document_type->status;
             $this->updateDocumentType = true;
             return view('document_type.edit');
         }
@@ -121,16 +121,15 @@ class DocumentTypes extends Component
         $this->validate();
 
         DB::beginTransaction();
-        $document_type       = DocumentType::find($this->document_type_id);
-        $document_type->name = $this->name;
+        $document_type         = DocumentType::find($this->document_type_id);
+        $document_type->name   = $this->name;
+        $document_type->status = $this->status;
         $document_type->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Updated Successfully.', ['name' => __('Document Type')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/document');
     }
 
     public function cancel()
@@ -149,7 +148,7 @@ class DocumentTypes extends Component
         $document_type = DocumentType::find($id);
         if (!$document_type) {
             session()->flash('error','Document Type not found');
-            $this->emit('render');
+            return redirect()->to('/document');
         } else {
             $this->document_type_id = $document_type->id;
             $this->resetValidationAndFields();
@@ -167,10 +166,9 @@ class DocumentTypes extends Component
         DB::beginTransaction();
         DocumentType::findOrFail($this->document_type_id)->delete();
         DB::commit();
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('Document Type')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/document');
     }
 }

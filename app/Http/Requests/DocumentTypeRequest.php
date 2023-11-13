@@ -22,13 +22,13 @@ class DocumentTypeRequest extends FormRequest
     public static function rules($documentTypeId = null): array
     {
         $baseRules = [
-            'name'   => ['required', 'string', 'max:255'],
-            'status' => ['required', 'nullable', 'boolean'],
+            'name'   => ['required', 'string', 'max:100'],
+            'status' => ['nullable']
         ];
 
         if ($documentTypeId) {
             $baseRules['name'][] = 'unique:document_types,name,' . $documentTypeId;
-            $baseRules['status'][] = 'required';
+            $baseRules['status'][] = ['required', 'boolean'];
         } else {
             $baseRules['name'][] = 'unique:document_types,name';
         }

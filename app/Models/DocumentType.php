@@ -16,7 +16,7 @@ class DocumentType extends Model
     ];
 
     /**
-     * Get the users for the country.
+     * Get the users for the document_type.
      */
     public function users(): hasMany
     {

@@ -1,4 +1,4 @@
-<x-modal title="{{ __('Create new document type') }}" wire:model="addCDocumentTypeountry" focusable>
+<x-modal title="{{ __('Create new document type') }}" wire:model="addDocumentType" focusable>
     <form class="mt-6 space-y-6" method="POST">
         @csrf
         <x-validation-errors/>
@@ -10,7 +10,7 @@
             <x-input-label for="name">{{ __('Name') }} *</x-input-label>
             <x-text-input id="name" class="block mt-1 w-full" type="text"
                 name="name" :value="old('name')" wire:model="name"
-                autocomplete="name" maxlength="255" required autofocus />
+                autocomplete="off" maxlength="100" required autofocus />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
