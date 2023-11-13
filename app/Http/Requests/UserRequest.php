@@ -23,13 +23,20 @@ class UserRequest extends FormRequest
     public static function rules($userId = null): array
     {
         $baseRules = [
-            'name'     => ['required', 'string', 'max:255'],
-            'email'    => ['required', 'string', 'email', 'max:255'],
-            'password' => ['nullable', 'confirmed', Password::defaults()],
+            'first_name'       => ['required', 'string', 'max:150'],
+            'last_name'        => ['required', 'string', 'max:150'],
+            'document_type_id' => ['required', 'integer', 'exists:document_types,id'],
+            'document_number'  => ['required', 'string', 'max:50'],
+            'phone_code_id'    => ['required', 'integer', 'exists:countries,id'],
+            'phone'            => ['required', 'string', 'max:50'],
+            'email'            => ['required', 'string', 'email', 'max:255'],
+            'password'         => ['nullable', 'confirmed', Password::defaults()],
+            'status'           => ['nullable']
         ];
 
         if ($userId) {
             $baseRules['email'][] = 'unique:users,email,' . $userId;
+            $baseRules['status'][] = ['required', 'boolean'];
         } else {
             $baseRules['email'][] = 'unique:users,email';
         }

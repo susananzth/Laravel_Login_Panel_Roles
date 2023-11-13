@@ -58,6 +58,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),
+    //'asset_url' => ('/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -141,7 +142,7 @@ return [
 
     'maintenance' => [
         'driver' => 'file',
-        // 'store'  => 'redis',
+        // 'store' => 'redis',
     ],
 
     /*
@@ -168,6 +169,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -190,4 +192,9 @@ return [
         'es' => 'Spainsh',
     ],
 
+    'logo' => env('APP_LOGO', 'logo.png'),
+
+    'author' => env('APP_AUTHOR', config('app.name')),
+
+    'year_copyright' => env('APP_YEAR_COPYRIGHT', date('Y')),
 ];
