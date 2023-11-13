@@ -43,7 +43,7 @@ class RoleSeeder extends Seeder
             $str = strpos($permission->title, 'index');
             if ($str !== false) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         });
@@ -52,7 +52,7 @@ class RoleSeeder extends Seeder
             $str = strpos($permission->title, 'profile');
             if ($str !== false) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         });

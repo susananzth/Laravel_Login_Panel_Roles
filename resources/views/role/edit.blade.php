@@ -11,8 +11,18 @@
             <x-text-input id="title" name="title" type="text"
                 class="mt-1 block w-full" maxlength="150"
                 value="{{ $title }}" wire:model="title"
-                required autofocus autocomplete="title" />
+                required autofocus autocomplete="off" />
             <x-input-error class="mt-2" :messages="$errors->get('title')" />
+        </div>
+        <div class="col-span-2">
+            <x-input-label for="status">{{ __('Status') }} *</x-input-label>
+            <x-select-input id="status" class="block mt-1 w-full" 
+                name="status" wire:model="status" required>
+                <option value="">{{ __('Please select') }}</option>
+                <option value="false" {{ ($status == false) ? 'selected' : '' }}>{{ __('Inactive') }}</option>
+                <option value="true" {{ ($status == true) ? 'selected' : '' }}>{{ __('Active') }}</option>
+            </x-select-input>
+            <x-input-error :messages="$errors->get('status')" class="mt-2" />
         </div>
         <div>
             <h4>{{ __('Permissions') }}</h4>
@@ -24,7 +34,7 @@
                 <div class="border">
                     <button type="button"
                         x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')"
-                        class="w-full text-left px-4 py-2 bg-gray-200">
+                        class="w-full text-left px-4 py-2 bg-secondary-200">
                         {{ __($itemMenu) }}
                     </button>
                     <div x-show="openMenus.includes('{{ $itemMenu }}')" class="p-4 space-y-2">

@@ -44,6 +44,11 @@ class PermissionSeeder extends Seeder
             ['title' => 'document_type_add', 'menu' => 'Document type', 'permission' => 'Add', 'created_at' => now(), 'updated_at' => now(),],
             ['title' => 'document_type_edit', 'menu' => 'Document type', 'permission' => 'Edit', 'created_at' => now(), 'updated_at' => now(),],
             ['title' => 'document_type_delete', 'menu' => 'Document type', 'permission' => 'Delete', 'created_at' => now(), 'updated_at' => now(),],
+            // Currency
+            ['title' => 'currency_index', 'menu' => 'Currency', 'permission' => 'See', 'created_at' => now(), 'updated_at' => now(),],
+            ['title' => 'currency_add', 'menu' => 'Currency', 'permission' => 'Add', 'created_at' => now(), 'updated_at' => now(),],
+            ['title' => 'currency_edit', 'menu' => 'Currency', 'permission' => 'Edit', 'created_at' => now(), 'updated_at' => now(),],
+            ['title' => 'currency_delete', 'menu' => 'Currency', 'permission' => 'Delete', 'created_at' => now(), 'updated_at' => now(),],
             // Profile
             ['title' => 'profile_index', 'menu' => 'Profile', 'permission' => 'See', 'created_at' => now(), 'updated_at' => now(),],
             ['title' => 'profile_edit', 'menu' => 'Profile', 'permission' => 'Edit', 'created_at' => now(), 'updated_at' => now(),],

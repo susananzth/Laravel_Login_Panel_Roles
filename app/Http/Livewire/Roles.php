@@ -14,7 +14,7 @@ class Roles extends Component
 {
     use WithPagination;
 
-    public $permissions, $title, $role_id;
+    public $permissions, $title, $status, $role_id;
     public $updateRol = false, $addRol = false, $deleteRol = false, $selectedPermissions = [];
 
     protected $listeners = ['render'];
@@ -28,6 +28,7 @@ class Roles extends Component
     {
         $this->title = '';
         $this->permissions = '';
+        $this->status = '';
         $this->selectedPermissions = [];
     }
 
@@ -108,12 +109,10 @@ class Roles extends Component
         $role->permissions()->attach($this->selectedPermissions);
         $role->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Created Successfully.', ['name' => __('Role')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/role');
     }
 
     public function edit($id)
@@ -128,11 +127,12 @@ class Roles extends Component
 
         if (!$role) {
             session()->flash('error','Role not found');
-            $this->emit('render');
+            return redirect()->to('/role');
         } else {
             $this->resetValidationAndFields();
             $this->role_id = $role->id;
             $this->title   = $role->title;
+            $this->status  = $role->status;
             $this->selectedPermissions = $role->permissions()->pluck('permissions.id')->toArray();
             $this->updateRol  = true;
             $list_permissions = Permission::orderBy('menu', 'asc')->get();
@@ -176,17 +176,16 @@ class Roles extends Component
 
         DB::beginTransaction();
         $role = Role::findOrFail($this->role_id);
-        $role->title = $this->title;
+        $role->title  = $this->title;
+        $role->status = $this->status;
         $role->permissions()->detach();
         $role->permissions()->attach($this->selectedPermissions);
         $role->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Updated Successfully.', ['name' => __('Role')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/role');
     }
 
     public function cancel()
@@ -205,7 +204,7 @@ class Roles extends Component
         $role = Role::find($id);
         if (!$role) {
             session()->flash('error','Role not found');
-            $this->emit('render');
+            return redirect()->to('/role');
         } else {
             $this->role_id = $role->id;
             $this->addRol = false;
@@ -225,10 +224,9 @@ class Roles extends Component
         DB::beginTransaction();
         Role::findOrFail($this->role_id)->delete();
         DB::commit();
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('Role')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/role');
     }
 }
