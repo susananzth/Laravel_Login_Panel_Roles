@@ -1,11 +1,11 @@
 <x-guest-layout>
     <div>
         <a href="/">
-            <x-application-logo class="w-20 h-20 fill-current text-slate-500" />
+            <x-application-logo class="w-20 h-20 fill-current text-txtdark-500" />
         </a>
     </div>
 
-    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-slate-800 shadow-md overflow-hidden sm:rounded-lg">
+    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-secondary-800 shadow-md overflow-hidden sm:rounded-lg">
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -47,7 +47,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 dark:focus:ring-offset-slate-800" href="{{ route('login') }}">
+                <a class="underline text-sm text-txtdark-600 dark:text-txtdark-400 hover:text-txtdark-900 dark:hover:text-txtdark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-secondary-800" href="{{ route('login') }}">
                     {{ __('Already registered? Log in') }}
                 </a>
 
