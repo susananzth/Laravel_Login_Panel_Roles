@@ -87,12 +87,10 @@ class Countries extends Component
         ]);
         $country->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Created Successfully.', ['name' => __('Country')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/country');
     }
 
 
@@ -108,7 +106,7 @@ class Countries extends Component
 
         if (!$country) {
             session()->flash('error','Country not found');
-            $this->emit('render');
+            return redirect()->to('/country');
         } else {
             $this->resetValidationAndFields();
             $this->country_id    = $country->id;
@@ -141,12 +139,10 @@ class Countries extends Component
         $country->phone_code = $this->phone_code;
         $country->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Updated Successfully.', ['name' => __('Country')]));
         session()->flash('alert_class', 'success');
+        
+        return redirect()->to('/country');
     }
 
     public function cancel()
@@ -165,7 +161,7 @@ class Countries extends Component
         $country = Country::find($id);
         if (!$country) {
             session()->flash('error','Country not found');
-            $this->emit('render');
+            return redirect()->to('/country');
         } else {
             $this->country_id = $country->id;
             $this->resetValidationAndFields();
@@ -183,10 +179,9 @@ class Countries extends Component
         DB::beginTransaction();
         Country::findOrFail($this->country_id)->delete();
         DB::commit();
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('Country')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/country');
     }
 }

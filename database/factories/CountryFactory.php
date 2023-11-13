@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\State>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Country>
  */
 class CountryFactory extends Factory
 {
@@ -17,7 +17,7 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'       => fake()->name(),
+            'name'       => fake()->text(25),
             'iso_2'      => fake()->text(2),
             'iso_3'      => fake()->text(3),
             'iso_number' => fake()->randomNumber(2, true),

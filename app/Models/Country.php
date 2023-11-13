@@ -24,7 +24,7 @@ class Country extends Model
      */
     public function currencies(): BelongsToMany
     {
-        return $this->belongsToMany(Currency::class);
+        return $this->belongsToMany(Currency::class, 'country_currency');
     }
 
     /**
@@ -43,5 +43,3 @@ class Country extends Model
         return $this->hasMany(User::class, 'phone_code_id');
     }
 }
-
-
