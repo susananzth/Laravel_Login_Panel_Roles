@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'SusanaNzth') }}</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,24 +16,24 @@
     </head>
     <body class="font-sans antialiased">
 
-        <nav class="bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700">
+        <nav class="bg-white dark:bg-secondary-800 border-b border-secondary-100 dark:border-secondary-700">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <div class="shrink-0 flex items-center">
                             <a href="{{ '/' }}" class="flex items-center">
-                                <x-application-logo class="block h-9 w-auto fill-current text-slate-800 dark:text-slate-200" />
-                                <span class="font-medium dark:text-neutral-200 px-2">Susananzth</span>
+                                <x-application-logo class="block h-9 w-auto fill-current text-txtdark-800 dark:text-txtdark-200" />
+                                <span class="font-medium dark:text-txtdark-200 px-2">{{ config('app.name') }}</span>
                             </a>
                         </div>
                     </div>
                     <div class="flex">
                         @if(count(config('app.languages')) > 1)
                         <x-dropdown align="right" width="48" class="inline-flex items-center px-2 pt-1 border-b-2 border-transparent
-                            text-sm font-medium leading-5 text-slate-500 dark:text-slate-400 hover:text-slate-700
-                            dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 focus:outline-none
-                            focus:text-slate-700 dark:focus:text-slate-300 focus:border-slate-300 dark:focus:border-slate-700
-                            active:border-pink-400 dark:active:border-pink-600
+                            text-sm font-medium leading-5 text-txtdark-500 dark:text-txtdark-400 hover:text-txtdark-700
+                            dark:hover:text-txtdark-300 hover:border-secondary-300 dark:hover:border-secondary-700 focus:outline-none
+                            focus:text-txtdark-700 dark:focus:text-txtdark-300 focus:border-secondary-300 dark:focus:border-secondary-700
+                            active:border-primary-400 dark:active:border-primary-600
                             transition duration-150 ease-in-out">
                             <x-slot name="trigger">
                                 <button class="inline-flex items-center">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </nav>
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-slate-100 dark:bg-slate-900">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-secondary-100 dark:bg-secondary-900">
             {{ $slot }}
         </div>
     </body>
