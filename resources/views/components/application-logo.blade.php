@@ -1,1 +1,1 @@
-<img {{ $attributes->merge(['class' => 'max-w-xs']) }} src="{{ asset('img/logo.png')}}" alt="SusanaNzth">
+<img {{ $attributes->merge(['class' => 'max-w-xs']) }} src="{{ asset('img/'. config('app.logo') )}}" alt="{{ config('app.name') }}">

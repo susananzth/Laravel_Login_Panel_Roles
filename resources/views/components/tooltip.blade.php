@@ -10,7 +10,7 @@
     before:left-1/2 before:-top-3
     before:w-max before:max-w-xs
     before:-translate-x-1/2 before:-translate-y-full
-    before:bg-gray-700 before:text-white
+    before:bg-secondary-700 before:text-white
     before:rounded-md before:opacity-0
     before:transition-all
 
@@ -18,7 +18,7 @@
     after:left-1/2 after:-top-3
     after:h-0 after:w-0
     after:-translate-x-1/2 after:border-0
-    after:border-t-gray-700
+    after:border-t-secondary-700
     after:border-l-transparent
     after:border-b-transparent
     after:border-r-transparent
