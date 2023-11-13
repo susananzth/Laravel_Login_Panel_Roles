@@ -84,12 +84,10 @@ class Cities extends Component
         ]);
         $city->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Created Successfully.', ['name' => __('City')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/city');
     }
 
 
@@ -105,7 +103,7 @@ class Cities extends Component
 
         if (!$city) {
             session()->flash('error', 'City not found');
-            $this->emit('render');
+            return redirect()->to('/city');
         } else {
             $this->resetValidationAndFields();
             $this->city_id    = $city->id;
@@ -130,15 +128,13 @@ class Cities extends Component
         DB::beginTransaction();
         $city           = City::find($this->city_id);
         $city->name     = $this->name;
-        $this->state_id = $city->state_id;
+        $city->state_id = $this->state_id;
         $city->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Updated Successfully.', ['name' => __('City')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/city');
     }
 
     public function cancel()
@@ -157,7 +153,7 @@ class Cities extends Component
         $city = City::find($id);
         if (!$city) {
             session()->flash('error', 'City not found');
-            $this->emit('render');
+            return redirect()->to('/city');
         } else {
             $this->city_id = $city->id;
             $this->resetValidationAndFields();
@@ -175,10 +171,9 @@ class Cities extends Component
         DB::beginTransaction();
         City::findOrFail($this->city_id)->delete();
         DB::commit();
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('City')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/city');
     }
 }

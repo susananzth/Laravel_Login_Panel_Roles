@@ -23,14 +23,16 @@ class CityRequest extends FormRequest
     public static function rules($stateId = null, $cityId = null): array
     {
         $baseRules = [
-            'name'     => ['required', 'string', 'max:200'],
+            'name'     => ['required', 'string', 'max:150'],
             'state_id' => ['required', 'integer', 'exists:states,id'],
         ];
 
-        if ($cityId) {
-            $baseRules['name'][] = Rule::unique('cities', 'name')->where('state_id', $stateId)->ignore($cityId);
-        } else {
-            $baseRules['name'][] = Rule::unique('cities', 'name')->where('state_id', $stateId);
+        if ($stateId) {
+            if ($cityId) {
+                $baseRules['name'][] = Rule::unique('cities', 'name')->where('state_id', $stateId)->ignore($cityId);
+            } else {
+                $baseRules['name'][] = Rule::unique('cities', 'name')->where('state_id', $stateId);
+            }
         }
 
         return $baseRules;

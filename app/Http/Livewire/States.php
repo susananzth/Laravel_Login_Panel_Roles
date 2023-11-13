@@ -86,12 +86,10 @@ class States extends Component
         ]);
         $state->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Created Successfully.', ['name' => __('State')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/state');
     }
 
 
@@ -107,14 +105,14 @@ class States extends Component
 
         if (!$state) {
             session()->flash('error', 'State not found');
-            $this->emit('render');
+            return redirect()->to('/state');
         } else {
             $this->resetValidationAndFields();
             $this->state_id    = $state->id;
             $this->name        = $state->name;
             $this->iso_2       = $state->iso_2;
             $this->country_id  = $state->country_id;
-            $this->countries = Country::orderBy('name', 'asc')->get();
+            $this->countries   = Country::orderBy('name', 'asc')->get();
             $this->updateState = true;
             return view('state.edit');
         }
@@ -131,18 +129,16 @@ class States extends Component
         $this->validate();
 
         DB::beginTransaction();
-        $state            = State::find($this->state_id);
-        $state->name      = $this->name;
-        $state->iso_2     = $this->iso_2;
-        $this->country_id = $state->country_id;
+        $state             = State::find($this->state_id);
+        $state->name       = $this->name;
+        $state->iso_2      = $this->iso_2;
+        $state->country_id = $this->country_id;
         $state->save();
         DB::commit();
-
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Updated Successfully.', ['name' => __('State')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/state');
     }
 
     public function cancel()
@@ -161,7 +157,7 @@ class States extends Component
         $state = State::find($id);
         if (!$state) {
             session()->flash('error', 'State not found');
-            $this->emit('render');
+            return redirect()->to('/state');
         } else {
             $this->state_id = $state->id;
             $this->resetValidationAndFields();
@@ -179,10 +175,9 @@ class States extends Component
         DB::beginTransaction();
         State::findOrFail($this->state_id)->delete();
         DB::commit();
-        $this->resetValidationAndFields();
-        $this->emit('render');
-
         session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('State')]));
         session()->flash('alert_class', 'success');
+
+        return redirect()->to('/state');
     }
 }

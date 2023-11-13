@@ -7,10 +7,10 @@
         </p>
 
         <div>
-            <x-input-label for="state_id" :value="__('State')" />
+            <x-input-label for="state_id">{{ __('State') }} *</x-input-label>
             <x-select-input id="state_id" class="block mt-1 w-full" 
-                name="state_id" wire:model="state_id">
-                <option value="">{{ __('Select') }}</option>
+                name="state_id" wire:model="state_id" autocomplete="off" autofocus>
+                <option value="">{{ __('Please select') }}</option>
                 @foreach ($states as $item)
                     <option value="{{$item->id}}" {{ old('state_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
                 @endforeach
@@ -21,7 +21,7 @@
             <x-input-label for="name">{{ __('Name') }} *</x-input-label>
             <x-text-input id="name" class="block mt-1 w-full" type="text"
                 name="name" :value="old('name')" wire:model="name"
-                autocomplete="name" maxlength="255" required autofocus />
+                autocomplete="off" maxlength="150" required />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
