@@ -16,6 +16,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            maxHeight: {
+                '2.37': '2.37rem',
+            },
         },
         colors: {
             transparent: 'transparent',
