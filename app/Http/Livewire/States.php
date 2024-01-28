@@ -7,6 +7,7 @@ use App\Http\Requests\StateRequest;
 use App\Models\Country;
 use App\Models\State;
 use Illuminate\Support\Facades\Gate;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,6 +20,7 @@ class States extends Component
 
     protected $listeners = ['render'];
 
+    #[Title('States')]
     public function rules()
     {
         return StateRequest::rules($this->state_id);
@@ -64,8 +66,9 @@ class States extends Component
                 ->with('alert_class', 'danger');
         }
         $this->resetValidationAndFields();
+        $this->state_id  = '';
         $this->countries = Country::orderBy('name', 'asc')->get();
-        $this->addState = true;
+        $this->addState  = true;
         return view('state.create');
     }
 
@@ -86,10 +89,10 @@ class States extends Component
         ]);
         $state->save();
         DB::commit();
-        session()->flash('message', trans('message.Created Successfully.', ['name' => __('State')]));
-        session()->flash('alert_class', 'success');
 
-        return redirect()->to('/state');
+        return redirect()->route('states')
+            ->with('message', trans('message.Created Successfully.', ['name' => __('State')]))
+            ->with('alert_class', 'success');
     }
 
 
@@ -104,18 +107,18 @@ class States extends Component
         $state = State::find($id);
 
         if (!$state) {
-            session()->flash('error', 'State not found');
-            return redirect()->to('/state');
-        } else {
-            $this->resetValidationAndFields();
-            $this->state_id    = $state->id;
-            $this->name        = $state->name;
-            $this->iso_2       = $state->iso_2;
-            $this->country_id  = $state->country_id;
-            $this->countries   = Country::orderBy('name', 'asc')->get();
-            $this->updateState = true;
-            return view('state.edit');
+            return redirect()->route('states')
+                ->with('message', __('State not found'))
+                ->with('alert_class', 'danger');
         }
+        $this->resetValidationAndFields();
+        $this->state_id    = $state->id;
+        $this->name        = $state->name;
+        $this->iso_2       = $state->iso_2;
+        $this->country_id  = $state->country_id;
+        $this->countries   = Country::orderBy('name', 'asc')->get();
+        $this->updateState = true;
+        return view('state.edit');
     }
 
     public function update()
@@ -128,17 +131,22 @@ class States extends Component
 
         $this->validate();
 
+        $state = State::find($this->state_id);
+        if (!$state) {
+            return redirect()->route('states')
+                ->with('message', __('State not found'))
+                ->with('alert_class', 'danger');
+        }
+
         DB::beginTransaction();
-        $state             = State::find($this->state_id);
         $state->name       = $this->name;
         $state->iso_2      = $this->iso_2;
         $state->country_id = $this->country_id;
         $state->save();
         DB::commit();
-        session()->flash('message', trans('message.Updated Successfully.', ['name' => __('State')]));
-        session()->flash('alert_class', 'success');
-
-        return redirect()->to('/state');
+        return redirect()->route('states')
+            ->with('message', trans('message.Updated Successfully.', ['name' => __('State')]))
+            ->with('alert_class', 'success');
     }
 
     public function cancel()
@@ -156,13 +164,13 @@ class States extends Component
 
         $state = State::find($id);
         if (!$state) {
-            session()->flash('error', 'State not found');
-            return redirect()->to('/state');
-        } else {
-            $this->state_id = $state->id;
-            $this->resetValidationAndFields();
-            $this->deleteState = true;
+            return redirect()->route('states')
+                ->with('message', __('State not found'))
+                ->with('alert_class', 'danger');
         }
+        $this->state_id = $state->id;
+        $this->resetValidationAndFields();
+        $this->deleteState = true;
     }
 
     public function delete()
@@ -172,12 +180,19 @@ class States extends Component
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         }
-        DB::beginTransaction();
-        State::findOrFail($this->state_id)->delete();
-        DB::commit();
-        session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('State')]));
-        session()->flash('alert_class', 'success');
 
-        return redirect()->to('/state');
+        $state = State::find($this->state_id);
+        if (!$state) {
+            return redirect()->route('states')
+                ->with('message', __('State not found'))
+                ->with('alert_class', 'danger');
+        }
+
+        DB::beginTransaction();
+        $state->delete();
+        DB::commit();
+        return redirect()->route('states')
+            ->with('message', trans('message.Deleted Successfully.', ['name' => __('State')]))
+            ->with('alert_class', 'success');
     }
 }

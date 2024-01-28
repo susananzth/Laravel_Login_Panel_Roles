@@ -14,7 +14,8 @@ return new class extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Country::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Country::class)->constrained()
+                ->onUpdate('restrict')->onDelete('restrict');
             $table->string('name', 200);
             $table->string('iso_2', 4)->nullable();
             $table->timestamps();

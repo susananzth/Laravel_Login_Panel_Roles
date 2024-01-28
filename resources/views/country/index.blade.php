@@ -1,7 +1,5 @@
 <x-slot name="header">
-    <h2 class="font-semibold text-xl text-txtdark-800 dark:text-txtdark-200 leading-tight">
-        <i class="fa-solid fa-earth-americas me-1"></i>{{ __('Countries') }}
-    </h2>
+    <x-title-list icon="earth-americas">{{ __('Countries') }}</x-title-list>
 </x-slot>
 
 <div class="max-w-7xl py-6 mx-auto sm:px-4 lg:px-6 space-y-6">
@@ -16,39 +14,30 @@
                     <table class="min-w-full text-left text-sm font-light">
                         <thead class="border-b bg-secondary-800 font-medium text-white dark:border-secondary-500 dark:bg-secondary-900">
                             <tr>
-                                <th scope="col" class="border-r border-secondary-700 px-6 py-4">{{ __('Name') }}</th>
-                                <th scope="col" class="border-r border-secondary-700 px-6 py-4">{{ __('ISO 2') }}</th>
-                                <th scope="col" class="border-r border-secondary-700 px-6 py-4">{{ __('ISO 3') }}</th>
-                                <th scope="col" class="border-r border-secondary-700 px-6 py-4">{{ __('ISO number') }}</th>
-                                <th scope="col" class="border-r border-secondary-700 px-6 py-4">{{ __('Phone code') }}</th>
+                                <x-table-th title="{{ __('Name') }}" />
+                                <x-table-th title="{{ __('ISO 2') }}" />
+                                <x-table-th title="{{ __('ISO 3') }}" />
+                                <x-table-th title="{{ __('ISO number') }}" />
+                                <x-table-th title="{{ __('Phone code') }}" />
                                 <th scope="col" class="px-6 py-4">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($countries as $country)
+                            @forelse ($countries as $country)
                             <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-secondary-100 dark:border-secondary-500 dark:hover:bg-secondary-600">
-                                <td class="whitespace-nowrap border-r px-6 py-4">{{ $country->name }}</td>
-                                <td class="whitespace-nowrap border-r px-6 py-4">{{ $country->iso_2 }}</td>
-                                <td class="whitespace-nowrap border-r px-6 py-4">{{ $country->iso_3 }}</td>
-                                <td class="whitespace-nowrap border-r px-6 py-4">{{ $country->iso_number }}</td>
-                                <td class="whitespace-nowrap border-r px-6 py-4">{{ $country->phone_code }}</td>
-                                <td class="whitespace-nowrap text-center px-6 py-4">
-                                    <a href="#" wire:click="edit({{ $country->id }})" class="me-1">
-                                        <i class="fa-solid fa-edit"></i>
-                                    </a>
-                                    <a href="#" wire:click="setDeleteId({{ $country->id }})">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </td>
+                                <x-table-td>{{ $country->name }}</x-table-td>
+                                <x-table-td>{{ $country->iso_2 }}</x-table-td>
+                                <x-table-td>{{ $country->iso_3 }}</x-table-td>
+                                <x-table-td>{{ $country->iso_number }}</x-table-td>
+                                <x-table-td>{{ $country->phone_code }}</x-table-td>
+                                <x-table-td>
+                                    <x-table-buttons id="{{ $country->id }}" />
+                                </x-table-td>
                             </tr>
-                            @endforeach
-                            @if (count($countries) == 0)
-                            <tr
-                                class="border-b transition duration-300 ease-in-out hover:bg-secondary-100 dark:border-secondary-500 dark:hover:bg-secondary-600">
-                                <td class="whitespace-nowrap text-center border-r px-6 py-4" colspan="6">{{ __('There are no records to show') }}</td>
-                            </tr>
-                            @endif
+                            @empty
+                            <x-table-empty colspan="6" />
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -64,22 +53,7 @@
             @include('country.edit')
         @endif
         @if($deleteCountry)
-            <x-modal wire:model="deleteCountry" focusable
-                :title="__('Are you sure you want to delete the record?')">
-
-                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Once the record is deleted, all data will be permanently erased.') }}
-                    </p>
-        
-                    <div class="mt-6 flex justify-end gap-4">
-                        <x-secondary-button wire:click.prevent="cancel()">
-                            <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
-                        </x-secondary-button>
-                        <x-danger-button type="button" wire:click.prevent="delete()">
-                            <i class="fa-solid fa-trash me-1"></i>{{ __('Delete') }}
-                        </x-danger-button>
-                    </div>
-            </x-modal>
+            <x-table-modal-delete model="deleteCountry" />
         @endif
     </div>
 </div>
