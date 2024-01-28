@@ -18,6 +18,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'first_name'       => ['required', 'string', 'max:150'],
             'last_name'        => ['required', 'string', 'max:150'],
+            'image'            => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:3000'],
             'document_type_id' => ['required', 'integer', 'exists:document_types,id'],
             'document_number'  => ['required', 'string', 'max:50'],
             'phone_code_id'    => ['required', 'integer', 'exists:countries,id'],

@@ -168,6 +168,7 @@ return [
         'password'              => 'Password',
         'password_confirmation' => 'Confirm Password',
         'current_password'      => 'Current Password',
+        'password_delete'       => 'Password',
         'state'                 => 'State',
         'state_id'              => 'State',
         'iso_2'                 => 'ISO 2',

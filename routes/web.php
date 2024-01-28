@@ -9,6 +9,7 @@ use App\Http\Livewire\DocumentTypes;
 use App\Http\Livewire\Roles;
 use App\Http\Livewire\States;
 use App\Http\Livewire\Users;
+use App\Http\Livewire\Profiles;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,10 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get   ('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profiles', Profiles::class)->name('profiles');
+    /*Route::get   ('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch ('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');*/
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

@@ -145,7 +145,7 @@
                     <span>{{ __('Roles') }}</span>
                 </x-responsive-nav-link>
                 @endcan
-                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')" class="flex flex-row">
+                <x-responsive-nav-link :href="route('profiles')" :active="request()->routeIs('profiles')" class="flex flex-row">
                     <div class="basis-6">
                         <i class="fa-solid fa-user"></i>
                     </div>
