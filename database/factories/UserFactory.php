@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use App\Models\Country;
 use App\Models\DocumentType;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,13 +28,15 @@ class UserFactory extends Factory
             'last_name'         => fake()->lastName(),
             'document_type_id'  => DocumentType::inRandomOrder()->first()->id,
             'document_number'   => strval(fake()->randomNumber(8, true)),
+            'city_id'           => City::inRandomOrder()->first()->id,
+            'address'           => fake()->streetAddress(),
             'phone_code_id'     => Country::inRandomOrder()->first()->id,
             'phone'             => strval(fake()->randomNumber(9, true)),
             'email'             => Str::random(10).'@gmail.com',
             'email_verified_at' => now(),
             'password'          => static::$password ??= Hash::make('password'),
             'remember_token'    => Str::random(10),
-            'status' => true,
+            'status'            => true,
         ];
     }
 

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -24,6 +25,8 @@ class User extends Authenticatable
         'last_name',
         'document_type_id',
         'document_number',
+        'city_id',
+        'address',
         'phone_code_id',
         'phone',
         'email',
@@ -51,14 +54,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function __construct(array $attributes = [])
+    /**
+     * Get the user's image.
+     */
+    public function image(): MorphOne
     {
-        parent::__construct($attributes);
-        self::created(function (User $user) {
-            if (!$user->roles()->get()->contains(3)) {
-                $user->roles()->attach(3);
-            }
-        });
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    /**
+     * Get the city that owns the user.
+     */
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
     }
 
     /**

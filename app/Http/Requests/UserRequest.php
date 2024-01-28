@@ -25,8 +25,11 @@ class UserRequest extends FormRequest
         $baseRules = [
             'first_name'       => ['required', 'string', 'max:150'],
             'last_name'        => ['required', 'string', 'max:150'],
+            'image'            => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:3000'],
             'document_type_id' => ['required', 'integer', 'exists:document_types,id'],
             'document_number'  => ['required', 'string', 'max:50'],
+            'city_id'          => ['required', 'integer', 'exists:cities,id'],
+            'address'          => ['required', 'string', 'max:255'],
             'phone_code_id'    => ['required', 'integer', 'exists:countries,id'],
             'phone'            => ['required', 'string', 'max:50'],
             'email'            => ['required', 'string', 'email', 'max:255'],
