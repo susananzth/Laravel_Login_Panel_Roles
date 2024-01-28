@@ -23,9 +23,9 @@ class StateRequest extends FormRequest
     public static function rules($stateId = null): array
     {
         $baseRules = [
-            'name'     => ['required', 'string', 'max:200'],
-            'iso_2'    => ['nullable', 'string', 'max:2'],
-            'state_id' => ['required', 'integer', 'exists:countries,id'],
+            'name'       => ['required', 'string', 'max:200'],
+            'iso_2'      => ['nullable', 'string', 'max:2'],
+            'country_id' => ['required', 'integer', 'exists:countries,id'],
         ];
 
         if ($stateId) {

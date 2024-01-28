@@ -18,8 +18,8 @@ class CountryFactory extends Factory
     {
         return [
             'name'       => fake()->text(25),
-            'iso_2'      => fake()->text(2),
-            'iso_3'      => fake()->text(3),
+            'iso_2'      => fake()->randomNumber(2, true),
+            'iso_3'      => fake()->randomNumber(3, true),
             'iso_number' => fake()->randomNumber(2, true),
             'phone_code' => fake()->randomNumber(2, true),
         ];

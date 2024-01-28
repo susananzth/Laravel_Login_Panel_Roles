@@ -20,7 +20,7 @@ class StateFactory extends Factory
         return [
             'name'       => fake()->text(25),
             'country_id' => Country::inRandomOrder()->first()->id,
-            'iso_2'      => fake()->text(3),
+            'iso_2'      => fake()->randomNumber(3, true),
         ];
     }
 }
