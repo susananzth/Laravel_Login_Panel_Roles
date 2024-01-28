@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('country_currency', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Country::class)->constrained()->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->foreignIdFor(Currency::class)->constrained()->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreignIdFor(Country::class)->constrained()
+                ->onUpdate('restrict')->onDelete('restrict');
+            $table->foreignIdFor(Currency::class)->constrained()
+                ->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }

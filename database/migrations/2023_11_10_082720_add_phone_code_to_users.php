@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('phone_code_id')->constrained('countries')
-            ->onUpdate('restrict')->onDelete('restrict')->after('phone');
+                ->onUpdate('restrict')->onDelete('restrict');
         });
     }
 

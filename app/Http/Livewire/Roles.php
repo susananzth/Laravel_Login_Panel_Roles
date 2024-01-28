@@ -7,6 +7,7 @@ use App\Http\Requests\RoleRequest;
 use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Gate;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,6 +20,7 @@ class Roles extends Component
 
     protected $listeners = ['render'];
 
+    #[Title('Roles')]
     public function rules()
     {
         return RoleRequest::rules($this->role_id);
@@ -64,6 +66,7 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         }
         $this->resetValidationAndFields();
+        $this->role_id = '';
         $this->addRol = true;
         $list_permissions = Permission::orderBy('menu', 'asc')->get();
 
@@ -109,10 +112,10 @@ class Roles extends Component
         $role->permissions()->attach($this->selectedPermissions);
         $role->save();
         DB::commit();
-        session()->flash('message', trans('message.Created Successfully.', ['name' => __('Role')]));
-        session()->flash('alert_class', 'success');
 
-        return redirect()->to('/role');
+        return redirect()->route('roles')
+            ->with('message', trans('message.Created Successfully.', ['name' => __('Role')]))
+            ->with('alert_class', 'success');
     }
 
     public function edit($id)
@@ -126,42 +129,42 @@ class Roles extends Component
         $role = Role::find($id)->load('permissions');
 
         if (!$role) {
-            session()->flash('error','Role not found');
-            return redirect()->to('/role');
-        } else {
-            $this->resetValidationAndFields();
-            $this->role_id = $role->id;
-            $this->title   = $role->title;
-            $this->status  = $role->status;
-            $this->selectedPermissions = $role->permissions()->pluck('permissions.id')->toArray();
-            $this->updateRol  = true;
-            $list_permissions = Permission::orderBy('menu', 'asc')->get();
-
-            $title_menu = '';
-            $permisions = [];
-            foreach ($list_permissions as $permission) {
-                if ($title_menu != $permission->menu) {
-                    $title_menu = $permission->menu;
-
-                    $checkbox       = New \stdClass();
-                    $checkbox->menu = $title_menu;
-                    $checkbox->permissions = [];
-
-                    $get_permissions = Permission::orderBy('permission', 'asc')->where('menu', $title_menu)->get();
-                    foreach ($get_permissions as $item) {
-                        $children = (object)[];
-                        $children->id = $item->id;
-                        $children->permission = $item->permission;
-                        $checkbox->permissions[] = $children;
-                    }
-
-                    $permisions[] = $checkbox;
-                }
-            };
-
-            $this->permissions = $permisions;
-            return view('role.edit');
+            return redirect()->route('roles')
+                ->with('message', __('Role not found'))
+                ->with('alert_class', 'danger');
         }
+        $this->resetValidationAndFields();
+        $this->role_id = $role->id;
+        $this->title   = $role->title;
+        $this->status  = $role->status;
+        $this->selectedPermissions = $role->permissions()->pluck('permissions.id')->toArray();
+        $this->updateRol  = true;
+        $list_permissions = Permission::orderBy('menu', 'asc')->get();
+
+        $title_menu = '';
+        $permisions = [];
+        foreach ($list_permissions as $permission) {
+            if ($title_menu != $permission->menu) {
+                $title_menu = $permission->menu;
+
+                $checkbox       = New \stdClass();
+                $checkbox->menu = $title_menu;
+                $checkbox->permissions = [];
+
+                $get_permissions = Permission::orderBy('permission', 'asc')->where('menu', $title_menu)->get();
+                foreach ($get_permissions as $item) {
+                    $children = (object)[];
+                    $children->id = $item->id;
+                    $children->permission = $item->permission;
+                    $checkbox->permissions[] = $children;
+                }
+
+                $permisions[] = $checkbox;
+            }
+        };
+
+        $this->permissions = $permisions;
+        return view('role.edit');
     }
 
     public function update()
@@ -174,18 +177,24 @@ class Roles extends Component
 
         $this->validate();
 
+        $role = Role::find($this->role_id);
+        if (!$role) {
+            return redirect()->route('roles')
+                ->with('message', __('Role not found'))
+                ->with('alert_class', 'danger');
+        }
+
         DB::beginTransaction();
-        $role = Role::findOrFail($this->role_id);
         $role->title  = $this->title;
         $role->status = $this->status;
         $role->permissions()->detach();
         $role->permissions()->attach($this->selectedPermissions);
         $role->save();
         DB::commit();
-        session()->flash('message', trans('message.Updated Successfully.', ['name' => __('Role')]));
-        session()->flash('alert_class', 'success');
 
-        return redirect()->to('/role');
+        return redirect()->route('roles')
+            ->with('message', trans('message.Updated Successfully.', ['name' => __('Role')]))
+            ->with('alert_class', 'success');
     }
 
     public function cancel()
@@ -203,15 +212,13 @@ class Roles extends Component
 
         $role = Role::find($id);
         if (!$role) {
-            session()->flash('error','Role not found');
-            return redirect()->to('/role');
-        } else {
-            $this->role_id = $role->id;
-            $this->addRol = false;
-            $this->updateRol = false;
-            $this->deleteRol = true;
+            return redirect()->route('roles')
+                ->with('message', __('Role not found'))
+                ->with('alert_class', 'danger');
         }
-
+        $this->role_id = $role->id;
+        $this->resetValidationAndFields();
+        $this->deleteRol = true;
     }
 
     public function delete()
@@ -221,12 +228,19 @@ class Roles extends Component
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         }
-        DB::beginTransaction();
-        Role::findOrFail($this->role_id)->delete();
-        DB::commit();
-        session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('Role')]));
-        session()->flash('alert_class', 'success');
 
-        return redirect()->to('/role');
+        $role = Role::find($this->role_id);
+        if (!$role) {
+            return redirect()->route('roles')
+                ->with('message', __('Role not found'))
+                ->with('alert_class', 'danger');
+        }
+        DB::beginTransaction();
+        $role->delete();
+        DB::commit();
+
+        return redirect()->route('roles')
+            ->with('message', trans('message.Deleted Successfully.', ['name' => __('Role')]))
+            ->with('alert_class', 'success');
     }
 }

@@ -6,6 +6,7 @@ use DB;
 use App\Http\Requests\DocumentTypeRequest;
 use App\Models\DocumentType;
 use Illuminate\Support\Facades\Gate;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -18,6 +19,7 @@ class DocumentTypes extends Component
 
     protected $listeners = ['render'];
 
+    #[Title('Document Types')]
     public function rules()
     {
         return DocumentTypeRequest::rules($this->document_type_id);
@@ -61,6 +63,7 @@ class DocumentTypes extends Component
                 ->with('alert_class', 'danger');
         }
         $this->resetValidationAndFields();
+        $this->document_type_id = '';
         $this->addDocumentType = true;
         return view('document_type.create');
     }
@@ -80,12 +83,10 @@ class DocumentTypes extends Component
         ]);
         $document_type->save();
         DB::commit();
-        session()->flash('message', trans('message.Created Successfully.', ['name' => __('Document Type')]));
-        session()->flash('alert_class', 'success');
-
-        return redirect()->to('/document');
+        return redirect()->route('document_types')
+            ->with('message', trans('message.Created Successfully.', ['name' => __('Document Type')]))
+            ->with('alert_class', 'success');
     }
-
 
     public function edit($id)
     {
@@ -98,16 +99,16 @@ class DocumentTypes extends Component
         $document_type = DocumentType::find($id);
 
         if (!$document_type) {
-            session()->flash('error','Document Type not found');
-            return redirect()->to('/document');
-        } else {
-            $this->resetValidationAndFields();
-            $this->document_type_id   = $document_type->id;
-            $this->name               = $document_type->name;
-            $this->status             = $document_type->status;
-            $this->updateDocumentType = true;
-            return view('document_type.edit');
+            return redirect()->route('document_types')
+                ->with('message', __('Document Type not found'))
+                ->with('alert_class', 'danger');
         }
+        $this->resetValidationAndFields();
+        $this->document_type_id   = $document_type->id;
+        $this->name               = $document_type->name;
+        $this->status             = $document_type->status;
+        $this->updateDocumentType = true;
+        return view('document_type.edit');
     }
 
     public function update()
@@ -120,16 +121,22 @@ class DocumentTypes extends Component
 
         $this->validate();
 
+        $document_type = DocumentType::find($this->document_type_id);
+        if (!$document_type) {
+            return redirect()->route('document_types')
+                ->with('message', __('Document Type not found'))
+                ->with('alert_class', 'danger');
+        }
+
         DB::beginTransaction();
-        $document_type         = DocumentType::find($this->document_type_id);
         $document_type->name   = $this->name;
         $document_type->status = $this->status;
         $document_type->save();
         DB::commit();
-        session()->flash('message', trans('message.Updated Successfully.', ['name' => __('Document Type')]));
-        session()->flash('alert_class', 'success');
 
-        return redirect()->to('/document');
+        return redirect()->route('document_types')
+            ->with('message', trans('message.Updated Successfully.', ['name' => __('Document Type')]))
+            ->with('alert_class', 'success');
     }
 
     public function cancel()
@@ -147,13 +154,14 @@ class DocumentTypes extends Component
 
         $document_type = DocumentType::find($id);
         if (!$document_type) {
-            session()->flash('error','Document Type not found');
-            return redirect()->to('/document');
-        } else {
-            $this->document_type_id = $document_type->id;
-            $this->resetValidationAndFields();
-            $this->deleteDocumentType = true;
+            return redirect()->route('document_types')
+                ->with('message', __('Document Type not found'))
+                ->with('alert_class', 'danger');
         }
+
+        $this->document_type_id = $document_type->id;
+        $this->resetValidationAndFields();
+        $this->deleteDocumentType = true;
     }
 
     public function delete()
@@ -163,12 +171,19 @@ class DocumentTypes extends Component
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         }
-        DB::beginTransaction();
-        DocumentType::findOrFail($this->document_type_id)->delete();
-        DB::commit();
-        session()->flash('message', trans('message.Deleted Successfully.', ['name' => __('Document Type')]));
-        session()->flash('alert_class', 'success');
+        $document_type = DocumentType::find($this->document_type_id);
+        if (!$document_type) {
+            return redirect()->route('document_types')
+                ->with('message', __('Document Type not found'))
+                ->with('alert_class', 'danger');
+        }
 
-        return redirect()->to('/document');
+        DB::beginTransaction();
+        $document_type->delete();
+        DB::commit();
+
+        return redirect()->route('document_types')
+            ->with('message', trans('message.Deleted Successfully.', ['name' => __('Document Type')]))
+            ->with('alert_class', 'success');
     }
 }

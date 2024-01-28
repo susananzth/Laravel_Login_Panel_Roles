@@ -13,9 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(DocumentType::class)->constrained()->onUpdate('restrict')
-            ->onDelete('restrict')->after('document_number');
-            $table->string('document_number', 50)->after('phone');
+            $table->foreignIdFor(DocumentType::class)->constrained()
+                ->onUpdate('restrict')->onDelete('restrict');
+            $table->string('document_number', 50);
         });
     }
 
