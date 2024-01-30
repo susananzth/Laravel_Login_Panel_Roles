@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -33,7 +32,6 @@ class Profiles extends Component
 
     protected $listeners = ['render'];
 
-    //#[Layout('layouts.app-profile')] 
     #[Title('Profile')]
     public function rules()
     {
