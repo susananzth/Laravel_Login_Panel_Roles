@@ -19,7 +19,7 @@ class UserObserver
         }
 
         // Asignar imagen predeterminada si el usuario no tiene una imagen
-        if (!$user->image) {
+        if (isset($user->image) && count($user->image) == 0) {
             $defaultImagePath = public_path('img/profile.png'); // Ruta de la imagen predeterminada
             $randomFileName = hash('sha256', time() . Str::random(10)) . '.png'; // Nombre de archivo aleatorio
 
