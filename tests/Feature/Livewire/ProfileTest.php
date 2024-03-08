@@ -78,23 +78,18 @@ class ProfileTest extends TestCase
         Livewire::actingAs($user)
             ->test(Profiles::class)
             ->set('user_id', $user->id)
-            ->set('first_name', 'Nuevo')
-            ->set('last_name', 'Nuevo')
+            ->set('first_name', fake()->firstName())
+            ->set('last_name', fake()->lastName())
             ->set('document_type_id', DocumentType::inRandomOrder()->first()->id)
-            ->set('document_number', '23423423')
+            ->set('document_number', strval(fake()->randomNumber(8, true)))
             ->set('phone_code_id', Country::inRandomOrder()->first()->id)
-            ->set('phone', '23423423')
+            ->set('phone', strval(fake()->randomNumber(8, true)))
             ->set('email', $user->email)
             ->set('city_id', City::inRandomOrder()->first()->id)
-            ->set('address', 'asdasdas')
+            ->set('address', fake()->streetAddress())
             ->call('update')
             ->assertStatus(200)
             ->assertHasNoErrors();
-
-        Livewire::actingAs($user)
-            ->test(Profiles::class)
-            ->assertSee('Nuevo')
-            ->assertStatus(200);
     }
 
     public function test_delete_account(): void

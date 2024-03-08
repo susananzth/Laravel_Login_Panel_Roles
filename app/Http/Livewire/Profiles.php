@@ -108,7 +108,7 @@ class Profiles extends Component
         if (gettype($this->image) != 'string' && $this->image != '') {
             $file = $this->image->storePublicly('public/images');
             $this->image = substr($file, strlen('public/images/'));
-            if (Storage::exists('public/images/'.$user->image->url)) {
+            if (isset($user->image) && Storage::exists('public/images/'.$user->image->url)) {
                 Storage::delete('public/images/'.$user->image->url);
             }
             $user->image->url = $this->image;

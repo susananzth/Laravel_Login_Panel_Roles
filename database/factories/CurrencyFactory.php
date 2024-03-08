@@ -19,7 +19,7 @@ class CurrencyFactory extends Factory
         return [
             'name'   => fake()->text(25),
             'iso_4'  => fake()->text(5),
-            'symbol' => fake()->text(3),
+            'symbol' => fake()->randomNumber(2, true),
         ];
     }
 }

@@ -188,8 +188,8 @@ class Users extends Component
         $this->user_id          = $user->id;
         $this->first_name       = $user->first_name;
         $this->last_name        = $user->last_name;
-        $this->image            = $user->image->url;
-        $this->imageEdit        = $user->image->url;
+        $this->image            = $user->image->url ?? '';
+        $this->imageEdit        = $user->image->url ?? '';
         $this->documents        = DocumentType::orderBy('name', 'asc')->get();
         $this->document_type_id = $user->document_type_id;
         $this->document_number  = $user->document_number;
@@ -229,7 +229,7 @@ class Users extends Component
         if (gettype($this->image) != 'string' && $this->image != '') {
             $file = $this->image->storePublicly('public/images');
             $this->image = substr($file, strlen('public/images/'));
-            if (Storage::exists('public/images/'.$user->image->url)) {
+            if (isset($user->image) && Storage::exists('public/images/'.$user->image->url)) {
                 Storage::delete('public/images/'.$user->image->url);
             }
         } else {
@@ -299,7 +299,7 @@ class Users extends Component
                 ->with('message', __('User not found'))
                 ->with('alert_class', 'danger');
         }
-        if (Storage::exists('public/images/'.$user->image->url)) {
+        if (isset($user->image) && Storage::exists('public/images/'.$user->image->url)) {
             Storage::delete('public/images/'.$user->image->url);
         }
 
