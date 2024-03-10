@@ -7,22 +7,22 @@
         </p>
 
         <div>
-            <x-input-label for="title">{{ __('Title') }} *</x-input-label>
-            <x-text-input id="title" name="title" type="text"
+            <x-input.label for="title">{{ __('Title') }} *</x-input.label>
+            <x-input.text id="title" name="title" type="text"
                 class="mt-1 block w-full" maxlength="150"
                 value="{{ $title }}" wire:model="title"
                 required autofocus autocomplete="off" />
-            <x-input-error class="mt-2" :messages="$errors->get('title')" />
+            <x-input.message-error class="mt-2" :messages="$errors->get('title')" />
         </div>
         <div class="col-span-2">
-            <x-input-label for="status">{{ __('Status') }} *</x-input-label>
-            <x-select-input id="status" class="block mt-1 w-full" 
+            <x-input.label for="status">{{ __('Status') }} *</x-input.label>
+            <x-input.select id="status" class="block mt-1 w-full" 
                 name="status" wire:model="status" required>
                 <option value="">{{ __('Please select') }}</option>
                 <option value="false" {{ ($status == false) ? 'selected' : '' }}>{{ __('Inactive') }}</option>
                 <option value="true" {{ ($status == true) ? 'selected' : '' }}>{{ __('Active') }}</option>
-            </x-select-input>
-            <x-input-error :messages="$errors->get('status')" class="mt-2" />
+            </x-input.select>
+            <x-input.message-error :messages="$errors->get('status')" class="mt-2" />
         </div>
         <div>
             <h4>{{ __('Permissions') }}</h4>

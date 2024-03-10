@@ -24,7 +24,7 @@ class Profiles extends Component
 {
     use WithFileUploads;
 
-    public $user, $first_name, $last_name, $image, $imageEdit, $documents, $document_type_id, $document_number;
+    public $user, $first_name, $last_name, $image = '', $imageEdit, $documents, $document_type_id, $document_number;
     public $countries, $country_id, $states, $state_id, $cities, $city_id, $address;
     public $phone_codes, $phone_code_id, $phone, $email, $user_id;
     public $current_password, $password, $password_confirmation, $password_delete;
@@ -102,18 +102,19 @@ class Profiles extends Component
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
-
-        $user->save();
-
-        if (gettype($this->image) != 'string' && $this->image != '') {
-            $file = $this->image->storePublicly('public/images');
-            $this->image = substr($file, strlen('public/images/'));
-            if (isset($user->image) && Storage::exists('public/images/'.$user->image->url)) {
-                Storage::delete('public/images/'.$user->image->url);
+        if ($this->image != '') {
+            if ($user->image) {
+                if (Storage::exists('public/images/'.$user->image->url)) {
+                    Storage::delete('public/images/'.$user->image->url);
+                }
+                $user->image->delete();
             }
-            $user->image->url = $this->image;
-            $user->image->save();
+            $file = $this->image->storePublicly('public/images');
+            $user->image()->create([
+                'url' => substr($file, strlen('public/images/')),
+            ]);
         }
+        $user->save();
         DB::commit();
 
         return redirect()->route('profiles')

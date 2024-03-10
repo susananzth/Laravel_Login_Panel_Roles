@@ -28,11 +28,11 @@
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password_delete">{{ __('Password') }}</x-input-label>
-                <x-text-input id="password_delete" class="block mt-1 w-full"
+                <x-input.label for="password_delete">{{ __('Password') }}</x-input.label>
+                <x-input.text id="password_delete" class="block mt-1 w-full"
                     type="password" name="password_delete" wire:model="password_delete"
                     autocomplete="off" maxlength="255" required />
-                <x-input-error :messages="$errors->get('password_delete')" class="mt-2" />
+                <x-input.message-error :messages="$errors->get('password_delete')" class="mt-2" />
             </div>
 
             <div class="mt-6 flex justify-end">

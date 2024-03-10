@@ -7,22 +7,22 @@
         </p>
 
         <div>
-            <x-input-label for="state_id">{{ __('State') }} *</x-input-label>
-            <x-select-input id="state_id" class="block mt-1 w-full" 
+            <x-input.label for="state_id">{{ __('State') }} *</x-input.label>
+            <x-input.select id="state_id" class="block mt-1 w-full" 
                 name="state_id" wire:model="state_id" autocomplete="off" autofocus>
                 <option value="">{{ __('Please select') }}</option>
                 @foreach ($states as $item)
                     <option value="{{$item->id}}" {{ old('state_id') == $item->id ? 'selected' : '' }}>{{$item->name}}</option>
                 @endforeach
-            </x-select-input>
-            <x-input-error :messages="$errors->get('state_id')" class="mt-2" />
+            </x-input.select>
+            <x-input.message-error :messages="$errors->get('state_id')" class="mt-2" />
         </div>
         <div>
-            <x-input-label for="name">{{ __('Name') }} *</x-input-label>
-            <x-text-input id="name" class="block mt-1 w-full" type="text"
+            <x-input.label for="name">{{ __('Name') }} *</x-input.label>
+            <x-input.text id="name" class="block mt-1 w-full" type="text"
                 name="name" :value="old('name')" wire:model="name"
                 autocomplete="off" maxlength="150" required />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input.message-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div class="flex justify-end gap-4">

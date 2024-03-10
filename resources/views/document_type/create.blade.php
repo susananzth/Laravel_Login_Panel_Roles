@@ -7,11 +7,11 @@
         </p>
 
         <div>
-            <x-input-label for="name">{{ __('Name') }} *</x-input-label>
-            <x-text-input id="name" class="block mt-1 w-full" type="text"
+            <x-input.label for="name">{{ __('Name') }} *</x-input.label>
+            <x-input.text id="name" class="block mt-1 w-full" type="text"
                 name="name" :value="old('name')" wire:model="name"
                 autocomplete="off" maxlength="100" required autofocus />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input.message-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <div class="flex justify-end gap-4">

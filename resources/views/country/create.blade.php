@@ -7,39 +7,39 @@
         </p>
 
         <div>
-            <x-input-label for="name">{{ __('Name') }} *</x-input-label>
-            <x-text-input id="name" class="block mt-1 w-full" type="text"
+            <x-input.label for="name">{{ __('Name') }} *</x-input.label>
+            <x-input.text id="name" class="block mt-1 w-full" type="text"
                 name="name" :value="old('name')" wire:model="name"
                 autocomplete="off" maxlength="200" required autofocus />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input.message-error :messages="$errors->get('name')" class="mt-2" />
         </div>
         <div>
-            <x-input-label for="" :value="__('ISO 2')" />
-            <x-text-input id="iso_2" class="block mt-1 w-full" type="text"
+            <x-input.label for="" :value="__('ISO 2')" />
+            <x-input.text id="iso_2" class="block mt-1 w-full" type="text"
                 name="iso_2" :value="old('iso_2')" wire:model="iso_2"
                 maxlength="2" autocomplete="off" />
-            <x-input-error :messages="$errors->get('iso_2')" class="mt-2" />
+            <x-input.message-error :messages="$errors->get('iso_2')" class="mt-2" />
         </div>
         <div>
-            <x-input-label for="iso_3" :value="__('ISO 3')" />
-            <x-text-input id="iso_3" class="block mt-1 w-full" type="text"
+            <x-input.label for="iso_3" :value="__('ISO 3')" />
+            <x-input.text id="iso_3" class="block mt-1 w-full" type="text"
                 name="iso_3" :value="old('iso_3')" wire:model="iso_3"
                 maxlength="3" autocomplete="off" />
-            <x-input-error :messages="$errors->get('iso_3')" class="mt-2" />
+            <x-input.message-error :messages="$errors->get('iso_3')" class="mt-2" />
         </div>
         <div>
-            <x-input-label for="iso_number" :value="__('ISO number')" />
-            <x-text-input id="iso_number" class="block mt-1 w-full" type="text"
+            <x-input.label for="iso_number" :value="__('ISO number')" />
+            <x-input.text id="iso_number" class="block mt-1 w-full" type="text"
                 name="iso_number" :value="old('iso_number')" wire:model="iso_number"
                 maxlength="4" autocomplete="off" />
-            <x-input-error :messages="$errors->get('iso_number')" class="mt-2" />
+            <x-input.message-error :messages="$errors->get('iso_number')" class="mt-2" />
         </div>
         <div>
-            <x-input-label for="phone_code">{{ __('Phone code') }} *</x-input-label>
-            <x-text-input id="phone_code" class="block mt-1 w-full" type="text"
+            <x-input.label for="phone_code">{{ __('Phone code') }} *</x-input.label>
+            <x-input.text id="phone_code" class="block mt-1 w-full" type="text"
                 name="phone_code" :value="old('phone_code')" wire:model="phone_code"
                 maxlength="4" required autocomplete="off" />
-            <x-input-error :messages="$errors->get('phone_code')" class="mt-2" />
+            <x-input.message-error :messages="$errors->get('phone_code')" class="mt-2" />
         </div>
 
         <div class="flex justify-end gap-4">

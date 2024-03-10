@@ -7,12 +7,12 @@
         </p>
 
         <div>
-            <x-input-label for="title">{{ __('Title') }} *</x-input-label>
-            <x-text-input id="title" name="title" type="text"
+            <x-input.label for="title">{{ __('Title') }} *</x-input.label>
+            <x-input.text id="title" name="title" type="text"
                 class="mt-1 block w-full" maxlength="150"
                 wire:model="title"
                 required autofocus autocomplete="off" />
-            <x-input-error class="mt-2" :messages="$errors->get('title')" />
+            <x-input.message-error class="mt-2" :messages="$errors->get('title')" />
         </div>
         <div>
             <h4>{{ __('Permissions') }}</h4>
