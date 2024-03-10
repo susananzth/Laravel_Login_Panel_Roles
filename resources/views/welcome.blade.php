@@ -24,9 +24,9 @@
             <li>Cambio de lenguaje entre Español - Inglés.</li>
             <li>Respuesta de excepciones.</li>
             <li>Mayor información del usuario.</li>
-            <li>CRUD de usuarios en dashboard de administrador.</li>
+            <li>CRUD de usuarios en dashboard de administrador y tipo de documentos.</li>
             <li>CRUD de roles y permisos.</li>
-            <li>CRUD de países, estados y ciudades.</li>
+            <li>CRUD de países, estados, ciudades y monedas.</li>
         </ul>
         <h6 class="mb-4 border-b text-2xl leading-tight">
             Construido con 🛠️
@@ -52,6 +52,12 @@
                 class="underline text-sm text-txtdark-600 dark:text-txtdark-400 hover:text-txtdark-900
                 dark:hover:text-txtdark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2
                 focus:ring-pink-500 dark:focus:ring-offset-secondary-800 pl-1">Livewire</a>.
+            </li>
+            <li>Framework de CSS:
+                <a href="https://tailwindcss.com/"
+                class="underline text-sm text-txtdark-600 dark:text-txtdark-400 hover:text-txtdark-900
+                dark:hover:text-txtdark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2
+                focus:ring-pink-500 dark:focus:ring-offset-secondary-800 pl-1">TailwinCSS</a>.
             </li>
         </ul>
         <h6 class="mb-4 border-b text-2xl leading-tight">
