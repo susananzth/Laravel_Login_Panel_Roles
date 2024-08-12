@@ -24,13 +24,11 @@ class Profiles extends Component
 {
     use WithFileUploads;
 
-    public $user, $first_name, $last_name, $image = '', $imageEdit, $documents, $document_type_id, $document_number;
+    public $user, $first_name, $last_name, $image, $imageEdit, $documents, $document_type_id, $document_number;
     public $countries, $country_id, $states, $state_id, $cities, $city_id, $address;
     public $phone_codes, $phone_code_id, $phone, $email, $user_id;
     public $current_password, $password, $password_confirmation, $password_delete;
     public $deleteProfile = false, $update_passowrd = false, $delete_profile = false;
-
-    protected $listeners = ['render'];
 
     #[Title('Profile')]
     public function rules()
@@ -45,10 +43,6 @@ class Profiles extends Component
                 ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
                 ->with('alert_class', 'danger');
         }
-    }
-
-    public function render()
-    {
         $user = Auth::user();
 
         $this->user             = $user;
@@ -59,19 +53,22 @@ class Profiles extends Component
         $this->documents        = DocumentType::orderBy('name', 'asc')->get();
         $this->document_type_id = $user->document_type_id;
         $this->document_number  = $user->document_number;
+        $this->country_id       = $user->city->state->country_id;
         $this->countries        = Country::orderBy('name', 'asc')->get();
-        $this->country_id       = $user->country_id;
-        $this->states           = [];
-        $this->state_id         = $user->state_id;
-        $this->cities           = [];
+        $this->state_id         = $user->city->state_id;
+        $this->states           = State::where('country_id', $user->city->state->country_id)->orderBy('name', 'asc')->get();
         $this->city_id          = $user->city_id;
+        $this->cities           = City::where('state_id', $user->city->state_id)->orderBy('name', 'asc')->get();
         $this->address          = $user->address;
         $this->phone_codes      = $this->countries;
         $this->phone_code_id    = $user->phone_code_id;
         $this->phone            = $user->phone;
         $this->email            = $user->email;
+    }
 
-        return view('profile.edit', $user);
+    public function render()
+    {
+        return view('profile.edit');
     }
 
     public function update()
@@ -102,18 +99,6 @@ class Profiles extends Component
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
-        if ($this->image != '') {
-            if ($user->image) {
-                if (Storage::exists('public/images/'.$user->image->url)) {
-                    Storage::delete('public/images/'.$user->image->url);
-                }
-                $user->image->delete();
-            }
-            $file = $this->image->storePublicly('public/images');
-            $user->image()->create([
-                'url' => substr($file, strlen('public/images/')),
-            ]);
-        }
         $user->save();
         DB::commit();
 
@@ -122,10 +107,43 @@ class Profiles extends Component
             ->with('alert_class', 'success');
     }
 
+    public function saveImage()
+    {
+        if (Gate::denies('profile_edit')) {
+            return redirect()->route('profiles')
+                ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
+                ->with('alert_class', 'danger');
+        }
+
+        $this->validate([
+            'image' => ['required', 'file', 'mimes:jpg,jpeg,png', 'max:3000'],
+        ]);
+
+        $user = Auth::user();
+        if ($user->image) {
+            if (Storage::exists('public/images/'.$user->image->url)) {
+                Storage::delete('public/images/'.$user->image->url);
+            }
+            $user->image->delete();
+        }
+        $file = $this->image->storePublicly('public/images');
+        $file = substr($file, strlen('public/images/'));
+        DB::beginTransaction();
+        $user->image()->create([
+            'url' => $file,
+        ]);
+        $user->save();
+        DB::commit();
+        $this->imageEdit = $file;
+        $this->image = null;
+    }
+
     public function countryChange($country_id)
     {
         if ($country_id != '') {
             $this->states = State::where('country_id', $country_id)->get();
+            $this->cities = [];
+            $this->city_id = '';
         } else {
             $this->states = [];
             $this->state_id = '';

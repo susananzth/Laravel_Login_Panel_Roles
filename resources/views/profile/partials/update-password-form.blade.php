@@ -38,9 +38,9 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button type="button" wire:click.prevent="passwordUpdate()">
+            <x-button.primary type="button" wire:click.prevent="passwordUpdate()">
                 <i class="fa-solid fa-save me-1"></i>{{ __('Update') }}
-            </x-primary-button>
+            </x-button.primary>
         </div>
     </form>
 </section>

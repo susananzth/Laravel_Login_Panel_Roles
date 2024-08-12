@@ -9,12 +9,9 @@
         </p>
     </header>
 
-    <x-danger-button
-        x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >
+    <x-button.danger x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">
         <i class="fa-solid fa-trash me-1"></i>{{ __('Delete Account') }}
-    </x-danger-button>
+    </x-button.danger>
 
     <x-modal-alpi name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable
         :title="__('Are you sure you want to delete your account?')" :maxWidth="'md'">
@@ -36,13 +33,13 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <x-button.secondary x-on:click="$dispatch('close')">
                     <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
-                </x-secondary-button>
+                </x-button.secondary>
 
-                <x-danger-button  type="button" wire:click.prevent="delete()" class="ml-3">
+                <x-button.danger type="button" wire:click.prevent="delete()" class="ml-3">
                     <i class="fa-solid fa-trash me-1"></i>{{ __('Delete Account') }}
-                </x-danger-button>
+                </x-button.danger>
             </div>
         </form>
     </x-modal-alpi>

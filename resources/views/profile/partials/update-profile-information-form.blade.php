@@ -9,11 +9,31 @@
         </p>
     </header>
 
-    <div class="mb-6 flex justify-center">
-        <img 
-            src="{{ ($imageEdit != null ) ? asset('storage/images/'.$imageEdit) : asset('img/profile.png') }}" 
-            class="rounded-full shadow-lg dark:shadow-black/30 w-40" />
-    </div>
+    <form method="post" class="mb-6 flex justify-center">
+        @csrf
+        @method('patch')
+        <div x-data="{ imageEdit: @js($imageEdit) }" class="relative">
+            @if ($image) 
+                <img src="{{ $image->temporaryUrl() }}" class="rounded-full shadow-lg dark:shadow-black/30 w-40" />
+            @else
+                <img 
+                    src="{{ ($imageEdit != null ) ? asset('storage/images/'.$imageEdit) : asset('img/profile.png') }}" 
+                    class="rounded-full shadow-lg dark:shadow-black/30 w-40" />
+            @endif
+            <label for="image" class="cursor-pointer bottom-0 right-1 absolute ps-2 py-1.5 pe-1 bg-neutral-300 rounded-full border-2 border-white">
+                <i class="fa-solid fa-edit px-1"></i>
+                <input id="image" type="file" name="image" wire:model="image" class="hidden">
+            </label>
+            @if ($image)
+            <div class="cursor-pointer bottom-0 left-1 absolute ps-2 py-1.5 pe-1 bg-primary-300 rounded-full border-2 border-white">
+                <a href="#" wire:click.prevent="saveImage()">
+                    <i class="fa-solid fa-save ps-1 pe-1.5"></i>
+                </a>
+            </div>
+            @endif
+            <x-input.message-error :messages="$errors->get('image')" class="mt-2" />
+        </div>
+    </form>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
@@ -37,13 +57,6 @@
                 name="last_name" :value="$last_name" wire:model="last_name"
                 autocomplete="last_name" maxlength="150" required />
             <x-input.message-error :messages="$errors->get('last_name')" class="mt-2" />
-        </div>
-
-        <div class="col-span-2">
-            <x-input.label for="image">{{ __('Image') }}</x-input.label>
-            <x-input.file id="image" type="file" name="image" wire:model="image" :image="$imageEdit" />
-            <p class="mt-0 text-xs text-gray-500">PNG, JPG o JPEG (MAX. 4MB).</p>
-            <x-input.message-error :messages="$errors->get('image')" class="mt-2" />
         </div>
 
         <div>
@@ -164,9 +177,9 @@
                     <p class="text-sm mt-2 text-txtdark-800 dark:text-txtdark-200">
                         {{ __('Your email address is unverified.') }}
 
-                        <x-primary-button form="send-verification">
+                        <x-button.primary form="send-verification">
                             <i class="fa-solid fa-save me-1"></i>{{ __('Click here to re-send the verification email.') }}
-                        </x-primary-button>
+                        </x-button.primary>
                     </p>
 
                     @if (session('status') === 'verification-link-sent')
@@ -179,9 +192,9 @@
         </div>
 
         <div class="flex items-center col-span-2 gap-4">
-            <x-primary-button type="button" wire:click.prevent="update()">
+            <x-button.primary type="button" wire:click.prevent="update()">
                 <i class="fa-solid fa-save me-1"></i>{{ __('Update') }}
-            </x-primary-button>
+            </x-button.primary>
         </div>
     </form>
 </section>
