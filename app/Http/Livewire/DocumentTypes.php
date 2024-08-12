@@ -17,8 +17,6 @@ class DocumentTypes extends Component
     public $name, $status, $document_type_id;
     public $addDocumentType = false, $updateDocumentType = false, $deleteDocumentType = false;
 
-    protected $listeners = ['render'];
-
     #[Title('Document Types')]
     public function rules()
     {

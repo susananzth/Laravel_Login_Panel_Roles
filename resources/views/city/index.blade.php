@@ -7,16 +7,20 @@
         <x-session-status/>
         <div class="flex flex-col">
             <div class="inline-block min-w-full">
-                <x-primary-button type="button" wire:click="create()" class="mb-2">
+                <x-button.primary type="button" wire:click="create()" class="mb-2">
                     <i class="fa-solid fa-plus me-1"></i>{{ __('Create City') }}
-                </x-primary-button>
+                </x-button.primary>
+                <x-input.search />
                 <div class="rounded overflow-x-auto">
                     <table class="min-w-full text-left text-sm font-light">
                         <thead class="border-b bg-secondary-800 font-medium text-white dark:border-secondary-500 dark:bg-secondary-900">
                             <tr>
-                                <x-table-th title="{{ __('Name') }}" />
-                                <x-table-th title="{{ __('State') }}" />
-                                <x-table-th title="{{ __('Country') }}" />
+                                <x-table.th-sort title="{{ __('Name') }}" 
+                                    :sort="$sortField" :direction="$sortDirection" field="name" />
+                                <x-table.th-sort title="{{ __('State') }}" 
+                                    :sort="$sortField" :direction="$sortDirection" field="name" />
+                                <x-table.th-sort title="{{ __('Country') }}" 
+                                    :sort="$sortField" :direction="$sortDirection" field="name" />
                                 <th scope="col" class="px-6 py-4">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
@@ -24,15 +28,15 @@
                             @forelse ($cities as $city)
                             <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-secondary-100 dark:border-secondary-500 dark:hover:bg-secondary-600">
-                                <x-table-td>{{ $city->name }}</x-table-td>
-                                <x-table-td>{{ $city->state->name }}</x-table-td>
-                                <x-table-td>{{ $city->state->country->name }}</x-table-td>
-                                <x-table-td>
-                                    <x-table-buttons id="{{ $city->id }}" />
-                                </x-table-td>
+                                <x-table.td>{{ $city->name }}</x-table.td>
+                                <x-table.td>{{ $city->state->name }}</x-table.td>
+                                <x-table.td>{{ $city->state->country->name }}</x-table.td>
+                                <x-table.td>
+                                    <x-table.buttons id="{{ $city->id }}" />
+                                </x-table.td>
                             </tr>
                             @empty
-                            <x-table-empty />
+                            <x-table.empty />
                             @endforelse
                         </tbody>
                     </table>
@@ -49,7 +53,7 @@
             @include('city.edit')
         @endif
         @if($deleteCity)
-            <x-table-modal-delete model="deleteCity" />
+            <x-table.modal-delete model="deleteCity" />
         @endif
     </div>
 </div>

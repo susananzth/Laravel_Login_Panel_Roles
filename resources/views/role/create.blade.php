@@ -20,24 +20,29 @@
                 @foreach($permissions as $item)
                 @php
                     $itemMenu = is_object($item) ? $item->menu : $item['menu'];
+                    $itemPermissions = is_object($item) ? $item->permissions : $item['permissions'];
                 @endphp
-                <div class="border">
+                <div class="border" x-data="{ count: 0 }">
                     <button type="button"
                         x-on:click="openMenus.includes('{{ $itemMenu }}') ? openMenus = openMenus.filter(item => item !== '{{ $itemMenu }}') : openMenus.push('{{ $itemMenu }}')"
-                        class="w-full text-left px-4 py-2 bg-secondary-200">
-                        {{ __($itemMenu) }}
+                        class="flex flex-row w-full text-left px-4 py-2 bg-secondary-200">
+                        <span class="flex-auto">{{ __($itemMenu) }}</span>
+                        <span class="px-2 text-sm text-slate-500">
+                            (<span class="text-slate-600" x-text="count"></span>/{{count($itemPermissions)}})
+                        </span>
+                        <i class="fa-solid fa-angle-right text-sm text-slate-600 ms-1 transition-transform transform"
+                                    :class="{ 'rotate-90': openMenus.includes('{{ $itemMenu }}') }"></i>
                     </button>
                     <div x-show="openMenus.includes('{{ $itemMenu }}')" class="p-4 space-y-2">
-                        @php
-                            $itemPermissions = is_object($item) ? $item->permissions : $item['permissions'];
-                        @endphp
                         @foreach ($itemPermissions as $per)
                         @php
                             $id = is_object($per) ? $per->id : $per['id'];
                             $permissionName = is_object($per) ? $per->permission : $per['permission'];
                         @endphp
                         <div class="flex items-center space-x-2">
-                            <input type="checkbox" wire:model="selectedPermissions" value="{{ $id }}" id="permission-{{ $id }}">
+                            <x-input.checkbox wire:model="selectedPermissions" 
+                                value="{{ $id }}" id="permission-{{ $id }}" 
+                                x-on:change="$event.target.checked ? count++ : count--" />
                             <label for="permission-{{ $id }}">{{ __($permissionName) }}</label>
                         </div>
                         @endforeach
@@ -48,12 +53,12 @@
         </div>
 
         <div class="flex justify-end gap-4">
-            <x-primary-button type="button" wire:click.prevent="store()">
+            <x-button.primary type="button" wire:click.prevent="store()">
                 <i class="fa-solid fa-save me-1"></i>{{ __('Save') }}
-            </x-primary-button>
-            <x-secondary-button wire:click.prevent="cancel()">
+            </x-button.primary>
+            <x-button.secondary wire:click.prevent="cancel()">
                 <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
-            </x-secondary-button>
+            </x-button.secondary>
         </div>
     </form>
 </x-modal>

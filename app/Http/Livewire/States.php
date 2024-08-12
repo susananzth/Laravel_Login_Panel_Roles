@@ -18,8 +18,6 @@ class States extends Component
     public $countries, $name, $iso_2, $state_id, $country_id;
     public $addState = false, $updateState = false, $deleteState = false;
 
-    protected $listeners = ['render'];
-
     #[Title('States')]
     public function rules()
     {

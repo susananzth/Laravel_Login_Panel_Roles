@@ -18,8 +18,6 @@ class Cities extends Component
     public $states, $name, $city_id, $state_id;
     public $addCity = false, $updateCity = false, $deleteCity = false;
 
-    protected $listeners = ['render'];
-
     #[Title('Cities')]
     public function rules()
     {
@@ -92,7 +90,6 @@ class Cities extends Component
             ->with('message', trans('message.Created Successfully.', ['name' => __('City')]))
             ->with('alert_class', 'success');
     }
-
 
     public function edit($id)
     {

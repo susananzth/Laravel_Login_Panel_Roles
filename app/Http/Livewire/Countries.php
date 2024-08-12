@@ -17,8 +17,6 @@ class Countries extends Component
     public $name, $iso_2, $iso_3, $iso_number, $phone_code, $country_id;
     public $addCountry = false, $updateCountry = false, $deleteCountry = false;
 
-    protected $listeners = ['render'];
-
     #[Title('Countries')]
     public function rules()
     {

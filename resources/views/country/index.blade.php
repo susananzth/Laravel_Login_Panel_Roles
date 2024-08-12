@@ -7,18 +7,18 @@
         <x-session-status/>
         <div class="flex flex-col">
             <div class="inline-block min-w-full">
-                <x-primary-button type="button" wire:click="create()" class="mb-2">
+                <x-button.primary type="button" wire:click="create()" class="mb-2">
                     <i class="fa-solid fa-plus me-1"></i>{{ __('Create Country') }}
-                </x-primary-button>
+                </x-button.primary>
                 <div class="rounded overflow-x-auto">
                     <table class="min-w-full text-left text-sm font-light">
                         <thead class="border-b bg-secondary-800 font-medium text-white dark:border-secondary-500 dark:bg-secondary-900">
                             <tr>
-                                <x-table-th title="{{ __('Name') }}" />
-                                <x-table-th title="{{ __('ISO 2') }}" />
-                                <x-table-th title="{{ __('ISO 3') }}" />
-                                <x-table-th title="{{ __('ISO number') }}" />
-                                <x-table-th title="{{ __('Phone code') }}" />
+                                <x-table.th title="{{ __('Name') }}" />
+                                <x-table.th title="{{ __('ISO 2') }}" />
+                                <x-table.th title="{{ __('ISO 3') }}" />
+                                <x-table.th title="{{ __('ISO number') }}" />
+                                <x-table.th title="{{ __('Phone code') }}" />
                                 <th scope="col" class="px-6 py-4">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
@@ -26,17 +26,17 @@
                             @forelse ($countries as $country)
                             <tr
                                 class="border-b transition duration-300 ease-in-out hover:bg-secondary-100 dark:border-secondary-500 dark:hover:bg-secondary-600">
-                                <x-table-td>{{ $country->name }}</x-table-td>
-                                <x-table-td>{{ $country->iso_2 }}</x-table-td>
-                                <x-table-td>{{ $country->iso_3 }}</x-table-td>
-                                <x-table-td>{{ $country->iso_number }}</x-table-td>
-                                <x-table-td>{{ $country->phone_code }}</x-table-td>
-                                <x-table-td>
-                                    <x-table-buttons id="{{ $country->id }}" />
-                                </x-table-td>
+                                <x-table.td>{{ $country->name }}</x-table.td>
+                                <x-table.td>{{ $country->iso_2 }}</x-table.td>
+                                <x-table.td>{{ $country->iso_3 }}</x-table.td>
+                                <x-table.td>{{ $country->iso_number }}</x-table.td>
+                                <x-table.td>{{ $country->phone_code }}</x-table.td>
+                                <x-table.td>
+                                    <x-table.buttons id="{{ $country->id }}" />
+                                </x-table.td>
                             </tr>
                             @empty
-                            <x-table-empty colspan="6" />
+                            <x-table.empty colspan="6" />
                             @endforelse
                         </tbody>
                     </table>
@@ -53,7 +53,7 @@
             @include('country.edit')
         @endif
         @if($deleteCountry)
-            <x-table-modal-delete model="deleteCountry" />
+            <x-table.modal-delete model="deleteCountry" />
         @endif
     </div>
 </div>

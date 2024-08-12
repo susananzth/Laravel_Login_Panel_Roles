@@ -18,8 +18,6 @@ class Currencies extends Component
     public $countries, $name, $iso_4, $symbol, $currency_id;
     public $addCurrency = false, $updateCurrency = false, $deleteCurrency = false;
 
-    protected $listeners = ['render'];
-
     #[Title('Currencies')]
     public function rules()
     {
