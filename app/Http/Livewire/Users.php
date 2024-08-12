@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\DocumentType;
 use App\Models\Image;
+use App\Models\Role;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
@@ -24,11 +25,10 @@ class Users extends Component
     use WithFileUploads, WithPagination;
 
     public $first_name, $last_name, $image, $imageEdit, $documents, $document_type_id, $document_number;
-    public $countries, $country_id, $states, $state_id, $cities, $city_id, $address, $phone_codes, $phone_code_id, $phone;
+    public $countries, $country_id, $states, $state_id, $cities, $city_id, $address;
+    public $phone_codes, $phone_code_id, $phone;
     public $status, $email, $password, $password_confirmation, $user_id;
     public $addUser = false, $updateUser = false, $deleteUser = false;
-
-    protected $listeners = ['render'];
 
     #[Title('Users')]
     public function rules()
@@ -96,30 +96,30 @@ class Users extends Component
         $this->user_id     = '';
         $this->phone_codes = Country::orderBy('name', 'asc')->get();
         $this->countries   = $this->phone_codes;
-        $this->documents   = DocumentType::orderBy('name', 'asc')->get();
+        $this->documents   = DocumentType::where('status', 1)->orderBy('name', 'asc')->get();
         $this->addUser     = true;
         return view('user.create');
     }
 
     public function countryChange($country_id)
     {
+        $this->state_id = '';
+        $this->cities = [];
+        $this->city_id = '';
         if ($country_id != '') {
             $this->states = State::where('country_id', $country_id)->get();
         } else {
             $this->states = [];
-            $this->state_id = '';
-            $this->cities = [];
-            $this->city_id = '';
         }
     }
 
     public function stateChange($state_id)
     {
+        $this->city_id = '';
         if ($state_id != '') {
             $this->cities = City::where('state_id', $state_id)->get();
         } else {
             $this->cities = [];
-            $this->city_id = '';
         }
     }
 

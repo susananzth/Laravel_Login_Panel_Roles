@@ -155,12 +155,12 @@
         </div>
 
         <div class="flex justify-end col-span-2 gap-4">
-            <x-primary-button type="button" wire:click.prevent="store()">
+            <x-button.primary type="button" wire:click.prevent="store()">
                 <i class="fa-solid fa-save me-1"></i>{{ __('Save') }}
-            </x-primary-button>
-            <x-secondary-button wire:click.prevent="cancel()">
+            </x-button.primary>
+            <x-button.secondary wire:click.prevent="cancel()">
                 <i class="fa-solid fa-ban me-1"></i>{{ __('Cancel') }}
-            </x-secondary-button>
+            </x-button.secondary>
         </div>
     </form>
 </x-modal>
