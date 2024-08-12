@@ -4,8 +4,9 @@ namespace App\Http\Livewire;
 
 use DB;
 use App\Http\Requests\RoleRequest;
-use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -15,10 +16,8 @@ class Roles extends Component
 {
     use WithPagination;
 
-    public $permissions, $title, $status, $role_id;
+    public $permissions, $title, $status, $role_id, $users;
     public $updateRol = false, $addRol = false, $deleteRol = false, $selectedPermissions = [];
-
-    protected $listeners = ['render'];
 
     #[Title('Roles')]
     public function rules()
@@ -31,6 +30,7 @@ class Roles extends Component
         $this->title = '';
         $this->permissions = '';
         $this->status = '';
+        $this->users = [];
         $this->selectedPermissions = [];
     }
 
@@ -126,7 +126,7 @@ class Roles extends Component
                 ->with('alert_class', 'danger');
         }
 
-        $role = Role::find($id)->load('permissions');
+        $role = Role::find($id)->load('permissions', 'users');
 
         if (!$role) {
             return redirect()->route('roles')
@@ -137,6 +137,7 @@ class Roles extends Component
         $this->role_id = $role->id;
         $this->title   = $role->title;
         $this->status  = $role->status;
+        $this->users   = $role->users;
         $this->selectedPermissions = $role->permissions()->pluck('permissions.id')->toArray();
         $this->updateRol  = true;
         $list_permissions = Permission::orderBy('menu', 'asc')->get();
