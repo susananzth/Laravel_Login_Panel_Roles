@@ -140,25 +140,23 @@ class Profiles extends Component
 
     public function countryChange($country_id)
     {
+        $this->state_id = '';
+        $this->cities = [];
+        $this->city_id = '';
         if ($country_id != '') {
             $this->states = State::where('country_id', $country_id)->get();
-            $this->cities = [];
-            $this->city_id = '';
         } else {
             $this->states = [];
-            $this->state_id = '';
-            $this->cities = [];
-            $this->city_id = '';
         }
     }
 
     public function stateChange($state_id)
     {
+        $this->city_id = '';
         if ($state_id != '') {
             $this->cities = City::where('state_id', $state_id)->get();
         } else {
             $this->cities = [];
-            $this->city_id = '';
         }
     }
 
