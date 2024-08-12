@@ -31,8 +31,6 @@ class RegisterUser extends Component
     public $countries, $country_id, $states, $state_id, $cities, $city_id, $address, $status;
     public $phone_codes, $phone_code_id, $phone, $email, $user_id, $password, $password_confirmation;
 
-    protected $listeners = ['render'];
-
     #[Layout('layouts.guest')] 
     #[Title('Profile')]
     public function rules()
@@ -120,23 +118,23 @@ class RegisterUser extends Component
 
     public function countryChange($country_id)
     {
+        $this->state_id = '';
+        $this->cities = [];
+        $this->city_id = '';
         if ($country_id != '') {
             $this->states = State::where('country_id', $country_id)->get();
         } else {
             $this->states = [];
-            $this->state_id = '';
-            $this->cities = [];
-            $this->city_id = '';
         }
     }
 
     public function stateChange($state_id)
     {
+        $this->city_id = '';
         if ($state_id != '') {
             $this->cities = City::where('state_id', $state_id)->get();
         } else {
             $this->cities = [];
-            $this->city_id = '';
         }
     }
 }

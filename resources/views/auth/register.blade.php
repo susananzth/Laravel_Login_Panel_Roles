@@ -161,13 +161,16 @@
             </div>
 
             <div class="flex items-center justify-end col-span-2 mt-4">
-                <a class="underline text-sm text-txtdark-600 dark:text-txtdark-400 hover:text-txtdark-900 dark:hover:text-txtdark-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-secondary-800" href="{{ route('login') }}">
+                <a class="underline text-sm text-txtdark-600 dark:text-txtdark-400 
+                    hover:text-txtdark-900 dark:hover:text-txtdark-100 rounded-md focus:outline-none 
+                    focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 
+                    dark:focus:ring-offset-secondary-800" href="{{ route('login') }}">
                     {{ __('Already registered? Log in') }}
                 </a>
 
-                <x-primary-button type="button" wire:click.prevent="store()" class="ml-4">
+                <x-button.primary type="button" wire:click.prevent="store()" class="ml-4">
                     {{ __('Register') }}
-                </x-primary-button>
+                </x-button.primary>
             </div>
         </form>
     </div>
