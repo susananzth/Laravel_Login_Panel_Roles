@@ -26,7 +26,7 @@ class Users extends Component
 
     public $first_name, $last_name, $image, $imageEdit, $documents, $document_type_id, $document_number;
     public $countries, $country_id, $states, $state_id, $cities, $city_id, $address;
-    public $phone_codes, $phone_code_id, $phone;
+    public $phone_codes, $phone_code_id, $phone, $roles, $role_id, $selectedRoles = [];
     public $status, $email, $password, $password_confirmation, $user_id;
     public $addUser = false, $updateUser = false, $deleteUser = false;
 
@@ -54,6 +54,8 @@ class Users extends Component
         $this->address = '';
         $this->phone_codes = [];
         $this->phone_code_id = '';
+        $this->roles = [];
+        $this->selectedRoles = [];
         $this->phone = '';
         $this->status = '';
         $this->email = '';
@@ -97,6 +99,7 @@ class Users extends Component
         $this->phone_codes = Country::orderBy('name', 'asc')->get();
         $this->countries   = $this->phone_codes;
         $this->documents   = DocumentType::where('status', 1)->orderBy('name', 'asc')->get();
+        $this->roles       = Role::where('status', 1)->orderBy('title', 'asc')->get();
         $this->addUser     = true;
         return view('user.create');
     }
@@ -108,6 +111,8 @@ class Users extends Component
         $this->city_id = '';
         if ($country_id != '') {
             $this->states = State::where('country_id', $country_id)->get();
+            $this->cities = [];
+            $this->city_id = '';
         } else {
             $this->states = [];
         }
@@ -146,6 +151,7 @@ class Users extends Component
             'password'         => Hash::make($this->password),
         ]);
 
+        $user->roles()->attach($this->selectedRoles);
         $user->save();
         DB::commit();
 
@@ -205,6 +211,8 @@ class Users extends Component
         $this->phone            = $user->phone;
         $this->status           = $user->status;
         $this->email            = $user->email;
+        $this->roles            = Role::orderBy('title', 'asc')->get();
+        $this->selectedRoles    = $user->roles;
         $this->updateUser       = true;
         return view('user.edit');
     }
@@ -253,12 +261,146 @@ class Users extends Component
         if (isset($this->password) || $this->password != '') {
             $user->password = Hash::make($this->password);
         }
+        $user->roles()->detach();
+        $user->roles()->attach($this->selectedRoles);
         $user->save();
         DB::commit();
 
         return redirect()->route('users')
             ->with('message', trans('message.Updated Successfully.', ['name' => __('User')]))
             ->with('alert_class', 'success');
+    }
+
+    public function updateRoleList()
+    {
+        try {
+            $roles = DB::select('select * from fn_list_roles(?)', [true]);
+            $this->roles = array_filter($roles, function ($curso) {
+                return !in_array($curso->role_id, array_column($this->selectedRoles, 'role_id'));
+            });
+        } catch (\Throwable $th) {
+            $message = throwableException($th);
+            return redirect()->route('users')
+                ->with('message', $message)
+                ->with('alert_class', 'danger');
+        }
+    }
+
+    public function addDetail()
+    {
+        $this->validate([
+            'role_id' => 'required',
+        ], [
+            'role_id.required' => trans('validation.required', ['attribute' => __('Role')]),
+        ]);
+
+        if ($this->role_id) {
+            try {
+                $role = DB::select('select * from fn_get_role_by_id(?)', [$this->role_id])[0];
+                $this->selectedRoles[] = $role;
+
+                // Remueve el curso seleccionado de la lista de cursos disponibles
+                foreach ($this->roles as $key => $c) {
+                    if ($c->role_id === $this->role_id) {
+                        unset($this->roles[$key]);
+                        break;
+                    }
+                }
+
+                $this->role_id = '';
+                $this->updateRoleList();
+            } catch (\Throwable $th) {
+                $message = throwableException($th);
+                return redirect()->route('users')
+                    ->with('message', $message)
+                    ->with('alert_class', 'danger');
+            }
+        }  else {
+            $this->addError('role_id', trans('validation.required', ['attribute' => __('Role')]));
+        }
+    }
+
+    public function setCleanId($role_id)
+    {
+        try {
+            // Eliminar el registro seleccionado del array
+            foreach ($this->selectedRoles as $key => $c) {
+                if ($c->role_id === $role_id) {
+                    unset($this->selectedRoles[$key]);
+                    break;
+                }
+            }
+            $this->updateRoleList();
+        } catch (\Throwable $th) {
+            $message = throwableException($th);
+            return redirect()->route('users')
+                ->with('message', $message)
+                ->with('alert_class', 'danger');
+        }
+    }
+
+    public function cancelDetail()
+    {
+        $this->deleteDetailModal = false;
+    }
+
+    public function setDeleteDetailId($role_user_id)
+    {
+        if (Gate::denies('user_edit')) {
+            return redirect()->route('users')
+                ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
+                ->with('alert_class', 'danger');
+        }
+
+        try {
+            $role_user = DB::select('select * from fn_get_role_user_by_id(?)', [
+                $role_user_id
+            ])[0];
+            $this->role_user_id = $role_user->role_user_id;
+            $this->deleteDetailModal = true;
+        } catch (\Throwable $th) {
+            $message = throwableException($th);
+            return redirect()->route('users')
+                ->with('message', $message)
+                ->with('alert_class', 'danger');
+        }
+    }
+
+    public function deleteDetail()
+    {
+        if (Gate::denies('user_edit')) {
+            return redirect()->route('users')
+                ->with('message', trans('message.You do not have the necessary permissions to execute the action.'))
+                ->with('alert_class', 'danger');
+        }
+        try {
+            $role_user = DB::select('select * from fn_get_role_user_by_id(?)', [
+                $this->role_user_id
+            ])[0];
+
+            DB::beginTransaction();
+            DB::select('select * from fn_delete_role_user_by_id(?)', [$this->role_user_id]);
+            DB::commit();
+
+            // Eliminar el registro seleccionado del array
+            foreach ($this->selectedRoles as $key => $c) {
+                if ($c->role_id === $role_user->role_id) {
+                    unset($this->selectedRoles[$key]);
+                    break;
+                }
+            }
+            $this->updateRoleList();
+            $this->dispatch('scrollTop');
+            $this->deleteDetailModal = false;
+
+            session()->flash('message_detail', trans('message.Deleted Successfully.', ['name' => __('Role')]));
+            session()->flash('alert_class', 'success_detail');
+        } catch (\Throwable $th) {
+            $message = throwableException($th);
+            return redirect()->route('users')
+                ->with('message', $message)
+                ->with('alert_class', 'danger');
+        }
     }
 
     public function cancel()

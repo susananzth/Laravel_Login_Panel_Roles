@@ -172,6 +172,74 @@
             <x-input.message-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="col-span-2">
+            <h4>{{ __('Role list') }}</h4>
+            <div class="flex gap-2 mb-4">
+                <div class="flex-auto">
+                    <x-input.select id="role_id" class="block mt-1 w-full" name="role_id" 
+                        wire:model="role_id" autocomplete="off" required>
+                        <option value="">{{ __('Please select') }}</option>
+                        @foreach ($roles as $item)
+                            <option value="{{ $item->role_id }}">{{ $item->title }}</option>
+                        @endforeach
+                    </x-input.select>
+                    <x-input.message-error :messages="$errors->get('state_id')" class="mt-2" />
+                </div>
+                <div class="flex items-end w-fit">
+                    <x-button.primary type="button" wire:click="addDetail()" class="py-3">
+                        <i class="fa-solid fa-plus me-1"></i>{{ __('Add') }}
+                    </x-button.primary>
+                </div>
+            </div>
+            <div class="rounded overflow-x-auto">
+                <table class="min-w-full text-left text-sm font-light">
+                    <thead class="bg-secondary-800 font-medium text-white">
+                        <tr>
+                            <x-table.th title="{{ __('Name') }}" />
+                            <x-table.th title="{{ __('Status') }}" />
+                            <th scope="col" class="px-6 py-4">{{ __('Actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($selectedRoles as $item)
+                        <tr
+                            class="border-b transition duration-300 ease-in-out hover:bg-secondary-100">
+                            <x-table.td>{{ $item->title }}</x-table.td>
+                            <x-table.td>
+                                @if ($item->status == 1)
+                                    <span
+                                        class="inline-block whitespace-nowrap rounded-full bg-emerald-400 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-white">
+                                        {{ __('Active') }}
+                                    </span>
+                                @else
+                                    <span
+                                        class="inline-block whitespace-nowrap rounded-full bg-red-400 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-white">
+                                        {{ __('Inactive') }}
+                                    </span>
+                                @endif
+                            </x-table.td>
+                            <x-table.td>
+                                @if (isset($item->role_user_id))
+                                <a href="#" wire:key="delete-{{ $item->role_id }}" title="{{ __('Delete') }}" 
+                                    wire:click="setDeleteDetailId({{ $item->role_user_id }})">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                                @else
+                                <a href="#" wire:key="delete-{{ $item->role_id }}" title="{{ __('Erase') }}" 
+                                    wire:click="setCleanId({{ $item->role_id }})">
+                                    <i class="fa-solid fa-eraser"></i>
+                                </a>
+                                @endif
+                            </x-table.td>
+                        </tr>
+                        @empty
+                        <x-table.empty colspan="3" />
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <div class="flex justify-end col-span-2 gap-4">
             <x-button.primary type="button" wire:click.prevent="update()">
                 <i class="fa-solid fa-save me-1"></i>{{ __('Update') }}

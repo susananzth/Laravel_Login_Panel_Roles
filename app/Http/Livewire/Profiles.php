@@ -145,6 +145,8 @@ class Profiles extends Component
         $this->city_id = '';
         if ($country_id != '') {
             $this->states = State::where('country_id', $country_id)->get();
+            $this->cities = [];
+            $this->city_id = '';
         } else {
             $this->states = [];
         }
