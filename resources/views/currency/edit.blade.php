@@ -27,6 +27,22 @@
                 maxlength="10" autocomplete="off" />
             <x-input.message-error :messages="$errors->get('symbol')" class="mt-2" />
         </div>
+        <div>
+            <x-input.label for="countries">{{ __('Countries') }} *</x-input.label>
+            <x-input.select-multiple id="countries" class="block mt-1 w-full" 
+                name="countries" wire:model="selectedCountries"
+                autocomplete="off" required multiple>
+                <option value="">{{ __('Please select') }}</option>
+                @foreach ($countries as $item)
+                    @if (in_array($item->id, $selectedCountries))
+                    <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                    @else
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endif
+                @endforeach
+            </x-input.select-multiple>
+            <x-input.message-error :messages="$errors->get('countries')" class="mt-2" />
+        </div>
 
         <div class="flex justify-end gap-4">
             <x-button.primary type="button" wire:click.prevent="update()">

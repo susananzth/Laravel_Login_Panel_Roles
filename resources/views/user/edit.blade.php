@@ -174,16 +174,16 @@
 
         <div class="col-span-2">
             <h4>{{ __('Role list') }}</h4>
-            <div class="flex gap-2 mb-4">
+            <div class="flex items-start gap-2 mb-4">
                 <div class="flex-auto">
                     <x-input.select id="role_id" class="block mt-1 w-full" name="role_id" 
                         wire:model="role_id" autocomplete="off" required>
                         <option value="">{{ __('Please select') }}</option>
                         @foreach ($roles as $item)
-                            <option value="{{ $item->role_id }}">{{ $item->title }}</option>
+                            <option value="{{ $item->id }}">{{ $item->title }}</option>
                         @endforeach
                     </x-input.select>
-                    <x-input.message-error :messages="$errors->get('state_id')" class="mt-2" />
+                    <x-input.message-error :messages="$errors->get('role_id')" class="mt-2" />
                 </div>
                 <div class="flex items-end w-fit">
                     <x-button.primary type="button" wire:click="addDetail()" class="py-3">
@@ -219,14 +219,14 @@
                                 @endif
                             </x-table.td>
                             <x-table.td>
-                                @if (isset($item->role_user_id))
-                                <a href="#" wire:key="delete-{{ $item->role_id }}" title="{{ __('Delete') }}" 
-                                    wire:click="setDeleteDetailId({{ $item->role_user_id }})">
+                                @if (isset($item->pivot->id))
+                                <a href="#" wire:key="delete-{{ $item->id }}" title="{{ __('Delete') }}" 
+                                    wire:click="setDeleteDetailId({{ $item->id }})">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                                 @else
-                                <a href="#" wire:key="delete-{{ $item->role_id }}" title="{{ __('Erase') }}" 
-                                    wire:click="setCleanId({{ $item->role_id }})">
+                                <a href="#" wire:key="delete-{{ $item->id }}" title="{{ __('Erase') }}" 
+                                    wire:click="setCleanId({{ $item->id }})">
                                     <i class="fa-solid fa-eraser"></i>
                                 </a>
                                 @endif

@@ -28,7 +28,7 @@ class Users extends Component
     public $countries, $country_id, $states, $state_id, $cities, $city_id, $address;
     public $phone_codes, $phone_code_id, $phone, $roles, $role_id, $selectedRoles = [];
     public $status, $email, $password, $password_confirmation, $user_id;
-    public $addUser = false, $updateUser = false, $deleteUser = false;
+    public $addUser = false, $updateUser = false, $deleteDetailModal = false, $deleteUser = false;
 
     #[Title('Users')]
     public function rules()
@@ -55,6 +55,7 @@ class Users extends Component
         $this->phone_codes = [];
         $this->phone_code_id = '';
         $this->roles = [];
+        $this->role_id;
         $this->selectedRoles = [];
         $this->phone = '';
         $this->status = '';
@@ -69,6 +70,7 @@ class Users extends Component
         $this->resetFields();
         $this->addUser = false;
         $this->updateUser = false;
+        $this->deleteDetailModal = false;
         $this->deleteUser = false;
     }
 
@@ -106,25 +108,21 @@ class Users extends Component
 
     public function countryChange($country_id)
     {
+        $this->states = [];
         $this->state_id = '';
         $this->cities = [];
         $this->city_id = '';
         if ($country_id != '') {
             $this->states = State::where('country_id', $country_id)->get();
-            $this->cities = [];
-            $this->city_id = '';
-        } else {
-            $this->states = [];
         }
     }
 
     public function stateChange($state_id)
     {
+        $this->cities = [];
         $this->city_id = '';
         if ($state_id != '') {
             $this->cities = City::where('state_id', $state_id)->get();
-        } else {
-            $this->cities = [];
         }
     }
 
@@ -214,6 +212,7 @@ class Users extends Component
         $this->roles            = Role::orderBy('title', 'asc')->get();
         $this->selectedRoles    = $user->roles;
         $this->updateUser       = true;
+        $this->updateRoleList();
         return view('user.edit');
     }
 
@@ -274,10 +273,8 @@ class Users extends Component
     public function updateRoleList()
     {
         try {
-            $roles = DB::select('select * from fn_list_roles(?)', [true]);
-            $this->roles = array_filter($roles, function ($curso) {
-                return !in_array($curso->role_id, array_column($this->selectedRoles, 'role_id'));
-            });
+            $roles = Role::where('status', 1)->orderBy('title', 'asc')->get();
+            $this->roles = $roles->diff($this->selectedRoles);
         } catch (\Throwable $th) {
             $message = throwableException($th);
             return redirect()->route('users')
@@ -296,12 +293,12 @@ class Users extends Component
 
         if ($this->role_id) {
             try {
-                $role = DB::select('select * from fn_get_role_by_id(?)', [$this->role_id])[0];
+                $role = Role::find($this->role_id);
                 $this->selectedRoles[] = $role;
 
                 // Remueve el curso seleccionado de la lista de cursos disponibles
-                foreach ($this->roles as $key => $c) {
-                    if ($c->role_id === $this->role_id) {
+                foreach ($this->roles as $key => $value) {
+                    if ($value->id === $this->role_id) {
                         unset($this->roles[$key]);
                         break;
                     }
@@ -324,8 +321,8 @@ class Users extends Component
     {
         try {
             // Eliminar el registro seleccionado del array
-            foreach ($this->selectedRoles as $key => $c) {
-                if ($c->role_id === $role_id) {
+            foreach ($this->selectedRoles as $key => $value) {
+                if ($value->id === $role_id) {
                     unset($this->selectedRoles[$key]);
                     break;
                 }
@@ -344,7 +341,7 @@ class Users extends Component
         $this->deleteDetailModal = false;
     }
 
-    public function setDeleteDetailId($role_user_id)
+    public function setDeleteDetailId($role_id)
     {
         if (Gate::denies('user_edit')) {
             return redirect()->route('users')
@@ -352,18 +349,8 @@ class Users extends Component
                 ->with('alert_class', 'danger');
         }
 
-        try {
-            $role_user = DB::select('select * from fn_get_role_user_by_id(?)', [
-                $role_user_id
-            ])[0];
-            $this->role_user_id = $role_user->role_user_id;
-            $this->deleteDetailModal = true;
-        } catch (\Throwable $th) {
-            $message = throwableException($th);
-            return redirect()->route('users')
-                ->with('message', $message)
-                ->with('alert_class', 'danger');
-        }
+        $this->role_id = $role_id;
+        $this->deleteDetailModal = true;
     }
 
     public function deleteDetail()
@@ -374,17 +361,19 @@ class Users extends Component
                 ->with('alert_class', 'danger');
         }
         try {
-            $role_user = DB::select('select * from fn_get_role_user_by_id(?)', [
-                $this->role_user_id
-            ])[0];
-
+            $user = User::find($this->user_id);
+            if (!$user) {
+                return redirect()->route('users')
+                    ->with('message', __('User not found'))
+                    ->with('alert_class', 'danger');
+            }
             DB::beginTransaction();
-            DB::select('select * from fn_delete_role_user_by_id(?)', [$this->role_user_id]);
+            $user->roles()->detach($this->role_id);
             DB::commit();
 
             // Eliminar el registro seleccionado del array
-            foreach ($this->selectedRoles as $key => $c) {
-                if ($c->role_id === $role_user->role_id) {
+            foreach ($this->selectedRoles as $key => $value) {
+                if ($value->id === $this->role_id) {
                     unset($this->selectedRoles[$key]);
                     break;
                 }

@@ -15,7 +15,7 @@ class Currencies extends Component
 {
     use WithPagination;
 
-    public $countries, $name, $iso_4, $symbol, $currency_id;
+    public $countries, $name, $iso_4, $symbol, $currency_id, $selectedCountries;
     public $addCurrency = false, $updateCurrency = false, $deleteCurrency = false;
 
     #[Title('Currencies')]
@@ -30,6 +30,7 @@ class Currencies extends Component
         $this->iso_4 = '';
         $this->symbol = '';
         $this->countries = '';
+        $this->selectedCountries = [];
     }
 
     public function resetValidationAndFields()
@@ -53,6 +54,7 @@ class Currencies extends Component
     public function render()
     {
         $currencies = Currency::orderBy('name', 'asc')->paginate(10);
+        $this->countries = Country::orderBy('name', 'asc')->get();
         return view('currency.index', compact('currencies'));
     }
 
@@ -110,12 +112,14 @@ class Currencies extends Component
                 ->with('alert_class', 'danger');
         }
         $this->resetValidationAndFields();
-        $this->currency_id    = $currency->id;
-        $this->name           = $currency->name;
-        $this->iso_4          = $currency->iso_4;
-        $this->symbol         = $currency->symbol;
-        $this->countries      = Country::orderBy('name', 'asc')->get();
-        $this->updateCurrency = true;
+        $this->currency_id       = $currency->id;
+        $this->name              = $currency->name;
+        $this->iso_4             = $currency->iso_4;
+        $this->symbol            = $currency->symbol;
+        $this->countries         = Country::orderBy('name', 'asc')->get();
+        $this->selectedCountries = $currency->countries()->pluck('countries.id')->all();
+        $this->updateCurrency    = true;
+        $this->dispatch('select_init');
         return view('currency.edit');
     }
 
